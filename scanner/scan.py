@@ -6,10 +6,11 @@ non risponde, i suoi vecchi annunci restano al massimo 24 ore, poi vengono tolti
 """
 import datetime as dt
 
+import alerts
 import ebay
 from common import load, save, score
 
-SOURCES = [ebay]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
+SOURCES = [ebay, alerts]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
 MAX_STALE = dt.timedelta(hours=24)
 
 
