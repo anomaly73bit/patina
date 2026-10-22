@@ -1,8 +1,25 @@
+# Patina — versione con tema Minimal Mistakes (branch minimal-mistakes)
+# Pubblicata su /patina/mm/ dal workflow del branch main, con gli stessi dati dello scanner.
+remote_theme: "mmistakes/minimal-mistakes@4.26.2"
+minimal_mistakes_skin: "air"
+
 title: Patina
+title_separator: "·"
+subtitle: Il termometro del vintage
 description: Il termometro del mercato degli orologi di lusso vintage in Europa
-lang: it
-# Se il repository si chiama "patina" lascia così; se lo pubblichi su un dominio tuo metti baseurl: ""
-baseurl: /patina
+locale: it-IT
+baseurl: /patina/mm
+repository: anomaly73bit/patina
+search: true
+search_full_content: true
+
+plugins:
+  - jekyll-remote-theme
+  - jekyll-include-cache
+  - jekyll-feed
+  - jekyll-sitemap
+
+exclude: [README.md, requirements.txt, Gemfile, Gemfile.lock]
 
 collections:
   orologi:
@@ -10,7 +27,22 @@ collections:
     permalink: /orologi/:name/
 
 defaults:
-  - scope: {type: orologi}
-    values: {layout: orologio}
+  - scope: {path: "", type: orologi}
+    values:
+      layout: orologio
+  - scope: {path: "", type: posts}
+    values:
+      layout: single
+      read_time: true
+      share: true
+      related: true
+      author_profile: false
+  - scope: {path: ""}
+    values:
+      author_profile: false
 
-exclude: [scanner, README.md, requirements.txt]
+footer:
+  links:
+    - label: "Versione originale"
+      icon: "fas fa-fw fa-clock"
+      url: "/patina/"

@@ -1,0 +1,9 @@
+main:
+  - title: "Termometro"
+    url: /
+  - title: "Orologi"
+    url: /orologi/
+  - title: "Guide"
+    url: /guide/
+  - title: "Versione originale"
+    url: https://anomaly73bit.github.io/patina/

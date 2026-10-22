@@ -1,15 +1,12 @@
 ---
-layout: default
+layout: single
+classes: wide
+author_profile: false
 ---
 {% assign m = site.data.models | where: "id", page.model_id | first %}
-<main class="page-model">
+<div class="patina">
   <div class="sch" id="modelPage" data-id="{{ m.id }}" style="padding:0">
-    <div class="sch-head">
-      <div>
-        <div class="eyebrow">{{ m.brand }} · ref. {{ m.ref }}</div>
-        <h1 style="font-size:clamp(2.4rem,6vw,3.6rem)">{{ m.name }}</h1>
-      </div>
-    </div>
+    <div class="sch-head"><div class="eyebrow">{{ m.brand }} · ref. {{ m.ref }} · {{ m.years }}</div></div>
     <div class="gallery" data-gallery></div>
     <div style="display:grid;gap:16px;align-content:start;min-width:0">
       <p>{{ m.note }}</p>
@@ -25,9 +22,9 @@ layout: default
       <div data-spark></div>
     </div>
     <section style="grid-column:1/-1;display:grid;gap:12px">
-      <h2>Annunci per questo modello</h2>
+      <h2 style="font-size:1.8rem">Annunci per questo modello</h2>
       <div class="deals" data-deals></div>
     </section>
   </div>
-  <p style="margin-top:28px"><a href="{{ '/' | relative_url }}">← Tutti i modelli</a></p>
-</main>
+  <p style="margin-top:28px"><a href="{{ '/orologi/' | relative_url }}">← Tutti gli orologi</a></p>
+</div>

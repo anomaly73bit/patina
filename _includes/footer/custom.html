@@ -1,0 +1,10 @@
+<script>
+window.PATINA = {
+  base: "{{ '/' | relative_url }}",
+  models: {{ site.data.models | jsonify }},
+  sources: {{ site.data.sources | jsonify }},
+  listings: {{ site.data.listings | jsonify }},
+  photos: {{ site.data.photos | jsonify }}
+};
+</script>
+<script src="{{ '/assets/js/patina.js' | relative_url }}"></script>
