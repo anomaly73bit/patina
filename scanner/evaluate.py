@@ -139,7 +139,8 @@ def evaluate(listing, model, today=None):
         reasons.insert(0, f"{round(disc * 100)}% sotto il valore: troppo basso per un pezzo originale e funzionante")
     elif disc >= 0.12:
         # occasione solo se la descrizione è stata letta e non ci sono dubbi
-        verdict = "occasione" if (mem and conf >= 2) else "da verificare"
+        stale = age is not None and age > 60  # dopo due mesi online non è un'occasione: qualcosa non convince
+        verdict = "occasione" if (mem and conf >= 2 and not stale) else "da verificare"
     elif disc >= -0.05:
         verdict = "prezzo giusto"
     else:

@@ -78,10 +78,10 @@ def main():
 
     seen, listings = set(), []
     for l in items:
-        key = l.get("url") or (l["src"], l.get("title"), l["p"])
-        if key in seen or not still_open(l, t):
-            continue  # doppione, venduto o asta già chiusa
-        seen.add(key)
+        keys = {l.get("url"), (l["src"], (l.get("title") or "").lower().strip(), l["p"])}
+        if keys & seen or not still_open(l, t):
+            continue  # doppione (stesso link o stesso titolo e prezzo sullo stesso sito), venduto o asta chiusa
+        seen |= keys
         listings.append(l)
 
     order = {"occasione": 0, "da verificare": 1, "prezzo giusto": 2, "sospetto": 3, "caro": 4}
