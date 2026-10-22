@@ -212,7 +212,13 @@ def _html_cards(soup, pattern, base):
             continue
         img = node.find("img")
         src = img and (img.get("src") or img.get("data-src") or img.get("data-imgsrc"))
-        out.append({"title": a.get("title") or a.get_text(" ", strip=True) or text[:140], "text": text,
+        # titolo: intestazione dell'annuncio, altrimenti il testo più lungo tra i link allo stesso annuncio
+        head = node.find(["h2", "h3"])
+        links = [x.get_text(" ", strip=True) for x in node.find_all("a", href=a["href"])]
+        title = (head.get_text(" ", strip=True) if head else "") or max(links + [a.get("title") or ""], key=len)
+        if len(title) < 6:
+            continue
+        out.append({"title": title, "text": text,
                     "url": urljoin(base, a["href"]), "price": _num(m.group(0)),
                     "img": src if src and src.startswith("http") else None, "end": None})
     return out
@@ -228,7 +234,7 @@ def _get(session, url, lang):
 
 def fetch_site(site, models, session):
     cfg = SITES[site]
-    found, blocked_hits, sample = [], 0, None
+    found, blocked_hits, sample, ok_sample = [], 0, None, None
     for m in models:
         url = cfg["url"](m["query"])
         try:
@@ -247,12 +253,13 @@ def fetch_site(site, models, session):
         raw = _structured(soup, cfg["item"], url) or _html_cards(soup, cfg["item"], url)
         if not raw:
             sample = sample or r
+        elif ok_sample is None:
+            ok_sample = r
         for it in raw:
-            text = f'{it["title"]} {it.get("text", "")}'
-            if not matches(m, text) or not it["price"]:
+            if not matches(m, it["title"]) or not it["price"]:  # solo il titolo: la descrizione cita spesso altre referenze
                 continue
             eur = to_eur(it["price"], "CHF" if "CHF" in it.get("text", "") else "EUR")
-            if not eur or eur < m["lo"] * 0.3 or eur > m["hi"] * 4:
+            if not eur or eur < m["lo"] * 0.4 or eur > m["hi"] * 4:
                 continue
             found.append({
                 "m": m["id"], "src": site, "title": PRICE_TXT.sub("", it["title"]).strip(" ·-")[:140], "p": round(eur),
@@ -264,6 +271,10 @@ def fetch_site(site, models, session):
         DEBUG.mkdir(exist_ok=True)
         (DEBUG / f"{site.lower().replace('.', '')}.html").write_text(
             f"<!-- HTTP {sample.status_code} {sample.url} -->\n" + sample.text[:200000], encoding="utf-8")
+    if ok_sample is not None:  # una pagina con risultati, per affinare la lettura
+        DEBUG.mkdir(exist_ok=True)
+        (DEBUG / f"{site.lower().replace('.', '')}_ok.html").write_text(
+            f"<!-- HTTP {ok_sample.status_code} {ok_sample.url} -->\n" + ok_sample.text[:300000], encoding="utf-8")
     if blocked_hits >= 2 and not found:
         raise RuntimeError("bloccato dal sito")
     return found
