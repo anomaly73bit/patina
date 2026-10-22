@@ -161,17 +161,17 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Rolex_Datejust_16200.jpg/960px-Rolex_Datejust_16200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_16200.jpg",
-   "author": "gabihil",
-   "license": "Public domain",
-   "exact": false
-  },
-  {
    "src": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Rolex_Datejust_1603.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
    "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_1603.jpg",
    "author": "hypo.physe",
    "license": "CC BY-SA 2.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3b/Rolex_Datejust_16200.jpg/960px-Rolex_Datejust_16200.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_16200.jpg",
+   "author": "gabihil",
+   "license": "Public domain",
    "exact": false
   }
  ],
@@ -221,17 +221,17 @@
  ],
  "omega-105012": [
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
-   "author": "Torsten Bolten",
-   "license": "Public domain",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
    "author": "Auge=mit",
    "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
+   "author": "Torsten Bolten",
+   "license": "Public domain",
    "exact": false
   },
   {
@@ -265,17 +265,17 @@
  ],
  "omega-145022": [
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
-   "author": "Torsten Bolten",
-   "license": "Public domain",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
    "author": "Auge=mit",
    "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
+   "author": "Torsten Bolten",
+   "license": "Public domain",
    "exact": false
   },
   {
@@ -379,15 +379,325 @@
    "author": "AbdullahAlfowzan",
    "license": "CC BY-SA 4.0",
    "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6a/Wall_clock_Omega_Constellation_Zurich_Airport.jpg/960px-Wall_clock_Omega_Constellation_Zurich_Airport.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Wall_clock_Omega_Constellation_Zurich_Airport.jpg",
+   "author": "Yann (talk)",
+   "license": "CC BY-SA 4.0",
+   "exact": false
   }
  ],
- "heuer-2447": [],
- "heuer-1163": [],
- "patek-3919": [],
- "ap-5402": [],
- "tudor-7928": [],
- "ug-222100": [],
- "zenith-a386": [],
- "breitling-806": [],
- "jlc-memovox": []
+ "heuer-2447": [
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/d/df/Heuer_Carrera_1964.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Carrera_1964.jpg",
+   "author": "Jeff stein",
+   "license": "Public domain",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/5/51/TAG_Heuer_Carrera_blue.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:TAG_Heuer_Carrera_blue.jpg",
+   "author": "Wikimedia Commons",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/18/TAG_Heuer_Carrera_chronograph_CV2010_retusche.jpg/960px-TAG_Heuer_Carrera_chronograph_CV2010_retusche.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:TAG_Heuer_Carrera_chronograph_CV2010_retusche.jpg",
+   "author": "Pinback66, derivative work Lämpel",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/e/e4/TAG_Heuer_Carrera_Calibre_5%2C_anni_2010.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:TAG_Heuer_Carrera_Calibre_5,_anni_2010.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/7/73/TAG_Heuer_Carrera_chronograph_CV2010_retusche_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:TAG_Heuer_Carrera_chronograph_CV2010_retusche_(cropped).jpg",
+   "author": "Pinback66",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/f/fe/TAG_Heuer_Grand_Carrera_watch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:TAG_Heuer_Grand_Carrera_watch.jpg",
+   "author": "Malken00",
+   "license": "Public domain",
+   "exact": false
+  }
+ ],
+ "heuer-1163": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/f/f2/Heuer_Autavia_ref._1163_con_calibro_automatico_Chronomatic.jpg/960px-Heuer_Autavia_ref._1163_con_calibro_automatico_Chronomatic.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_ref._1163_con_calibro_automatico_Chronomatic.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/39/Heuer_Autavia_11630_Orange.jpg/960px-Heuer_Autavia_11630_Orange.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_11630_Orange.jpg",
+   "author": "Alex Peters alias Benutzer:ape10000",
+   "license": "CC BY-SA 3.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/Heuer_Autavia_11630_Orange_retouche.jpg/960px-Heuer_Autavia_11630_Orange_retouche.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_11630_Orange_retouche.jpg",
+   "author": "File:Heuer Autavia 11630 Orange.jpg: Alex Peters alias Benutzer:ape10000\nderivat",
+   "license": "CC BY-SA 3.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/59/Heuer_Autavia_11630_Orange_retouche_%28cropped%29.jpg/960px-Heuer_Autavia_11630_Orange_retouche_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_11630_Orange_retouche_(cropped).jpg",
+   "author": "File:Heuer Autavia 11630 Orange.jpg: Alex Peters alias Benutzer:ape10000\nderivat",
+   "license": "CC BY-SA 3.0",
+   "exact": true
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/5/58/Heuer_Autavia_1962.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_1962.jpg",
+   "author": "Jeff stein",
+   "license": "Public domain",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d1/Heuer_Autavia_Viceroy_Collection.jpg/960px-Heuer_Autavia_Viceroy_Collection.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Heuer_Autavia_Viceroy_Collection.jpg",
+   "author": "Alex Peters alias Benutzer:ape10000",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  }
+ ],
+ "patek-3919": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c6/Patek_Philippe_Calatrava_ref._3919G_risalente_ai_primi_anni_Novanta.jpg/960px-Patek_Philippe_Calatrava_ref._3919G_risalente_ai_primi_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_ref._3919G_risalente_ai_primi_anni_Novanta.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/LUX_%E2%80%93_Kanton_Luxemburg_%E2%80%94_Gemeinde_Luxembourg_%E2%80%94_Ville-Haute_%E2%80%94_22_Rue_Philippe_II_%28Patek_Philippe_Calatrava_men%29_2024-01-27_Mattes.jpg/960px-LUX_%E2%80%93_Kanton_Luxemburg_%E2%80%94_Gemeinde_Luxembourg_%E2%80%94_Ville-Haute_%E2%80%94_22_Rue_Philippe_II_%28Patek_Philippe_Calatrava_men%29_2024-01-27_Mattes.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:LUX_%E2%80%93_Kanton_Luxemburg_%E2%80%94_Gemeinde_Luxembourg_%E2%80%94_Ville-Haute_%E2%80%94_22_Rue_Philippe_II_(Patek_Philippe_Calatrava_men)_2024-01-27_Mattes.jpg",
+   "author": "User:Mateus2019",
+   "license": "CC BY 3.0 de",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Patek_Philippe_Calatrava_ref._5055.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_ref._5055.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Patek_Philippe_Calatrava_Travel_Time.jpg/960px-Patek_Philippe_Calatrava_Travel_Time.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_Travel_Time.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/56/Patek_Philippe_Calatrava%2C_dress_watch_per_eccellenza.jpg/960px-Patek_Philippe_Calatrava%2C_dress_watch_per_eccellenza.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava,_dress_watch_per_eccellenza.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d9/Patek_Philippe_Calatrava_ref._96%2C_fine_anni_Trenta.jpg/960px-Patek_Philippe_Calatrava_ref._96%2C_fine_anni_Trenta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_ref._96,_fine_anni_Trenta.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  }
+ ],
+ "ap-5402": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/05/Audemars_Piguet_Royal_Oak_ref._15202.jpg/960px-Audemars_Piguet_Royal_Oak_ref._15202.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_ref._15202.jpg",
+   "author": "OpaleHorse",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Audemars_Piguet_Royal_Oak_Offshore_Diver.jpg/960px-Audemars_Piguet_Royal_Oak_Offshore_Diver.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_Offshore_Diver.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Audemars_Piguet_Royal_Oak_Tradition_d%27Excellence_4%2C_ref._25969%2C_risalente_al_2004.jpg/960px-Audemars_Piguet_Royal_Oak_Tradition_d%27Excellence_4%2C_ref._25969%2C_risalente_al_2004.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_Tradition_d%27Excellence_4,_ref._25969,_risalente_al_2004.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare%2C_ref._25721._Primi_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare,_ref._25721._Primi_anni_Novanta.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo%2C_met%C3%A0_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo,_met%C3%A0_anni_Novanta.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/Audemars_Piguet_Royal_Oak_in_oro_e_tantalio%2C_fine_anni_%2780-primi_%2790.jpg/960px-Audemars_Piguet_Royal_Oak_in_oro_e_tantalio%2C_fine_anni_%2780-primi_%2790.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_in_oro_e_tantalio,_fine_anni_%2780-primi_%2790.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  }
+ ],
+ "tudor-7928": [
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/7/7a/263-tudor-76100-submariner-marine-nationale-1979-mostra-store-aix-en-provence-27.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:263-tudor-76100-submariner-marine-nationale-1979-mostra-store-aix-en-provence-27.jpg",
+   "author": "Thierry Mostra-store",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c3/Tudor_Oyster_Prince_Submariner.jpg/960px-Tudor_Oyster_Prince_Submariner.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Tudor_Oyster_Prince_Submariner.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  }
+ ],
+ "ug-222100": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/e/e5/Universal_Gen%C3%A8ve_Tri-Compax_della_seconda_met%C3%A0_degli_anni_Ottanta_con_movimento_automatico_Valjoux_7751.jpg/960px-Universal_Gen%C3%A8ve_Tri-Compax_della_seconda_met%C3%A0_degli_anni_Ottanta_con_movimento_automatico_Valjoux_7751.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Universal_Gen%C3%A8ve_Tri-Compax_della_seconda_met%C3%A0_degli_anni_Ottanta_con_movimento_automatico_Valjoux_7751.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/2e/Universal-Geneve_Tri-Compax.jpg/960px-Universal-Geneve_Tri-Compax.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Universal-Geneve_Tri-Compax.jpg",
+   "author": "Nakatajun",
+   "license": "Public domain",
+   "exact": true
+  }
+ ],
+ "zenith-a386": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/0f/Zenith_El_Primero_Automatic_Chronograph_Movement_%2818659840408%29.jpg/960px-Zenith_El_Primero_Automatic_Chronograph_Movement_%2818659840408%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_Automatic_Chronograph_Movement_(18659840408).jpg",
+   "author": "Eric Kilby from Somerville, MA, USA",
+   "license": "CC BY-SA 2.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/50/Zenith_El_Primero_A_384.jpg/960px-Zenith_El_Primero_A_384.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_A_384.jpg",
+   "author": "EMore98",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/a/a4/Zenith_El_Primero_Chronomaster_Open.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_Chronomaster_Open.jpg",
+   "author": "Clyde94",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Zenith_El_Primero_Schwarzweiss.jpg/960px-Zenith_El_Primero_Schwarzweiss.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_Schwarzweiss.jpg",
+   "author": "Norbert Blau (Benutzer:Luftfahrer) at de.wikipedia",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Zenith_El_Primero_36000.jpg/960px-Zenith_El_Primero_36000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_36000.jpg",
+   "author": "Enerexex",
+   "license": "CC BY-SA 4.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/5/51/Detail_of_Zenith_El_Primero_chronograph_watch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Detail_of_Zenith_El_Primero_chronograph_watch.jpg",
+   "author": "Rama",
+   "license": "CC BY-SA 2.0 fr",
+   "exact": false
+  }
+ ],
+ "breitling-806": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/8f/Breitling_Navitimer_806_E_last_version.jpg/960px-Breitling_Navitimer_806_E_last_version.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Breitling_Navitimer_806_E_last_version.jpg",
+   "author": "PAPPL",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1a/Breitling_Navitimer_806_E_last_version_%28cropped%29.jpg/960px-Breitling_Navitimer_806_E_last_version_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Breitling_Navitimer_806_E_last_version_(cropped).jpg",
+   "author": "PAPPL",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/4/46/47-Breitling-Navitimer-Vintage-AOPA-Venus-806-circa-1960-vue-de-face.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:47-Breitling-Navitimer-Vintage-AOPA-Venus-806-circa-1960-vue-de-face.jpg",
+   "author": "Thierry Mostra-store",
+   "license": "CC BY-SA 4.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Breitling_Navitimer_chronograph_watch.jpg/960px-Breitling_Navitimer_chronograph_watch.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Breitling_Navitimer_chronograph_watch.jpg",
+   "author": "Torsten Bolten",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Breitling_Navitimer_chronograph_watch%2C_black_dial_and_golden_casing.jpg/960px-Breitling_Navitimer_chronograph_watch%2C_black_dial_and_golden_casing.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Breitling_Navitimer_chronograph_watch,_black_dial_and_golden_casing.jpg",
+   "author": "Ralf Roletschek",
+   "license": "CC BY 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/b/b1/Breitling_Navitimer_slide_rule.jpg/960px-Breitling_Navitimer_slide_rule.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Breitling_Navitimer_slide_rule.jpg",
+   "author": "Torsten Bolten",
+   "license": "CC BY-SA 3.0",
+   "exact": false
+  }
+ ],
+ "jlc-memovox": [
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/58/Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825.JPG/960px-Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825.JPG",
+   "author": "Ghilt",
+   "license": "CC BY-SA 3.0",
+   "exact": true
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825_%282%29.JPG/960px-Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825_%282%29.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Jaeger-LeCoultre_Memovox_model_E855_with_calibre_K825_(2).JPG",
+   "author": "Ghilt",
+   "license": "CC BY-SA 3.0",
+   "exact": true
+  }
+ ]
 }
