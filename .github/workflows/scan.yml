@@ -44,6 +44,7 @@ jobs:
         env:
           EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
           EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
           IMAP_USER: ${{ secrets.IMAP_USER }}
           IMAP_PASSWORD: ${{ secrets.IMAP_PASSWORD }}
         run: cd scanner && python scan.py
@@ -52,7 +53,7 @@ jobs:
         run: |
           git config user.name "patina-bot"
           git config user.email "patina-bot@users.noreply.github.com"
-          git add _data
+          git add _data scanner/debug 2>/dev/null || git add _data
           git diff --cached --quiet || (git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')" && git push)
 
       - name: Stessi dati anche per il sito Minimal Mistakes

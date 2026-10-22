@@ -7,10 +7,11 @@ non risponde, i suoi vecchi annunci restano al massimo 24 ore, poi vengono tolti
 import datetime as dt
 
 import alerts
+import apify
 import ebay
 from common import load, save, score
 
-SOURCES = [ebay, alerts]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
+SOURCES = [ebay, apify, alerts]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
 MAX_STALE = dt.timedelta(hours=24)
 
 
@@ -47,6 +48,13 @@ def main():
             print(f"{name}: errore {e}")
             found = "errore"
         if found is None:  # fonte disattivata (chiavi mancanti)
+            continue
+        if found == "keep":
+            # fonte che non gira a ogni giro (Apify, una volta al giorno): tengo i suoi annunci dell'ultimo giro
+            kept = [l for l in old_items if l.get("via") == name and (parse(l.get("seen")) or t) > t - 2 * MAX_STALE]
+            items += kept
+            any_real = any_real or bool(old_items)
+            print(f"{name}: tengo {len(kept)} annunci dall'ultimo giro")
             continue
         if found == "errore":
             # fonte non raggiungibile: tengo i suoi annunci solo se visti nelle ultime 24 ore
