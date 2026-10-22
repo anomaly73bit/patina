@@ -35,8 +35,8 @@ def fetch(models):
     token = _token()
     if not token:
         print("eBay: chiavi mancanti, salto la fonte")
-        return []
-    out = []
+        return None
+    out, ok_calls = [], 0
     for market, label in MARKETS.items():
         for m in models:
             min_price = int(m["lo"] * 0.3)  # sotto il 30% della stima è quasi sempre un ricambio
@@ -54,6 +54,7 @@ def fetch(models):
             if r.status_code != 200:
                 print(f"eBay {market} {m['id']}: HTTP {r.status_code}")
                 continue
+            ok_calls += 1
             for it in r.json().get("itemSummaries", []):
                 title = it.get("title", "")
                 if not matches(m, title):
@@ -75,4 +76,6 @@ def fetch(models):
                     "auction": auction,
                     "endDate": it.get("itemEndDate") if auction else None,
                 })
+    if not ok_calls:
+        raise RuntimeError("nessuna ricerca eBay riuscita")
     return out

@@ -51,39 +51,13 @@ layout: default
         </select>
       </div>
     </div>
+    <div class="auctions" id="auctions"></div>
     <div class="deals" id="deals"></div>
     <p class="note">Il prezzo totale include la commissione d'asta del compratore (buyer's premium, valori indicativi per casa). Sconto oltre il 35%: Patina segnala il rischio di quadrante rifatto, pezzi non originali o falso.</p>
   </div>
 </section>
 
-<section style="display:grid;gap:22px">
-  <div><div class="eyebrow">Dietro le quinte</div><h2>Dove guarda lo scanner</h2></div>
-  <div class="sources">
-    <div><h3>Marketplace</h3><ul>
-      <li>Chrono24 <span>· DE, tutta Europa</span></li>
-      <li>eBay .de · .it · .fr <span>· API ufficiale Browse</span></li>
-      <li>Watchfinder, Bucherer CPO <span>· rivenditori</span></li>
-    </ul></div>
-    <div><h3>Aste</h3><ul>
-      <li>Catawiki <span>· NL, aste settimanali</span></li>
-      <li>Dorotheum <span>· Vienna</span></li>
-      <li>Antiquorum, Phillips <span>· Ginevra, Monaco</span></li>
-      <li>Christie's, Sotheby's, Bonhams <span>· sessioni orologi</span></li>
-    </ul></div>
-    <div><h3>Mercatini e privati</h3><ul>
-      <li>Subito.it, Kleinanzeigen, Leboncoin <span>· IT · DE · FR</span></li>
-      <li>Bazoš, Sbazar <span>· CZ</span></li>
-      <li>Mercatino Orologi&amp;Passioni, Uhrforum <span>· forum</span></li>
-    </ul></div>
-  </div>
-  <ol class="steps">
-    <li><b>Raccolta</b>Ogni 3 ore legge gli annunci nuovi per referenza, via API dove esiste, altrimenti dalle pagine pubbliche.</li>
-    <li><b>Riconoscimento</b>Estrae marca, referenza, anno, condizioni, scatola e documenti dal titolo e dalla descrizione.</li>
-    <li><b>Prezzo totale</b>Converte in euro e aggiunge commissioni d'asta e spedizione stimata.</li>
-    <li><b>Confronto</b>Mette il prezzo contro la stima Patina e assegna lo sconto e i segnali di rischio.</li>
-    <li><b>Output</b>Aggiorna questa pagina e il file di occasioni; avviso quando lo sconto supera la tua soglia.</li>
-  </ol>
-</section>
+
 
 <footer>Patina · prototipo. Le stime sono indicative e non costituiscono una perizia: prima di comprare verifica referenza, seriale, quadrante e movimento con un orologiaio di fiducia.</footer>
 </div>

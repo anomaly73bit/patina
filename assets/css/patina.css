@@ -130,3 +130,18 @@ dialog#scheda::backdrop{background:rgba(10,14,20,.55)}
 .deal a.title:hover{text-decoration:underline}
 .page-model{max-width:1180px;margin:0 auto}
 @media (max-width:760px){.sch{grid-template-columns:1fr;padding:16px}}
+
+/* aste in evidenza */
+.auctions{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.auctions:empty{display:none}
+.auc-head{grid-column:1/-1;display:flex;align-items:center;gap:8px;font:500 11px var(--f-mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt)}
+.auc-head::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gilt)}
+.auc{display:grid;gap:6px;padding:14px;border:1.5px solid var(--gilt);border-radius:6px;background:var(--gilt-soft);color:var(--ink);text-decoration:none}
+.auc h4{margin:0;font-size:14.5px;font-weight:600}
+.auc .row{display:flex;justify-content:space-between;align-items:baseline;gap:8px;font-size:12.5px;color:var(--muted)}
+.auc .row b{font:600 15px var(--f-mono);color:var(--ink);font-variant-numeric:tabular-nums}
+.countdown{display:inline-flex;align-items:center;gap:6px;justify-self:start;font:600 12.5px var(--f-mono);font-variant-numeric:tabular-nums;
+  background:var(--gilt);color:var(--surface);padding:4px 10px;border-radius:999px}
+.countdown.urgent{background:var(--bad);color:var(--surface)}
+.deal.is-asta{border:1.5px solid var(--gilt);background:linear-gradient(90deg,var(--gilt-soft),var(--surface) 55%)}
+.deal.is-asta .countdown{margin-top:6px}

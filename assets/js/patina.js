@@ -3,11 +3,12 @@
   const MODELS = P.models, SRC = P.sources, PHOTOS = P.photos || {};
   const byId = Object.fromEntries(MODELS.map(m => [m.id, m]));
   const now = Date.now();
+  // annunci venduti o aste già chiuse spariscono subito, anche tra un giro dello scanner e l'altro
   const LIST = (P.listings.items || []).map(l => {
     const fee = (SRC[l.src] || {}).fee || 0;
-    const end = l.endDate ? Math.max(0, Math.ceil((Date.parse(l.endDate) - now) / 864e5)) : l.endDays;
-    return Object.assign({}, l, { fee, end: end ?? null });
-  });
+    const endMs = l.endDate ? Date.parse(l.endDate) : (l.endDays != null ? now + l.endDays * 864e5 : null);
+    return Object.assign({}, l, { fee, endMs, end: endMs });
+  }).filter(l => !l.sold && !(l.endMs && l.endMs <= now));
 
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const eur = n => "€ " + Math.round(n).toLocaleString("it-IT");
@@ -17,6 +18,18 @@
   const trendCls = t => t > 0 ? "up" : t < 0 ? "down" : "flat";
   const verdict = d => d > .35 ? ["s-bad", "verifica"] : d >= .12 ? ["s-good", "occasione"] : d >= -.05 ? ["s-fair", "prezzo giusto"] : ["s-bad", "caro"];
   const best = id => LIST.filter(l => l.m === id).sort((a, b) => b.disc - a.disc)[0];
+  const giorni = ["dom", "lun", "mar", "mer", "gio", "ven", "sab"];
+  function endInfo(l) {
+    if (!l.endMs) return null;
+    const ms = l.endMs - Date.now();
+    if (ms <= 0) return { text: "asta chiusa", urgent: true };
+    const min = Math.floor(ms / 6e4), h = Math.floor(min / 60), d = Math.floor(h / 24);
+    const text = d >= 1 ? `chiude tra ${d} g ${h % 24} h` : h >= 1 ? `chiude tra ${h} h ${min % 60} min` : `chiude tra ${min} min`;
+    let when = "";
+    if (l.endDate) { const t = new Date(l.endMs); when = `${giorni[t.getDay()]} ${t.getDate()}/${t.getMonth() + 1}, ${String(t.getHours()).padStart(2, "0")}:${String(t.getMinutes()).padStart(2, "0")}`; }
+    return { text, when, urgent: ms < 864e5 };
+  }
+  const countdown = l => { const e = endInfo(l); return e ? `<span class="countdown${e.urgent ? " urgent" : ""}">⏱ ${e.text}${e.when ? ` · ${e.when}` : ""}</span>` : ""; };
   const pageUrl = id => P.base + "orologi/" + id + "/";
 
   /* ---------- foto ---------- */
@@ -79,10 +92,12 @@
   function dealHTML(l, hl) {
     const m = byId[l.m], [cls, word] = verdict(l.disc);
     const title = `${esc(m.brand)} ${esc(m.name)} <span class="mono muted" style="font-weight:400">${esc(m.ref)}</span>`;
-    return `<article class="deal" style="${hl ? "border-color:var(--gilt)" : ""}">
+    const asta = l.type === "Asta";
+    return `<article class="deal${asta ? " is-asta" : ""}" style="${hl && !asta ? "border-color:var(--gilt)" : ""}">
       <div class="score ${cls}"><div>${pct(l.disc)}<small>${word}</small></div></div>
       <div style="min-width:0"><h4>${l.url ? `<a class="title" href="${esc(l.url)}" target="_blank" rel="noopener">${title}</a>` : title}</h4>
-        <div class="meta"><span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}${l.end != null ? `<span>chiude tra ${l.end} g</span>` : ""}</div>
+        <div class="meta"><span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}</div>
+        ${asta ? countdown(l) : ""}
         ${l.disc > .35 ? `<div class="flag">Sconto anomalo: controlla foto del movimento, seriale e quadrante prima di offrire.</div>` : ""}</div>
       <div class="price"><b>${eur(l.total)}</b><small>${l.fee ? `${eur(l.p)} + ${Math.round(l.fee * 100)}% comm.` : "prezzo richiesto"}</small><small>stima ${eur(mid(m))}</small></div>
     </article>`;
@@ -218,17 +233,34 @@
     document.getElementById("openSel").onclick = () => openScheda(sel);
   }
 
+  function renderAuctions() {
+    const el = document.getElementById("auctions");
+    const au = (type === "Tutte" || type === "Asta") ? LIST.filter(l => l.type === "Asta" && l.endMs && l.endMs > Date.now()).sort((a, b) => a.endMs - b.endMs).slice(0, 4) : [];
+    el.innerHTML = au.length ? `<div class="auc-head">Aste in chiusura</div>` + au.map(l => {
+      const m = byId[l.m], tag = l.url ? "a" : "div";
+      return `<${tag} class="auc"${l.url ? ` href="${esc(l.url)}" target="_blank" rel="noopener"` : ""}>
+        ${countdown(l)}
+        <h4>${esc(m.brand)} ${esc(m.name)} <span class="mono muted" style="font-weight:400">${esc(m.ref)}</span></h4>
+        <div class="row"><span>${esc(l.src)}${l.cty ? " · " + esc(l.cty) : ""}</span></div>
+        <div class="row"><span>offerta + comm.</span><b>${eur(l.total)}</b></div>
+        <div class="row"><span>stima ${eur(mid(m))}</span><span class="${l.disc >= .12 && l.disc <= .35 ? "up" : l.disc < -.05 ? "down" : ""}">${pct(l.disc)}</span></div>
+      </${tag}>`;
+    }).join("") : "";
+  }
+
   function renderDeals() {
+    renderAuctions();
     chips("typeBar", ["Tutte", "Marketplace", "Asta", "Mercatino"], type, v => { type = v; renderDeals(); });
     const sort = document.getElementById("sortSel").value;
-    const ls = LIST.filter(l => type === "Tutte" || l.type === type)
-      .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.end ?? 999) - (b.end ?? 999) : b.disc - a.disc)
+    const ls = LIST.filter(l => (type === "Tutte" || l.type === type) && !(l.endMs && l.endMs <= Date.now()))
+      .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.endMs ?? Infinity) - (b.endMs ?? Infinity) : b.disc - a.disc)
       .slice(0, 60);
     document.getElementById("deals").innerHTML = ls.map(l => dealHTML(l, l.m === sel)).join("") || `<p class="muted">Nessun annuncio per questo filtro.</p>`;
   }
   document.getElementById("sortSel").addEventListener("change", renderDeals);
 
   renderModels(); renderDetail(); renderDeals();
+  setInterval(renderDeals, 60000); // aggiorna i conti alla rovescia ogni minuto
   // apertura diretta: index.html#rolex-5513
   const h = location.hash.slice(1);
   if (byId[h]) pick(h, true);
