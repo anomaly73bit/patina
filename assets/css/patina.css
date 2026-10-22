@@ -145,3 +145,50 @@ dialog#scheda::backdrop{background:rgba(10,14,20,.55)}
 .countdown.urgent{background:var(--bad);color:var(--surface)}
 .deal.is-asta{border:1.5px solid var(--gilt);background:linear-gradient(90deg,var(--gilt-soft),var(--surface) 55%)}
 .deal.is-asta .countdown{margin-top:6px}
+
+/* menu e ricerca */
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+.topnav{flex-wrap:wrap}
+.navlinks{display:flex;gap:18px;margin-right:auto;margin-left:24px}
+.navlinks a{color:var(--muted);text-decoration:none;font-size:14px;font-weight:500;padding:4px 0;border-bottom:2px solid transparent}
+.navlinks a:hover{color:var(--ink)}
+.navlinks a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--gilt)}
+.search{position:relative;width:min(320px,100%)}
+.search input{width:100%;font:14px var(--f-body);padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:var(--surface);color:var(--ink)}
+.search input:focus-visible{outline:2px solid var(--gilt);outline-offset:1px}
+.results{position:absolute;right:0;top:calc(100% + 6px);width:min(420px,calc(100vw - 32px));max-height:70vh;overflow:auto;z-index:20;
+  background:var(--surface);border:1px solid var(--line);border-radius:8px;box-shadow:0 12px 32px rgba(0,0,0,.18);padding:6px}
+.results a{display:grid;gap:2px;padding:9px 10px;border-radius:6px;color:var(--ink);text-decoration:none}
+.results a:hover,.results a.on{background:var(--gilt-soft)}
+.results small{font:500 10.5px var(--f-mono);letter-spacing:.08em;text-transform:uppercase;color:var(--gilt)}
+.results span{font-size:12.5px;color:var(--muted)}
+.results mark{background:none;color:var(--ink);font-weight:600}
+.results .none{padding:10px;color:var(--muted);font-size:13px}
+@media (max-width:700px){.navlinks{order:3;width:100%;margin:4px 0 0}.search{width:auto;flex:1;min-width:0;margin-left:16px}}
+
+/* guide */
+.article{max-width:720px;margin:0 auto;display:grid;gap:14px}
+.article h1{font-size:clamp(2.2rem,6vw,3.2rem);line-height:1.05}
+.article .lead{font-size:1.1rem;color:var(--muted)}
+.article .back{font-size:13.5px;text-decoration:none}
+.prose{font-size:16.5px;line-height:1.7}
+.prose h2{font-size:1.6rem;margin:1.6em 0 .4em}
+.prose p{margin:0 0 1em}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.post-list{display:grid;gap:10px;margin-top:10px}
+.post-item{display:grid;gap:4px;padding:16px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);text-decoration:none}
+.post-item:hover{border-color:var(--gilt)}
+.post-item b{font-size:17px}
+.post-item span:last-child{color:var(--muted);font-size:14px}
+
+/* griglia orologi */
+.watch-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:18px;margin-top:1.5em}
+.watch-card{display:grid;gap:8px;text-decoration:none;color:inherit;border:1px solid var(--line);border-radius:6px;overflow:hidden;background:var(--surface)}
+.watch-card:hover{border-color:var(--gilt)}
+.watch-card .ph{aspect-ratio:4/3;max-width:100%;background:var(--bg);display:grid;place-items:center;overflow:hidden}
+.watch-card .ph img{width:100%;height:100%;object-fit:cover}
+.watch-card .tx{padding:0 14px 14px;display:grid;gap:2px}
+.watch-card .tx b{font-size:15px}
+.watch-card .tx small{font-family:var(--f-mono);font-size:12px;color:var(--muted)}
+.watch-card .tx span{font-family:var(--f-mono);font-size:13px}
+.empty-note{padding:18px;border:1px dashed var(--line);border-radius:6px;color:var(--muted);font-size:14px}

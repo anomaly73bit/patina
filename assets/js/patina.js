@@ -1,4 +1,49 @@
 (function () {
+  /* ---------- ricerca: orologi e guide ---------- */
+  const P = window.PATINA, input = document.getElementById("q"), box = document.getElementById("results");
+  if (!input) return;
+  const norm = s => String(s || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const escH = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+  const items = P.models.map(m => ({
+    kind: "Orologio", title: `${m.brand} ${m.name} ${m.ref}`, sub: `${m.years} · cal. ${m.cal}`,
+    url: P.base + "orologi/" + m.id + "/", text: norm(`${m.brand} ${m.name} ${m.ref} ${m.match.join(" ")} ${m.cal} ${m.note}`)
+  })).concat((P.posts || []).map(p => ({ kind: "Guida", title: p.t, sub: p.e, url: p.u, text: norm(`${p.t} ${p.e} ${p.c}`) })));
+  let sel = -1, hits = [];
+  function mark(s, words) {
+    let out = escH(s);
+    words.forEach(w => { if (w.length > 1) out = out.replace(new RegExp(`(${w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")})`, "ig"), "<mark>$1</mark>"); });
+    return out;
+  }
+  function run() {
+    const q = norm(input.value.trim());
+    if (!q) { box.hidden = true; return; }
+    const words = q.split(/\s+/);
+    hits = items.map(it => {
+      if (!words.every(w => it.text.includes(w))) return null;
+      const t = norm(it.title);
+      return { it, score: words.reduce((a, w) => a + (t.includes(w) ? 3 : 1), 0) + (it.kind === "Orologio" ? 1 : 0) };
+    }).filter(Boolean).sort((a, b) => b.score - a.score).slice(0, 8).map(h => h.it);
+    sel = -1;
+    box.innerHTML = hits.length ? hits.map((h, i) => `<a href="${escH(h.url)}" data-i="${i}"><small>${h.kind}</small><b>${mark(h.title, input.value.trim().split(/\s+/))}</b><span>${escH(h.sub).slice(0, 110)}</span></a>`).join("")
+      : `<div class="none">Nessun risultato per «${escH(input.value.trim())}».</div>`;
+    box.hidden = false;
+  }
+  input.addEventListener("input", run);
+  input.addEventListener("focus", run);
+  input.addEventListener("keydown", e => {
+    const links = box.querySelectorAll("a");
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      e.preventDefault(); if (!links.length) return;
+      sel = (sel + (e.key === "ArrowDown" ? 1 : -1) + links.length) % links.length;
+      links.forEach((a, i) => a.classList.toggle("on", i === sel));
+    } else if (e.key === "Enter") {
+      const a = links[sel >= 0 ? sel : 0]; if (a) location.href = a.href;
+    } else if (e.key === "Escape") { box.hidden = true; input.blur(); }
+  });
+  document.addEventListener("click", e => { if (!e.target.closest(".search")) box.hidden = true; });
+})();
+
+(function () {
   const P = window.PATINA;
   const MODELS = P.models, SRC = P.sources, PHOTOS = P.photos || {};
   const byId = Object.fromEntries(MODELS.map(m => [m.id, m]));
@@ -255,7 +300,7 @@
     const ls = LIST.filter(l => (type === "Tutte" || l.type === type) && !(l.endMs && l.endMs <= Date.now()))
       .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.endMs ?? Infinity) - (b.endMs ?? Infinity) : b.disc - a.disc)
       .slice(0, 60);
-    document.getElementById("deals").innerHTML = ls.map(l => dealHTML(l, l.m === sel)).join("") || `<p class="muted">Nessun annuncio per questo filtro.</p>`;
+    document.getElementById("deals").innerHTML = ls.map(l => dealHTML(l, l.m === sel)).join("") || (LIST.length ? `<p class="muted">Nessun annuncio per questo filtro.</p>` : `<p class="empty-note">Lo scanner sta raccogliendo gli annunci attivi. Le occasioni compaiono qui al prossimo aggiornamento.</p>`);
   }
   document.getElementById("sortSel").addEventListener("change", renderDeals);
 

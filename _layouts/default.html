@@ -10,9 +10,18 @@
 <link rel="stylesheet" href="{{ '/assets/css/patina.css' | relative_url }}">
 </head>
 <body>
-<nav class="topnav">
+<nav class="topnav" aria-label="Menu principale">
   <a class="logo" href="{{ '/' | relative_url }}">Patina</a>
-  <span>{% if site.data.listings.example %}Annunci di esempio{% else %}Scanner aggiornato {{ site.data.listings.updated }}{% endif %} · <a href="{{ '/mm/' | relative_url }}">Versione Minimal Mistakes</a></span>
+  <div class="navlinks">
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Termometro</a>
+    <a href="{{ '/orologi/' | relative_url }}"{% if page.url contains '/orologi/' %} aria-current="page"{% endif %}>Orologi</a>
+    <a href="{{ '/guide/' | relative_url }}"{% if page.url contains '/guide/' or page.layout == 'post' %} aria-current="page"{% endif %}>Guide</a>
+  </div>
+  <div class="search" role="search">
+    <label for="q" class="sr">Cerca</label>
+    <input id="q" type="search" placeholder="Cerca orologio, referenza, guida…" autocomplete="off">
+    <div class="results" id="results" hidden></div>
+  </div>
 </nav>
 {{ content }}
 <script>
@@ -21,7 +30,8 @@ window.PATINA = {
   models: {{ site.data.models | jsonify }},
   sources: {{ site.data.sources | jsonify }},
   listings: {{ site.data.listings | jsonify }},
-  photos: {{ site.data.photos | jsonify }}
+  photos: {{ site.data.photos | jsonify }},
+  posts: [{% for p in site.posts %}{"t": {{ p.title | jsonify }}, "u": {{ p.url | relative_url | jsonify }}, "e": {{ p.excerpt | strip_html | strip_newlines | jsonify }}, "c": {{ p.content | strip_html | strip_newlines | truncatewords: 400 | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
 };
 </script>
 <script src="{{ '/assets/js/patina.js' | relative_url }}"></script>

@@ -1,0 +1,19 @@
+---
+layout: default
+title: Guide
+permalink: /guide/
+---
+<main class="article">
+  <div class="eyebrow">Guide all'acquisto</div>
+  <h1>Guide</h1>
+  <p class="lead">Come riconoscere i pezzi originali, quanto pesano scatola e documenti, come leggere un catalogo d'asta.</p>
+  <div class="post-list">
+  {% for p in site.posts %}
+    <a class="post-item" href="{{ p.url | relative_url }}">
+      <span class="mono muted">{{ p.date | date: "%d/%m/%Y" }}</span>
+      <b>{{ p.title }}</b>
+      <span>{{ p.excerpt | strip_html | truncatewords: 30 }}</span>
+    </a>
+  {% endfor %}
+  </div>
+</main>

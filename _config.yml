@@ -14,3 +14,4 @@ defaults:
     values: {layout: orologio}
 
 exclude: [scanner, README.md, requirements.txt, mm, _site_mm]
+permalink: /guide/:title/
