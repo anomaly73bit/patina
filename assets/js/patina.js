@@ -80,7 +80,7 @@
   /* ---------- foto ---------- */
   function photosFor(id) {
     const commons = (PHOTOS[id] || []).map(p => ({
-      src: p.src, link: p.page, credit: `Foto: ${p.author} · ${p.license} · Wikimedia Commons${p.exact === false ? " · stessa famiglia, non la ref. esatta" : ""}`
+      src: p.src, link: P.base + "crediti/#" + id, internal: true, credit: `Foto: ${p.author} · ${p.license} · Wikimedia Commons${p.exact === false ? " · stessa famiglia, non la ref. esatta" : ""}`
     }));
     const fromListings = LIST.filter(l => l.m === id && l.img).slice(0, 6).map(l => ({
       src: l.img, link: l.url, credit: `Foto dall'annuncio su ${l.src} · ${eur(l.total)}`
@@ -101,14 +101,18 @@
   }
   function mountGallery(el, id) {
     const m = byId[id], ph = photosFor(id);
-    if (!ph.length) { el.innerHTML = `<div class="main">${placeholder(m)}</div><div class="credit">Nessuna foto libera trovata finora per questa referenza.</div>`; return; }
-    el.innerHTML = `<div class="main"><img alt="${esc(m.brand + " " + m.name + " " + m.ref)}"></div>
-      <div class="credit"></div>
+    if (!ph.length) { el.innerHTML = `<div class="main">${placeholder(m)}</div>`; return; }
+    el.innerHTML = `<div class="main"><img alt="${esc(m.brand + " " + m.name + " " + m.ref)}"><a class="info" href="#">i</a></div>
       ${ph.length > 1 ? `<div class="thumbs">${ph.map((p, i) => `<button type="button" data-i="${i}" aria-label="Foto ${i + 1}"><img src="${esc(p.src)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}`;
-    const img = el.querySelector(".main img"), credit = el.querySelector(".credit");
+    const img = el.querySelector(".main img"), info = el.querySelector(".main .info");
     const show = i => {
       img.src = ph[i].src;
-      credit.innerHTML = ph[i].link ? `<a href="${esc(ph[i].link)}" target="_blank" rel="noopener">${esc(ph[i].credit)}</a>` : esc(ph[i].credit);
+      // niente testo sotto la foto: la «i» porta ai crediti (foto Commons) o all'annuncio (foto degli annunci)
+      info.href = ph[i].link || "#";
+      info.title = ph[i].credit;
+      info.setAttribute("aria-label", ph[i].credit);
+      if (ph[i].internal) { info.removeAttribute("target"); info.removeAttribute("rel"); }
+      else { info.target = "_blank"; info.rel = "noopener"; }
       el.querySelectorAll(".thumbs button").forEach((b, j) => b.setAttribute("aria-current", j === i));
     };
     img.onerror = () => { img.replaceWith(Object.assign(document.createElement("div"), { innerHTML: placeholder(m) }).firstChild); };

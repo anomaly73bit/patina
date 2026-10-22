@@ -1,0 +1,20 @@
+---
+layout: default
+title: Crediti foto
+permalink: /crediti/
+---
+<main class="article">
+  <div class="eyebrow">Fonti delle immagini</div>
+  <h1>Crediti foto</h1>
+  <p class="lead">Le foto dei modelli vengono da Wikimedia Commons, con licenza libera. Qui sotto autore e licenza di ciascuna. Le foto degli annunci appartengono ai rispettivi venditori e rimandano all'annuncio originale.</p>
+  <div class="credits">
+  {% for m in site.data.models %}{% assign ph = site.data.photos[m.id] %}{% if ph and ph.size > 0 %}
+    <section id="{{ m.id }}">
+      <h2>{{ m.brand }} {{ m.name }} {{ m.ref }}</h2>
+      <ul>{% for p in ph %}
+        <li><a href="{{ p.page }}" target="_blank" rel="noopener">{{ p.page | split: "File:" | last | url_decode | replace: "_", " " | truncate: 70 }}</a> · {{ p.author }} · {{ p.license }}{% if p.exact == false %} · stessa famiglia, non la ref. esatta{% endif %}</li>{% endfor %}
+      </ul>
+    </section>{% endif %}
+  {% endfor %}
+  </div>
+</main>
