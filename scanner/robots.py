@@ -1,5 +1,5 @@
-"""Robot di Patina: leggono le pagine di ricerca pubbliche di Chrono24, Catawiki,
-Kleinanzeigen, Subito e Leboncoin, una richiesta alla volta e con pause.
+"""Robot di Patina: leggono le pagine di ricerca pubbliche dei siti di annunci e aste
+in tutta Europa (elenco in SITES), una richiesta alla volta e con pause.
 
 Ogni pagina viene letta in tre modi, dal più preciso al più generico:
 1. i dati strutturati che il sito incorpora nella pagina (__NEXT_DATA__, JSON-LD);
@@ -22,29 +22,56 @@ from bs4 import BeautifulSoup
 from common import matches, to_eur
 
 DEBUG = pathlib.Path(__file__).resolve().parent / "debug"
-PAUSE = (2.0, 4.0)  # secondi tra una richiesta e l'altra
+PAUSE = (1.5, 3.0)  # secondi tra una richiesta e l'altra
 
+def _h(url, item, lang, cty, cur="EUR", auction=False):
+    """Sito letto dalla pagina HTML di ricerca."""
+    return {"kind": "html", "url": url, "item": re.compile(item), "lang": lang, "cty": cty, "cur": cur, "auction": auction}
+
+
+def _olx(domain, lang, cty, cur):
+    """Siti OLX: stessa piattaforma in più paesi, con dati di ricerca pubblici in JSON."""
+    return {"kind": "olx", "url": lambda q: f"https://www.{domain}/api/v1/offers/?offset=0&limit=40&query={quote(q)}",
+            "lang": lang, "cty": cty, "cur": cur, "auction": False}
+
+
+def _mp(domain, lang, cty):
+    """Marktplaats e 2dehands: stessa piattaforma, ricerca pubblica in JSON."""
+    return {"kind": "marktplaats", "base": f"https://www.{domain}",
+            "url": lambda q: f"https://www.{domain}/lrp/api/search?query={quote_plus(q)}&limit=30",
+            "lang": lang, "cty": cty, "cur": "EUR", "auction": False}
+
+
+q_slug = lambda q: quote(q.lower().replace(" ", "-"))
 SITES = {
-    "Kleinanzeigen": {
-        "url": lambda q: f"https://www.kleinanzeigen.de/s-{quote(q.lower().replace(' ', '-'))}/k0",
-        "item": re.compile(r"/s-anzeige/[^\"'?#]+/\d+"), "lang": "de-DE,de;q=0.9", "cty": "DE", "auction": False,
-    },
-    "Subito.it": {
-        "url": lambda q: f"https://www.subito.it/annunci-italia/vendita/usato/?q={quote_plus(q)}",
-        "item": re.compile(r"subito\.it/[a-z\-]+/[^\"'?#]*-\d+\.htm"), "lang": "it-IT,it;q=0.9", "cty": "IT", "auction": False,
-    },
-    "Leboncoin": {
-        "url": lambda q: f"https://www.leboncoin.fr/recherche?text={quote_plus(q)}",
-        "item": re.compile(r"/ad/[a-z_]+/\d+|leboncoin\.fr/[a-z_]+/\d+\.htm"), "lang": "fr-FR,fr;q=0.9", "cty": "FR", "auction": False,
-    },
-    "Chrono24": {
-        "url": lambda q: f"https://www.chrono24.de/search/index.htm?dosearch=true&query={quote_plus(q)}",
-        "item": re.compile(r"--id\d+\.htm"), "lang": "de-DE,de;q=0.9", "cty": "", "auction": False,
-    },
-    "Catawiki": {
-        "url": lambda q: f"https://www.catawiki.com/en/s?q={quote_plus(q)}",
-        "item": re.compile(r"/l/\d+"), "lang": "en-GB,en;q=0.9", "cty": "", "auction": True,
-    },
+    # Europa occidentale
+    "Kleinanzeigen": _h(lambda q: f"https://www.kleinanzeigen.de/s-{q_slug(q)}/k0", r"/s-anzeige/[^\"'?#]+/\d+", "de-DE,de;q=0.9", "DE"),
+    "Willhaben": _h(lambda q: f"https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={quote_plus(q)}", r"/iad/kaufen-und-verkaufen/d/[^\"'?#]+", "de-AT,de;q=0.9", "AT"),
+    "Ricardo": _h(lambda q: f"https://www.ricardo.ch/de/s/{quote(q)}/", r"/de/a/[^\"'?#]+-\d+", "de-CH,de;q=0.9", "CH", "CHF", True),
+    "Tutti": _h(lambda q: f"https://www.tutti.ch/de/q/suche/{quote(q)}", r"/de/vi/[^\"'?#]+/\d+", "de-CH,de;q=0.9", "CH", "CHF"),
+    "Marktplaats": _mp("marktplaats.nl", "nl-NL,nl;q=0.9", "NL"),
+    "2dehands": _mp("2dehands.be", "nl-BE,nl;q=0.9", "BE"),
+    "Subito.it": _h(lambda q: f"https://www.subito.it/annunci-italia/vendita/usato/?q={quote_plus(q)}", r"subito\.it/[a-z\-]+/[^\"'?#]*-\d+\.htm", "it-IT,it;q=0.9", "IT"),
+    "Leboncoin": _h(lambda q: f"https://www.leboncoin.fr/recherche?text={quote_plus(q)}", r"/ad/[a-z_]+/\d+", "fr-FR,fr;q=0.9", "FR"),
+    "Chrono24": _h(lambda q: f"https://www.chrono24.de/search/index.htm?dosearch=true&query={quote_plus(q)}", r"--id\d+\.htm", "de-DE,de;q=0.9", ""),
+    "Catawiki": _h(lambda q: f"https://www.catawiki.com/en/s?q={quote_plus(q)}", r"/l/\d+", "en-GB,en;q=0.9", "", "EUR", True),
+    # Europa dell'Est
+    "OLX Polonia": _olx("olx.pl", "pl-PL,pl;q=0.9", "PL", "PLN"),
+    "OLX Romania": _olx("olx.ro", "ro-RO,ro;q=0.9", "RO", "RON"),
+    "OLX Bulgaria": _olx("olx.bg", "bg-BG,bg;q=0.9", "BG", "BGN"),
+    "OLX Ucraina": _olx("olx.ua", "uk-UA,uk;q=0.9", "UA", "UAH"),
+    "OLX Portogallo": _olx("olx.pt", "pt-PT,pt;q=0.9", "PT", "EUR"),
+    "Bazoš CZ": _h(lambda q: f"https://hodinky.bazos.cz/?hledat={quote_plus(q)}", r"/inzerat/\d+/", "cs-CZ,cs;q=0.9", "CZ", "CZK"),
+    "Bazoš SK": _h(lambda q: f"https://hodinky.bazos.sk/?hledat={quote_plus(q)}", r"/inzerat/\d+/", "sk-SK,sk;q=0.9", "SK"),
+    "Aukro": _h(lambda q: f"https://aukro.cz/vysledky-vyhledavani?text={quote_plus(q)}", r"aukro\.cz/[^\"'?#]+-\d{6,}", "cs-CZ,cs;q=0.9", "CZ", "CZK", True),
+    "Jófogás": _h(lambda q: f"https://www.jofogas.hu/magyarorszag?q={quote_plus(q)}", r"jofogas\.hu/[a-z_\-]+/[^\"'?#]+_\d+\.htm", "hu-HU,hu;q=0.9", "HU", "HUF"),
+    "Vatera": _h(lambda q: f"https://www.vatera.hu/listings/index.php?q={quote_plus(q)}", r"vatera\.hu/[^\"'?#]+-\d{6,}\.html", "hu-HU,hu;q=0.9", "HU", "HUF", True),
+    "Bolha": _h(lambda q: f"https://www.bolha.com/?ctl=search_ads&keywords={quote_plus(q)}", r"bolha\.com/[a-z\-/]+-oglas-\d+|/oglas/\d+", "sl-SI,sl;q=0.9", "SI"),
+    # Scandinavia
+    "Blocket": _h(lambda q: f"https://www.blocket.se/annonser/hela_sverige?q={quote_plus(q)}", r"/annons/[^\"'?#]+/\d+|/recommerce/forsale/item/\d+", "sv-SE,sv;q=0.9", "SE", "SEK"),
+    "DBA": _h(lambda q: f"https://www.dba.dk/soeg/?soeg={quote_plus(q)}", r"dba\.dk/[^\"'?#]+/id-\d+|/recommerce/forsale/item/\d+", "da-DK,da;q=0.9", "DK", "DKK"),
+    "Tori": _h(lambda q: f"https://www.tori.fi/recommerce/forsale/search?q={quote_plus(q)}", r"/recommerce/forsale/item/\d+", "fi-FI,fi;q=0.9", "FI"),
+    "Finn": _h(lambda q: f"https://www.finn.no/recommerce/forsale/search?q={quote_plus(q)}", r"/recommerce/forsale/item/\d+|/bap/forsale/ad\.html\?finnkode=\d+", "nb-NO,nb;q=0.9", "NO", "NOK"),
 }
 
 HEADERS = {
@@ -53,8 +80,32 @@ HEADERS = {
 }
 BLOCKED = ("captcha", "datadome", "cf-chl", "access denied", "are you a robot", "bot protection", "px-captcha")
 
-PRICE_TXT = re.compile(
-    r"(?:(€|EUR|CHF)\s*(\d{1,3}(?:[.\s'’,]\d{3})+|\d{3,7}))|(?:(\d{1,3}(?:[.\s'’,]\d{3})+|\d{3,7})(?:[.,]\d{2})?\s*(€|EUR|CHF))", re.I)
+CUR_TOK = r"€|EUR|CHF|Fr\.|Kč|CZK|zł|PLN|lei|RON|лв\.?|BGN|Ft|HUF|kr\.?|SEK|DKK|NOK|£|GBP|грн\.?|UAH"
+NUM = r"(?<!\d)(?:\d{1,3}(?:[.\s'’,\u00a0]\d{3})+|\d{3,8})"
+PRICE_TXT = re.compile(rf"(?:({CUR_TOK})\s*({NUM}))|(?:({NUM})(?:[.,]\d{{2}})?\s*({CUR_TOK}))", re.I)
+TOK2ISO = {"€": "EUR", "eur": "EUR", "chf": "CHF", "fr.": "CHF", "kč": "CZK", "czk": "CZK", "zł": "PLN", "pln": "PLN",
+           "lei": "RON", "ron": "RON", "лв": "BGN", "лв.": "BGN", "bgn": "BGN", "ft": "HUF", "huf": "HUF", "sek": "SEK",
+           "dkk": "DKK", "nok": "NOK", "£": "GBP", "gbp": "GBP", "грн": "UAH", "грн.": "UAH", "uah": "UAH"}
+
+
+CUR_FIRST = re.compile(rf"({CUR_TOK})\s*({NUM})", re.I)
+NUM_FIRST = re.compile(rf"({NUM})(?:[.,]\d{{2}})?\s*({CUR_TOK})", re.I)
+
+
+def _price_cur(text, default):
+    """(valore, valuta) dal testo. Tra i numeri vicini a una valuta prende il più alto,
+    così una referenza come «2447 CHF 9'800» non viene scambiata per il prezzo.
+    'kr' prende la corona del paese del sito."""
+    cands = [(m.group(2), m.group(1)) for m in CUR_FIRST.finditer(text or "")]
+    cands += [(m.group(1), m.group(2)) for m in NUM_FIRST.finditer(text or "")]
+    best = None
+    for num, tok in cands:
+        v = float(re.sub(r"\D", "", num))
+        if best is None or v > best[0]:
+            best = (v, TOK2ISO.get(tok.lower(), default))
+    return best if best else (None, default)
+
+
 TITLE_KEYS = ("title", "subject", "name", "headline")
 PRICE_KEYS = ("price", "bid", "amount")
 END_KEY = re.compile(r"(bidding)?_?end(s)?_?(at|time|date)|closing|close_?at", re.I)
@@ -218,15 +269,43 @@ def _html_cards(soup, pattern, base):
         title = (head.get_text(" ", strip=True) if head else "") or max(links + [a.get("title") or ""], key=len)
         if len(title) < 6:
             continue
-        out.append({"title": title, "text": text,
-                    "url": urljoin(base, a["href"]), "price": _num(m.group(0)),
+        price, cur = _price_cur(text, None)
+        out.append({"title": title, "text": text, "cur": cur,
+                    "url": urljoin(base, a["href"]), "price": price,
                     "img": src if src and src.startswith("http") else None, "end": None})
+    return out
+
+
+# ---------- 3. siti con ricerca pubblica in JSON ----------
+def _api_items(cfg, r):
+    try:
+        data = r.json()
+    except ValueError:
+        return []
+    out = []
+    if cfg["kind"] == "olx":
+        for o in data.get("data", []):
+            price = next((p.get("value", {}) for p in o.get("params", []) if p.get("key") == "price"), {})
+            photo = (o.get("photos") or [{}])[0].get("link", "")
+            out.append({"title": o.get("title", ""), "url": o.get("url", ""),
+                        "price": _num(price.get("value")), "cur": price.get("currency") or cfg["cur"],
+                        "img": photo.replace("{width}", "600").replace("{height}", "450") or None, "end": None,
+                        "city": ((o.get("location") or {}).get("city") or {}).get("name")})
+    elif cfg["kind"] == "marktplaats":
+        for o in data.get("listings", []):
+            cents = (o.get("priceInfo") or {}).get("priceCents")
+            pics = o.get("pictures") or [{}]
+            out.append({"title": o.get("title", ""), "url": urljoin(cfg["base"], o.get("vipUrl", "")),
+                        "price": cents / 100 if cents else None, "cur": "EUR",
+                        "img": pics[0].get("mediumUrl") or pics[0].get("largeUrl"), "end": None,
+                        "city": (o.get("location") or {}).get("cityName")})
     return out
 
 
 # ---------- giro completo ----------
 def _get(session, url, lang):
-    r = session.get(url, headers={**HEADERS, "Accept-Language": lang}, timeout=25)
+    accept = {"Accept": "application/json, text/plain, */*"} if "/api/" in url else {}
+    r = session.get(url, headers={**HEADERS, **accept, "Accept-Language": lang}, timeout=25)
     low = r.text[:5000].lower()
     blocked = r.status_code in (401, 403, 429) or any(b in low for b in BLOCKED)
     return r, blocked
@@ -249,8 +328,11 @@ def fetch_site(site, models, session):
                 print(f"{site}: bloccato (HTTP {r.status_code}), salto il resto")
                 break
             continue
-        soup = BeautifulSoup(r.text, "html.parser")
-        raw = _structured(soup, cfg["item"], url) or _html_cards(soup, cfg["item"], url)
+        if cfg["kind"] == "html":
+            soup = BeautifulSoup(r.text, "html.parser")
+            raw = _structured(soup, cfg["item"], url) or _html_cards(soup, cfg["item"], url)
+        else:
+            raw = _api_items(cfg, r)
         if not raw:
             sample = sample or r
         elif ok_sample is None:
@@ -258,12 +340,13 @@ def fetch_site(site, models, session):
         for it in raw:
             if not matches(m, it["title"]) or not it["price"]:  # solo il titolo: la descrizione cita spesso altre referenze
                 continue
-            eur = to_eur(it["price"], "CHF" if "CHF" in it.get("text", "") else "EUR")
+            eur = to_eur(it["price"], it.get("cur") or cfg["cur"])
             if not eur or eur < m["lo"] * 0.4 or eur > m["hi"] * 4:
                 continue
             found.append({
                 "m": m["id"], "src": site, "title": PRICE_TXT.sub("", it["title"]).strip(" ·-")[:140], "p": round(eur),
-                "url": it["url"].split("?")[0], "img": it["img"], "cty": cfg["cty"], "cond": "",
+                "url": it["url"].split("?")[0], "img": it["img"],
+                "cty": f'{cfg["cty"]} · {it["city"]}' if it.get("city") else cfg["cty"], "cond": "",
                 "auction": cfg["auction"], "endDate": it["end"] if cfg["auction"] else None,
             })
         time.sleep(random.uniform(*PAUSE))

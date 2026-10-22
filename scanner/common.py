@@ -7,7 +7,8 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "_data"
 
 # Cambi indicativi verso EUR (aggiornali ogni tanto)
-FX = {"EUR": 1.0, "CHF": 1.06, "GBP": 1.17, "CZK": 0.040, "PLN": 0.23, "USD": 0.92}
+FX = {"EUR": 1.0, "CHF": 1.06, "GBP": 1.17, "USD": 0.92, "CZK": 0.040, "PLN": 0.235, "HUF": 0.0025,
+      "RON": 0.20, "BGN": 0.511, "SEK": 0.087, "DKK": 0.134, "NOK": 0.085, "UAH": 0.022}
 
 # Parole che indicano ricambi, repliche o annunci da scartare
 BLOCK = re.compile(
