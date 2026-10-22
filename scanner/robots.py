@@ -53,8 +53,8 @@ SITES = {
     "Marktplaats": _mp("marktplaats.nl", "nl-NL,nl;q=0.9", "NL"),
     "2dehands": _mp("2dehands.be", "nl-BE,nl;q=0.9", "BE"),
     # Europa dell'Est
-    "Bazoš CZ": _h(lambda q: f"https://hodinky.bazos.cz/search.php?hledat={quote_plus(q)}&rubriky=hodinky", r"/inzerat/\d+/", "cs-CZ,cs;q=0.9", "CZ", "CZK"),
-    "Bazoš SK": _h(lambda q: f"https://hodinky.bazos.sk/search.php?hledat={quote_plus(q)}&rubriky=hodinky", r"/inzerat/\d+/", "sk-SK,sk;q=0.9", "SK"),
+    "Bazoš CZ": _h(lambda q: f"https://www.bazos.cz/search.php?hledat={quote_plus(q)}&rubriky=www&Submit=Hledat", r"/inzerat/\d+/", "cs-CZ,cs;q=0.9", "CZ", "CZK"),
+    "Bazoš SK": _h(lambda q: f"https://www.bazos.sk/search.php?hledat={quote_plus(q)}&rubriky=www&Submit=H%C4%BEada%C5%A5", r"/inzerat/\d+/", "sk-SK,sk;q=0.9", "SK"),
     "Bolha": _h(lambda q: f"https://www.bolha.com/?ctl=search_ads&keywords={quote_plus(q)}", r"-oglas-\d+", "sl-SI,sl;q=0.9", "SI"),
     # Scandinavia
     "Blocket": _h(lambda q: f"https://www.blocket.se/annonser/hela_sverige?q={quote_plus(q)}", r"/annons/[^\"'?#]+/\d+|/recommerce/forsale/item/\d+", "sv-SE,sv;q=0.9", "SE", "SEK"),
