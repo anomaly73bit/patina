@@ -1,0 +1,33 @@
+---
+layout: default
+---
+{% assign m = site.data.models | where: "id", page.model_id | first %}
+<main class="page-model">
+  <div class="sch" id="modelPage" data-id="{{ m.id }}" style="padding:0">
+    <div class="sch-head">
+      <div>
+        <div class="eyebrow">{{ m.brand }} · ref. {{ m.ref }}</div>
+        <h1 style="font-size:clamp(2.4rem,6vw,3.6rem)">{{ m.name }}</h1>
+      </div>
+    </div>
+    <div class="gallery" data-gallery></div>
+    <div style="display:grid;gap:16px;align-content:start;min-width:0">
+      <p>{{ m.note }}</p>
+      <dl class="kv">
+        <dt>Stima Patina</dt><dd>€ {{ m.lo }} – € {{ m.hi }}</dd>
+        <dt>Variazione 12 mesi</dt><dd>{% if m.t > 0 %}+{% endif %}{{ m.t }}%</dd>
+        <dt>Produzione</dt><dd>{{ m.years }}</dd>
+        <dt>Calibro</dt><dd>{{ m.cal }}</dd>
+        <dt>Diametro</dt><dd>{{ m.mm }} mm</dd>
+        <dt>Cassa</dt><dd>{{ m.case }}</dd>
+        <dt>Liquidità</dt><dd>{{ m.liq }}</dd>
+      </dl>
+      <div data-spark></div>
+    </div>
+    <section style="grid-column:1/-1;display:grid;gap:12px">
+      <h2>Annunci per questo modello</h2>
+      <div class="deals" data-deals></div>
+    </section>
+  </div>
+  <p style="margin-top:28px"><a href="{{ '/' | relative_url }}">← Tutti i modelli</a></p>
+</main>

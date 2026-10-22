@@ -1,0 +1,15 @@
+{
+ "eBay.de":         {"type":"Marketplace","fee":0},
+ "eBay.it":         {"type":"Marketplace","fee":0},
+ "eBay.fr":         {"type":"Marketplace","fee":0},
+ "Chrono24":        {"type":"Marketplace","fee":0},
+ "Catawiki":        {"type":"Asta","fee":0.09},
+ "Dorotheum":       {"type":"Asta","fee":0.27},
+ "Antiquorum":      {"type":"Asta","fee":0.25},
+ "Phillips":        {"type":"Asta","fee":0.27},
+ "Subito.it":       {"type":"Mercatino","fee":0},
+ "Kleinanzeigen":   {"type":"Mercatino","fee":0},
+ "Leboncoin":       {"type":"Mercatino","fee":0},
+ "Bazoš":           {"type":"Mercatino","fee":0},
+ "Orologi&Passioni":{"type":"Mercatino","fee":0}
+}

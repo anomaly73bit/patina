@@ -1,0 +1,90 @@
+---
+layout: default
+---
+<div class="wrap">
+
+<header class="hero">
+  <div>
+    <div class="eyebrow">Termometro del vintage · Europa</div>
+    <h1>Patina</h1>
+    <p class="lead">Il valore reale degli orologi di lusso vintage, modello per modello, e le occasioni vere trovate su marketplace, aste e mercatini europei.</p>
+    <div class="stats">
+      <div><b id="stModels">–</b><span>modelli seguiti</span></div>
+      <div><b id="stListings">–</b><span>annunci analizzati</span></div>
+      <div><b id="stDeals">–</b><span>occasioni sotto stima</span></div>
+    </div>
+    <p class="note" style="margin-top:22px">Stime di valore Patina: elaborate su prezzi di aggiudicazione e transazioni note fino a metà 2026, condizioni medie, con scatola ma senza garanzia. {% if site.data.listings.example %}Gli annunci mostrati sono esempi: il primo giro dello scanner li sostituisce.{% endif %} Clicca un modello per aprire la scheda con le foto.</p>
+  </div>
+  <div class="dial-box">
+    <svg id="dial" viewBox="0 0 300 300" role="img" aria-label="Termometro del mercato"></svg>
+    <div class="dial-caption" id="dialCaption"></div>
+  </div>
+</header>
+
+<section style="display:grid;gap:14px">
+  <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end">
+    <div><div class="eyebrow">Listino stimato</div><h2>Modelli e andamento</h2></div>
+    <div class="bar" id="brandBar" aria-label="Filtra per marca"></div>
+  </div>
+  <div class="scroll">
+    <table>
+      <thead><tr>
+        <th>Modello</th><th>Anni</th><th class="num">Stima Patina</th><th class="num">12 mesi</th><th>Temperatura</th><th>Liquidità</th><th class="num">Migliore occasione</th>
+      </tr></thead>
+      <tbody id="modelRows"></tbody>
+    </table>
+  </div>
+</section>
+
+<section class="split">
+  <aside class="panel" id="detail" aria-live="polite"></aside>
+  <div style="display:grid;gap:14px">
+    <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;align-items:end">
+      <div><div class="eyebrow">Scanner</div><h2>Occasioni</h2></div>
+      <div class="bar">
+        <div class="bar" id="typeBar"></div>
+        <label class="muted" for="sortSel" style="font-size:13px">Ordina</label>
+        <select id="sortSel">
+          <option value="score">Sconto sulla stima</option>
+          <option value="price">Prezzo totale</option>
+          <option value="end">Scadenza asta</option>
+        </select>
+      </div>
+    </div>
+    <div class="deals" id="deals"></div>
+    <p class="note">Il prezzo totale include la commissione d'asta del compratore (buyer's premium, valori indicativi per casa). Sconto oltre il 35%: Patina segnala il rischio di quadrante rifatto, pezzi non originali o falso.</p>
+  </div>
+</section>
+
+<section style="display:grid;gap:22px">
+  <div><div class="eyebrow">Dietro le quinte</div><h2>Dove guarda lo scanner</h2></div>
+  <div class="sources">
+    <div><h3>Marketplace</h3><ul>
+      <li>Chrono24 <span>· DE, tutta Europa</span></li>
+      <li>eBay .de · .it · .fr <span>· API ufficiale Browse</span></li>
+      <li>Watchfinder, Bucherer CPO <span>· rivenditori</span></li>
+    </ul></div>
+    <div><h3>Aste</h3><ul>
+      <li>Catawiki <span>· NL, aste settimanali</span></li>
+      <li>Dorotheum <span>· Vienna</span></li>
+      <li>Antiquorum, Phillips <span>· Ginevra, Monaco</span></li>
+      <li>Christie's, Sotheby's, Bonhams <span>· sessioni orologi</span></li>
+    </ul></div>
+    <div><h3>Mercatini e privati</h3><ul>
+      <li>Subito.it, Kleinanzeigen, Leboncoin <span>· IT · DE · FR</span></li>
+      <li>Bazoš, Sbazar <span>· CZ</span></li>
+      <li>Mercatino Orologi&amp;Passioni, Uhrforum <span>· forum</span></li>
+    </ul></div>
+  </div>
+  <ol class="steps">
+    <li><b>Raccolta</b>Ogni 3 ore legge gli annunci nuovi per referenza, via API dove esiste, altrimenti dalle pagine pubbliche.</li>
+    <li><b>Riconoscimento</b>Estrae marca, referenza, anno, condizioni, scatola e documenti dal titolo e dalla descrizione.</li>
+    <li><b>Prezzo totale</b>Converte in euro e aggiunge commissioni d'asta e spedizione stimata.</li>
+    <li><b>Confronto</b>Mette il prezzo contro la stima Patina e assegna lo sconto e i segnali di rischio.</li>
+    <li><b>Output</b>Aggiorna questa pagina e il file di occasioni; avviso quando lo sconto supera la tua soglia.</li>
+  </ol>
+</section>
+
+<footer>Patina · prototipo. Le stime sono indicative e non costituiscono una perizia: prima di comprare verifica referenza, seriale, quadrante e movimento con un orologiaio di fiducia.</footer>
+</div>
+<dialog id="scheda" aria-labelledby="schTitle"><div class="sch" id="schBody"></div></dialog>

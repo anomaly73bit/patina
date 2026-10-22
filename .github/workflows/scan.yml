@@ -1,0 +1,65 @@
+name: Scanner e sito
+
+on:
+  schedule:
+    - cron: "17 */3 * * *"     # annunci ogni 3 ore
+  workflow_dispatch:
+    inputs:
+      photos:
+        description: "Aggiorna anche le foto da Wikimedia Commons"
+        type: boolean
+        default: false
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: patina
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: "3.12"}
+      - run: pip install -r requirements.txt
+
+      - name: Foto (lunedì, primo avvio o su richiesta)
+        run: |
+          if [ "${{ inputs.photos }}" = "true" ] || [ "$(date -u +%u%H)" = "100" ] || ! grep -q '"src"' _data/photos.json; then
+            cd scanner && python commons.py
+          fi
+
+      - name: Annunci
+        if: github.event_name != 'push'
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+        run: cd scanner && python scan.py
+
+      - name: Salva i dati nel repository
+        run: |
+          git config user.name "patina-bot"
+          git config user.email "patina-bot@users.noreply.github.com"
+          git add _data
+          git diff --cached --quiet || (git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')" && git push)
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/jekyll-build-pages@v1
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: scan
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

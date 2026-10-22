@@ -1,0 +1,16 @@
+title: Patina
+description: Il termometro del mercato degli orologi di lusso vintage in Europa
+lang: it
+# Se il repository si chiama "patina" lascia così; se lo pubblichi su un dominio tuo metti baseurl: ""
+baseurl: /patina
+
+collections:
+  orologi:
+    output: true
+    permalink: /orologi/:name/
+
+defaults:
+  - scope: {type: orologi}
+    values: {layout: orologio}
+
+exclude: [scanner, README.md, requirements.txt]
