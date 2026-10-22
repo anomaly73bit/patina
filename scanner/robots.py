@@ -43,30 +43,19 @@ def _mp(domain, lang, cty):
 
 
 q_slug = lambda q: quote(q.lower().replace(" ", "-"))
+# Bloccano le richieste dai server di GitHub (HTTP 403, verificato il 22/10/2026):
+# Chrono24, Catawiki, Subito, Leboncoin, Ricardo, Tutti, OLX (PL, RO, BG, UA, PT), Aukro, Jófogás, Vatera.
+# Si possono riprovare da una connessione domestica.
 SITES = {
     # Europa occidentale
     "Kleinanzeigen": _h(lambda q: f"https://www.kleinanzeigen.de/s-{q_slug(q)}/k0", r"/s-anzeige/[^\"'?#]+/\d+", "de-DE,de;q=0.9", "DE"),
     "Willhaben": _h(lambda q: f"https://www.willhaben.at/iad/kaufen-und-verkaufen/marktplatz?keyword={quote_plus(q)}", r"/iad/kaufen-und-verkaufen/d/[^\"'?#]+", "de-AT,de;q=0.9", "AT"),
-    "Ricardo": _h(lambda q: f"https://www.ricardo.ch/de/s/{quote(q)}/", r"/de/a/[^\"'?#]+-\d+", "de-CH,de;q=0.9", "CH", "CHF", True),
-    "Tutti": _h(lambda q: f"https://www.tutti.ch/de/q/suche/{quote(q)}", r"/de/vi/[^\"'?#]+/\d+", "de-CH,de;q=0.9", "CH", "CHF"),
     "Marktplaats": _mp("marktplaats.nl", "nl-NL,nl;q=0.9", "NL"),
     "2dehands": _mp("2dehands.be", "nl-BE,nl;q=0.9", "BE"),
-    "Subito.it": _h(lambda q: f"https://www.subito.it/annunci-italia/vendita/usato/?q={quote_plus(q)}", r"subito\.it/[a-z\-]+/[^\"'?#]*-\d+\.htm", "it-IT,it;q=0.9", "IT"),
-    "Leboncoin": _h(lambda q: f"https://www.leboncoin.fr/recherche?text={quote_plus(q)}", r"/ad/[a-z_]+/\d+", "fr-FR,fr;q=0.9", "FR"),
-    "Chrono24": _h(lambda q: f"https://www.chrono24.de/search/index.htm?dosearch=true&query={quote_plus(q)}", r"--id\d+\.htm", "de-DE,de;q=0.9", ""),
-    "Catawiki": _h(lambda q: f"https://www.catawiki.com/en/s?q={quote_plus(q)}", r"/l/\d+", "en-GB,en;q=0.9", "", "EUR", True),
     # Europa dell'Est
-    "OLX Polonia": _olx("olx.pl", "pl-PL,pl;q=0.9", "PL", "PLN"),
-    "OLX Romania": _olx("olx.ro", "ro-RO,ro;q=0.9", "RO", "RON"),
-    "OLX Bulgaria": _olx("olx.bg", "bg-BG,bg;q=0.9", "BG", "BGN"),
-    "OLX Ucraina": _olx("olx.ua", "uk-UA,uk;q=0.9", "UA", "UAH"),
-    "OLX Portogallo": _olx("olx.pt", "pt-PT,pt;q=0.9", "PT", "EUR"),
-    "Bazoš CZ": _h(lambda q: f"https://hodinky.bazos.cz/?hledat={quote_plus(q)}", r"/inzerat/\d+/", "cs-CZ,cs;q=0.9", "CZ", "CZK"),
-    "Bazoš SK": _h(lambda q: f"https://hodinky.bazos.sk/?hledat={quote_plus(q)}", r"/inzerat/\d+/", "sk-SK,sk;q=0.9", "SK"),
-    "Aukro": _h(lambda q: f"https://aukro.cz/vysledky-vyhledavani?text={quote_plus(q)}", r"aukro\.cz/[^\"'?#]+-\d{6,}", "cs-CZ,cs;q=0.9", "CZ", "CZK", True),
-    "Jófogás": _h(lambda q: f"https://www.jofogas.hu/magyarorszag?q={quote_plus(q)}", r"jofogas\.hu/[a-z_\-]+/[^\"'?#]+_\d+\.htm", "hu-HU,hu;q=0.9", "HU", "HUF"),
-    "Vatera": _h(lambda q: f"https://www.vatera.hu/listings/index.php?q={quote_plus(q)}", r"vatera\.hu/[^\"'?#]+-\d{6,}\.html", "hu-HU,hu;q=0.9", "HU", "HUF", True),
-    "Bolha": _h(lambda q: f"https://www.bolha.com/?ctl=search_ads&keywords={quote_plus(q)}", r"bolha\.com/[a-z\-/]+-oglas-\d+|/oglas/\d+", "sl-SI,sl;q=0.9", "SI"),
+    "Bazoš CZ": _h(lambda q: f"https://hodinky.bazos.cz/search.php?hledat={quote_plus(q)}&rubriky=hodinky", r"/inzerat/\d+/", "cs-CZ,cs;q=0.9", "CZ", "CZK"),
+    "Bazoš SK": _h(lambda q: f"https://hodinky.bazos.sk/search.php?hledat={quote_plus(q)}&rubriky=hodinky", r"/inzerat/\d+/", "sk-SK,sk;q=0.9", "SK"),
+    "Bolha": _h(lambda q: f"https://www.bolha.com/?ctl=search_ads&keywords={quote_plus(q)}", r"-oglas-\d+", "sl-SI,sl;q=0.9", "SI"),
     # Scandinavia
     "Blocket": _h(lambda q: f"https://www.blocket.se/annonser/hela_sverige?q={quote_plus(q)}", r"/annons/[^\"'?#]+/\d+|/recommerce/forsale/item/\d+", "sv-SE,sv;q=0.9", "SE", "SEK"),
     "DBA": _h(lambda q: f"https://www.dba.dk/soeg/?soeg={quote_plus(q)}", r"dba\.dk/[^\"'?#]+/id-\d+|/recommerce/forsale/item/\d+", "da-DK,da;q=0.9", "DK", "DKK"),
