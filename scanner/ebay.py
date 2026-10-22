@@ -80,6 +80,8 @@ def fetch(models):
                     "cond": it.get("condition", ""),
                     "auction": auction,
                     "endDate": it.get("itemEndDate") if auction else None,
+                    "posted": it.get("itemCreationDate") or it.get("itemOriginDate"),
+                    "desc": it.get("shortDescription"),
                 })
     if not ok_calls:
         raise RuntimeError("nessuna ricerca eBay riuscita")

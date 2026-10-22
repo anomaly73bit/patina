@@ -197,6 +197,21 @@ def _end(obj, depth=0):
     return None
 
 
+def _posted(obj, depth=0):
+    """Data di pubblicazione negli oggetti JSON (chiavi tipo datePosted, published, created)."""
+    if depth > 2 or not isinstance(obj, dict):
+        return None
+    for k, v in obj.items():
+        if re.search(r"date ?posted|publish|created|insert|first_?seen|start_?date", k, re.I) and isinstance(v, (str, int, float)):
+            return str(v)
+    for v in obj.values():
+        if isinstance(v, dict):
+            r = _posted(v, depth + 1)
+            if r:
+                return r
+    return None
+
+
 # ---------- 1. dati strutturati nella pagina ----------
 def _harvest(obj, pattern, base, out, depth=0):
     """Cerca nel JSON gli oggetti che sembrano annunci: hanno un titolo, un link all'annuncio e un prezzo."""
@@ -210,7 +225,8 @@ def _harvest(obj, pattern, base, out, depth=0):
             if url and price:
                 out.append({"title": title, "url": urljoin(base, url), "price": price,
                             "img": _image(obj.get("images") or obj.get("image") or obj.get("pictures") or obj),
-                            "end": _end(obj)})
+                            "end": _end(obj), "posted": _posted(obj),
+                            "desc": obj.get("description") if isinstance(obj.get("description"), str) else None})
                 return
         for v in obj.values():
             if isinstance(v, (dict, list)):
@@ -259,7 +275,7 @@ def _html_cards(soup, pattern, base):
         if len(title) < 6:
             continue
         price, cur = _price_cur(text, None)
-        out.append({"title": title, "text": text, "cur": cur,
+        out.append({"title": title, "text": text, "cur": cur, "posted": text,
                     "url": urljoin(base, a["href"]), "price": price,
                     "img": src if src and src.startswith("http") else None, "end": None})
     return out
@@ -292,8 +308,48 @@ def _api_items(cfg, r):
             out.append({"title": o.get("title", ""), "url": urljoin(cfg["base"], o.get("vipUrl", "")),
                         "price": cents / 100 if cents else None, "cur": "EUR",
                         "img": pics[0].get("mediumUrl") or pics[0].get("largeUrl"), "end": None,
-                        "city": (o.get("location") or {}).get("cityName")})
+                        "city": (o.get("location") or {}).get("cityName"),
+                        "posted": o.get("date"), "desc": o.get("description") or o.get("categorySpecificDescription")})
     return out
+
+
+# ---------- 4. pagina dell'annuncio, solo per i possibili affari ----------
+DESC_SEL = "#viewad-description-text, [itemprop=description], [data-testid*=description], .description, .ad-description, #description"
+DATE_SEL = "#viewad-extra-info, [data-testid*=date], time, .date, .ad-date"
+MAX_DETAILS = 25  # pagine di dettaglio per sito a ogni giro
+
+
+def _read_details(session, cfg, found, models):
+    """Apre la pagina degli annunci che sembrano affari per leggere descrizione e data."""
+    mids = {m["id"]: (m["lo"] + m["hi"]) / 2 for m in models}
+    cands = [l for l in found if not l.get("desc") and (mids[l["m"]] - l["p"]) / mids[l["m"]] >= 0.10]
+    for l in cands[:MAX_DETAILS]:
+        try:
+            r, blocked = _get(session, l["url"], cfg["lang"])
+        except requests.RequestException:
+            continue
+        if blocked or r.status_code != 200:
+            continue
+        soup = BeautifulSoup(r.text, "html.parser")
+        el = soup.select_one(DESC_SEL)
+        desc = el.get_text(" ", strip=True) if el else ""
+        if not desc:
+            meta = soup.find("meta", attrs={"property": "og:description"}) or soup.find("meta", attrs={"name": "description"})
+            desc = meta.get("content", "") if meta else ""
+        for s in soup.find_all("script", type="application/ld+json"):
+            try:
+                j = json.loads(s.string or "")
+            except ValueError:
+                continue
+            for o in (j if isinstance(j, list) else [j]):
+                if isinstance(o, dict):
+                    desc = desc or (o.get("description") or "")
+                    l["posted"] = o.get("datePosted") or l.get("posted")
+        d = soup.select_one(DATE_SEL)
+        if d:
+            l["posted"] = d.get("datetime") or d.get_text(" ", strip=True) or l.get("posted")
+        l["desc"] = desc[:3000]
+        time.sleep(random.uniform(*PAUSE))
 
 
 # ---------- giro completo ----------
@@ -342,8 +398,10 @@ def fetch_site(site, models, session):
                 "url": it["url"].split("?")[0], "img": it["img"],
                 "cty": f'{cfg["cty"]} · {it["city"]}' if it.get("city") else cfg["cty"], "cond": "",
                 "auction": cfg["auction"], "endDate": it["end"] if cfg["auction"] else None,
+                "posted": it.get("posted"), "desc": it.get("desc"),
             })
         time.sleep(random.uniform(*PAUSE))
+    _read_details(session, cfg, found, models)
     if sample is not None:
         DEBUG.mkdir(exist_ok=True)
         (DEBUG / f"{site.lower().replace('.', '')}.html").write_text(

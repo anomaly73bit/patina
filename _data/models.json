@@ -16,7 +16,21 @@
    "5513"
   ],
   "query": "Rolex Submariner 5513",
-  "note": "Il Submariner senza data per eccellenza. Le versioni con quadrante gilt o «maxi» valgono molto di più della fascia indicata."
+  "note": "Il Submariner senza data per eccellenza. Le versioni con quadrante gilt o «maxi» valgono molto di più della fascia indicata.",
+  "variants": [
+   {
+    "name": "quadrante gilt / meters first",
+    "kw": "gilt|meters first|metres first",
+    "lo": 20000,
+    "hi": 32000
+   },
+   {
+    "name": "quadrante maxi",
+    "kw": "\\bmaxi\\b",
+    "lo": 15000,
+    "hi": 20000
+   }
+  ]
  },
  {
   "id": "rolex-1675",
@@ -35,7 +49,15 @@
    "1675"
   ],
   "query": "Rolex GMT-Master 1675",
-  "note": "Lunetta Pepsi e secondo fuso orario. Inserto originale sbiadito e pallettoni intatti spingono il prezzo in alto."
+  "note": "Lunetta Pepsi e secondo fuso orario. Inserto originale sbiadito e pallettoni intatti spingono il prezzo in alto.",
+  "variants": [
+   {
+    "name": "quadrante gilt",
+    "kw": "gilt",
+    "lo": 22000,
+    "hi": 32000
+   }
+  ]
  },
  {
   "id": "rolex-1016",
@@ -54,7 +76,15 @@
    "1016"
   ],
   "query": "Rolex Explorer 1016",
-  "note": "Quadrante nero 3-6-9, misura classica da 36 mm. I primi quadranti gilt sono i più ricercati."
+  "note": "Quadrante nero 3-6-9, misura classica da 36 mm. I primi quadranti gilt sono i più ricercati.",
+  "variants": [
+   {
+    "name": "quadrante gilt",
+    "kw": "gilt",
+    "lo": 18000,
+    "hi": 28000
+   }
+  ]
  },
  {
   "id": "rolex-1601",
@@ -134,7 +164,15 @@
    "145 022"
   ],
   "query": "Omega Speedmaster 145.022",
-  "note": "Il Moonwatch con calibro 861. Le prime serie 145.022-69 hanno un premio."
+  "note": "Il Moonwatch con calibro 861. Le prime serie 145.022-69 hanno un premio.",
+  "variants": [
+   {
+    "name": "prima serie 145.022-69",
+    "kw": "145\\.?022-?69|straight writing",
+    "lo": 6500,
+    "hi": 8500
+   }
+  ]
  },
  {
   "id": "omega-165024",
@@ -155,7 +193,15 @@
    "165 024"
   ],
   "query": "Omega Seamaster 300 165.024",
-  "note": "Subacqueo storico Omega. Molti quadranti sono stati sostituiti: verifica sempre il trizio."
+  "note": "Subacqueo storico Omega. Molti quadranti sono stati sostituiti: verifica sempre il trizio.",
+  "variants": [
+   {
+    "name": "versione con lunetta senza numeri o \"big triangle\"",
+    "kw": "big triangle|no numerals",
+    "lo": 7000,
+    "hi": 10000
+   }
+  ]
  },
  {
   "id": "omega-168005",
@@ -214,7 +260,15 @@
    "1163"
   ],
   "query": "Heuer Autavia 1163",
-  "note": "Uno dei primi cronografi automatici (1969). Versioni «Siffert» e «Viceroy» le più cercate."
+  "note": "Uno dei primi cronografi automatici (1969). Versioni «Siffert» e «Viceroy» le più cercate.",
+  "variants": [
+   {
+    "name": "Siffert / Viceroy",
+    "kw": "siffert|viceroy",
+    "lo": 12000,
+    "hi": 18000
+   }
+  ]
  },
  {
   "id": "patek-3919",
@@ -330,7 +384,27 @@
    "806"
   ],
   "query": "Breitling Navitimer 806",
-  "note": "Regolo calcolatore da pilota. Le versioni AOPA e con calibro Venus sono le più cercate."
+  "note": "Regolo calcolatore da pilota. Le versioni AOPA e con calibro Venus sono le più cercate.",
+  "variants": [
+   {
+    "name": "riedizione moderna",
+    "kw": "re-?edition|reedition|a13019|a23322|1959 edition|ab0910|ab0920",
+    "lo": 2800,
+    "hi": 4200
+   },
+   {
+    "name": "806 tardo (Valjoux 7740)",
+    "kw": "7740|twin ?jet",
+    "lo": 3500,
+    "hi": 5200
+   },
+   {
+    "name": "806 AOPA / Venus 178",
+    "kw": "aopa|venus|178",
+    "lo": 5500,
+    "hi": 8500
+   }
+  ]
  },
  {
   "id": "jlc-memovox",
@@ -349,6 +423,20 @@
    "memovox"
   ],
   "query": "Jaeger LeCoultre Memovox",
-  "note": "Orologio con sveglia meccanica. I modelli a carica manuale anni '50 costano meno degli automatici E855 e dei Deep Sea, fuori fascia."
+  "note": "Orologio con sveglia meccanica. I modelli a carica manuale anni '50 costano meno degli automatici E855 e dei Deep Sea, fuori fascia.",
+  "variants": [
+   {
+    "name": "Deep Sea / Polaris",
+    "kw": "deep ?sea|polaris",
+    "lo": 9000,
+    "hi": 18000
+   },
+   {
+    "name": "automatico E855",
+    "kw": "e855|automati",
+    "lo": 2600,
+    "hi": 4200
+   }
+  ]
  }
 ]

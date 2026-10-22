@@ -61,8 +61,14 @@
   const temp = t => Math.max(0, Math.min(100, (t + 10) / 25 * 100));
   const pct = d => (d >= 0 ? "−" : "+") + Math.abs(d * 100).toFixed(0) + "%";
   const trendCls = t => t > 0 ? "up" : t < 0 ? "down" : "flat";
-  const verdict = d => d > .35 ? ["s-bad", "verifica"] : d >= .12 ? ["s-good", "occasione"] : d >= -.05 ? ["s-fair", "prezzo giusto"] : ["s-bad", "caro"];
-  const best = id => LIST.filter(l => l.m === id).sort((a, b) => b.disc - a.disc)[0];
+  // verdetto dato dal robot per ogni annuncio (scanner/evaluate.py); il calcolo semplice resta solo come riserva
+  const VCLS = { "occasione": "s-good", "prezzo giusto": "s-fair", "da verificare": "s-fair", "caro": "s-bad", "sospetto": "s-bad" };
+  const verdictOf = l => l.verdict || (l.disc > .35 ? "sospetto" : l.disc >= .12 ? "occasione" : l.disc >= -.05 ? "prezzo giusto" : "caro");
+  const verdict = l => [VCLS[verdictOf(l)], verdictOf(l)];
+  const isDeal = l => verdictOf(l) === "occasione";
+  const VORD = { "occasione": 0, "da verificare": 1, "prezzo giusto": 2, "sospetto": 3, "caro": 4 };
+  const fair = l => l.fair_lo ? (l.fair_lo + l.fair_hi) / 2 : mid(byId[l.m]);
+  const best = id => LIST.filter(l => l.m === id && isDeal(l)).sort((a, b) => b.disc - a.disc)[0];
   const giorni = ["dom", "lun", "mar", "mer", "gio", "ven", "sab"];
   function endInfo(l) {
     if (!l.endMs) return null;
@@ -139,7 +145,7 @@
 
   /* ---------- annunci ---------- */
   function dealHTML(l, hl) {
-    const m = byId[l.m], [cls, word] = verdict(l.disc);
+    const m = byId[l.m], [cls, word] = verdict(l);
     const title = `${esc(m.brand)} ${esc(m.name)} <span class="mono muted" style="font-weight:400">${esc(m.ref)}</span>`;
     const asta = l.type === "Asta";
     return `<article class="deal${asta ? " is-asta" : ""}" style="${hl && !asta ? "border-color:var(--gilt)" : ""}">
@@ -147,8 +153,8 @@
       <div style="min-width:0"><h4>${l.url ? `<a class="title" href="${esc(l.url)}" target="_blank" rel="noopener">${title}</a>` : title}</h4>
         <div class="meta"><span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}</div>
         ${asta ? countdown(l) : ""}
-        ${l.disc > .35 ? `<div class="flag">Sconto anomalo: controlla foto del movimento, seriale e quadrante prima di offrire.</div>` : ""}</div>
-      <div class="price"><b>${eur(l.total)}</b><small>${l.fee ? `${eur(l.p)} + ${Math.round(l.fee * 100)}% comm.` : "prezzo richiesto"}</small><small>stima ${eur(mid(m))}</small></div>
+        ${(l.reasons || []).length ? `<ul class="why">${l.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}</div>
+      <div class="price"><b>${eur(l.total)}</b><small>${l.fee ? `${eur(l.p)} + ${Math.round(l.fee * 100)}% comm.` : "prezzo richiesto"}</small><small>${l.fair_lo ? `valore ${eur(l.fair_lo)}–${Math.round(l.fair_hi).toLocaleString("it-IT")}` : `stima ${eur(mid(m))}`}</small></div>
     </article>`;
   }
 
@@ -170,7 +176,7 @@
         </dl>
         ${spark(m)}
         <div class="mini-deals">${ls.slice(0, 4).map(l => {
-          const inner = `<span>${esc(l.src)} · ${esc(l.type)}</span><span class="mono">${eur(l.total)} <span class="${l.disc >= .12 && l.disc <= .35 ? "up" : l.disc < -.05 ? "down" : "muted"}">${pct(l.disc)}</span></span>`;
+          const inner = `<span>${esc(l.src)} · ${esc(l.type)}</span><span class="mono">${eur(l.total)} <span class="${isDeal(l) ? "up" : ["caro", "sospetto"].includes(verdictOf(l)) ? "down" : "muted"}">${verdictOf(l)}</span></span>`;
           return l.url ? `<a href="${esc(l.url)}" target="_blank" rel="noopener">${inner}</a>` : `<div>${inner}</div>`;
         }).join("") || `<span class="muted">Nessun annuncio attivo.</span>`}</div>
         <a class="btn" href="${pageUrl(m.id)}">Apri la scheda completa</a>
@@ -205,7 +211,7 @@
 
   document.getElementById("stModels").textContent = MODELS.length;
   document.getElementById("stListings").textContent = LIST.length;
-  document.getElementById("stDeals").textContent = LIST.filter(l => l.disc >= .12 && l.disc <= .35).length;
+  document.getElementById("stDeals").textContent = LIST.filter(isDeal).length;
 
   (function drawDial() {
     const avg = MODELS.reduce((a, m) => a + m.t, 0) / MODELS.length, T = temp(avg);
@@ -253,7 +259,7 @@
         <td class="num ${trendCls(m.t)}">${m.t > 0 ? "+" : ""}${m.t}%</td>
         <td><span class="temp"><i style="width:${temp(m.t)}%"></i></span></td>
         <td>${esc(m.liq)}</td>
-        <td class="num">${b ? `<span class="${b.disc >= .12 && b.disc <= .35 ? "up" : b.disc < -.05 ? "down" : ""}">${pct(b.disc)}</span> <span class="muted">${esc(b.src)}</span>` : "–"}</td></tr>`;
+        <td class="num">${b ? `<span class="up">${pct(b.disc)}</span> <span class="muted">${esc(b.src)}</span>` : "–"}</td></tr>`;
     }).join("");
   }
   const rowsEl = document.getElementById("modelRows");
@@ -292,7 +298,7 @@
         <h4>${esc(m.brand)} ${esc(m.name)} <span class="mono muted" style="font-weight:400">${esc(m.ref)}</span></h4>
         <div class="row"><span>${esc(l.src)}${l.cty ? " · " + esc(l.cty) : ""}</span></div>
         <div class="row"><span>offerta + comm.</span><b>${eur(l.total)}</b></div>
-        <div class="row"><span>stima ${eur(mid(m))}</span><span class="${l.disc >= .12 && l.disc <= .35 ? "up" : l.disc < -.05 ? "down" : ""}">${pct(l.disc)}</span></div>
+        <div class="row"><span>${verdictOf(l)}</span><span>${pct(l.disc)}</span></div>
       </${tag}>`;
     }).join("") : "";
   }
@@ -302,7 +308,8 @@
     chips("typeBar", ["Tutte", "Marketplace", "Mercatino"], type, v => { type = v; renderDeals(); });
     const sort = document.getElementById("sortSel").value;
     const ls = LIST.filter(l => (type === "Tutte" || l.type === type) && !(l.endMs && l.endMs <= Date.now()))
-      .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.endMs ?? Infinity) - (b.endMs ?? Infinity) : b.disc - a.disc)
+      .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.endMs ?? Infinity) - (b.endMs ?? Infinity)
+        : (VORD[verdictOf(a)] - VORD[verdictOf(b)]) || (b.disc - a.disc))
       .slice(0, 60);
     document.getElementById("deals").innerHTML = ls.map(l => dealHTML(l, l.m === sel)).join("") || (LIST.length ? `<p class="muted">Nessun annuncio per questo filtro.</p>` : `<p class="empty-note">Lo scanner sta raccogliendo gli annunci attivi. Le occasioni compaiono qui al prossimo aggiornamento.</p>`);
   }

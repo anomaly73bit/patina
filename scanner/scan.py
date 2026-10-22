@@ -9,6 +9,7 @@ import datetime as dt
 import ebay
 import robots
 from common import load, save, score
+from evaluate import evaluate
 
 SOURCES = [ebay, robots]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
 MAX_STALE = dt.timedelta(hours=24)
@@ -67,7 +68,7 @@ def main():
             l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
             src_info = fees.get(l["src"], {"type": "Marketplace", "fee": 0})
             l["type"] = "Asta" if l.get("auction") else src_info["type"]
-            items.append(score(l, by_id[l["m"]], src_info["fee"]))
+            items.append(evaluate(score(l, by_id[l["m"]], src_info["fee"]), by_id[l["m"]]))
         print(f"{name}: {len(found)} annunci attivi")
 
     if not any_real:
@@ -82,7 +83,8 @@ def main():
         seen.add(key)
         listings.append(l)
 
-    listings.sort(key=lambda l: -l["disc"])
+    order = {"occasione": 0, "da verificare": 1, "prezzo giusto": 2, "sospetto": 3, "caro": 4}
+    listings.sort(key=lambda l: (order.get(l.get("verdict"), 5), -l["disc"]))
     save("listings.json", {
         "updated": t.strftime("%Y-%m-%d %H:%M UTC"),
         "example": False,
