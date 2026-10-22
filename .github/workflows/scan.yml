@@ -32,7 +32,7 @@ jobs:
 
       - name: Foto (lunedì, primo avvio o su richiesta)
         run: |
-          if [ "${{ inputs.photos }}" = "true" ] || [ "$(date -u +%u%H)" = "100" ] || ! grep -q '"src"' _data/photos.json; then
+          if [ "${{ inputs.photos }}" = "true" ] || [ "$(date -u +%u%H)" = "100" ] || grep -q '\[\]' _data/photos.json; then
             cd scanner && python commons.py
           fi
 

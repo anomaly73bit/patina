@@ -30,8 +30,17 @@ def _query(q):
         "gsrsearch": f"{q} filetype:bitmap",
         "prop": "imageinfo", "iiprop": "url|extmetadata", "iiurlwidth": 900,
     }
-    r = requests.get(API, params=params, headers=HEADERS, timeout=30)
-    r.raise_for_status()
+    for attempt in range(4):  # Commons rallenta chi fa troppe richieste: riprova con pause crescenti
+        r = requests.get(API, params=params, headers=HEADERS, timeout=30)
+        if r.status_code in (429, 500, 502, 503, 504):
+            time.sleep(int(r.headers.get("Retry-After", 0) or 10 * (attempt + 1)))
+            continue
+        r.raise_for_status()
+        break
+    else:
+        r.raise_for_status()
+    if "error" in r.json():
+        raise RuntimeError(r.json()["error"].get("info", "errore API"))
     pages = (r.json().get("query") or {}).get("pages", {}).values()
     return sorted(pages, key=lambda x: x.get("index", 99))
 
@@ -67,7 +76,7 @@ def search(model, limit=6):
             })
         if len(photos) >= limit:
             break
-        time.sleep(0.5)
+        time.sleep(2)
     photos.sort(key=lambda x: not x["exact"])  # referenza esatta prima
     return photos[:limit]
 
@@ -75,16 +84,19 @@ def search(model, limit=6):
 def run():
     models = load("models.json")
     manual = load("photos_manual.json", {})
+    old = load("photos.json", {})
     out = {}
     for m in models:
         try:
             auto = search(m)
         except Exception as e:  # una ricerca fallita non blocca le altre
             print(f"Commons {m['id']}: {e}")
-            auto = []
+            auto = None
+        if not auto:  # ricerca fallita o vuota: tieni le foto trovate in passato
+            auto = [p for p in old.get(m["id"], []) if p not in manual.get(m["id"], [])]
         out[m["id"]] = manual.get(m["id"], []) + auto
         print(f"Commons {m['id']}: {len(out[m['id']])} foto")
-        time.sleep(1)
+        time.sleep(3)
     save("photos.json", out)
 
 
