@@ -22,7 +22,7 @@
   /* ---------- foto ---------- */
   function photosFor(id) {
     const commons = (PHOTOS[id] || []).map(p => ({
-      src: p.src, link: p.page, credit: `Foto: ${p.author} · ${p.license} · Wikimedia Commons`
+      src: p.src, link: p.page, credit: `Foto: ${p.author} · ${p.license} · Wikimedia Commons${p.exact === false ? " · stessa famiglia, non la ref. esatta" : ""}`
     }));
     const fromListings = LIST.filter(l => l.m === id && l.img).slice(0, 6).map(l => ({
       src: l.img, link: l.url, credit: `Foto dall'annuncio su ${l.src} · ${eur(l.total)}`
