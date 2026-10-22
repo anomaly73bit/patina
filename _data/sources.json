@@ -1,15 +1,78 @@
 {
- "eBay.de":         {"type":"Marketplace","fee":0},
- "eBay.it":         {"type":"Marketplace","fee":0},
- "eBay.fr":         {"type":"Marketplace","fee":0},
- "Chrono24":        {"type":"Marketplace","fee":0},
- "Catawiki":        {"type":"Asta","fee":0.09},
- "Dorotheum":       {"type":"Asta","fee":0.27},
- "Antiquorum":      {"type":"Asta","fee":0.25},
- "Phillips":        {"type":"Asta","fee":0.27},
- "Subito.it":       {"type":"Mercatino","fee":0},
- "Kleinanzeigen":   {"type":"Mercatino","fee":0},
- "Leboncoin":       {"type":"Mercatino","fee":0},
- "Bazoš":           {"type":"Mercatino","fee":0},
- "Orologi&Passioni":{"type":"Mercatino","fee":0}
+ "eBay.de": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.it": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.fr": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.at": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.nl": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.es": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.ch": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "eBay.co.uk": {
+  "type": "Marketplace",
+  "fee": 0
+ },
+ "Kleinanzeigen": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Marktplaats": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "2dehands": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Willhaben": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Bazoš CZ": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Bazoš SK": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Bolha": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Blocket": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "DBA": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Tori": {
+  "type": "Mercatino",
+  "fee": 0
+ },
+ "Finn": {
+  "type": "Mercatino",
+  "fee": 0
+ }
 }

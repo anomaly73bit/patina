@@ -282,7 +282,12 @@ def _api_items(cfg, r):
                         "city": ((o.get("location") or {}).get("city") or {}).get("name")})
     elif cfg["kind"] == "marktplaats":
         for o in data.get("listings", []):
-            cents = (o.get("priceInfo") or {}).get("priceCents")
+            pinfo = o.get("priceInfo") or {}
+            seller = ((o.get("sellerInformation") or {}).get("sellerName") or "")
+            # solo prezzo fisso: "Bieden"/"Vanaf" sono offerte, e Catawiki pubblica qui annunci che portano alle sue aste
+            if pinfo.get("priceType") != "FIXED" or re.search(r"catawiki|veiling|auction|auktion", seller, re.I):
+                continue
+            cents = pinfo.get("priceCents")
             pics = o.get("pictures") or [{}]
             out.append({"title": o.get("title", ""), "url": urljoin(cfg["base"], o.get("vipUrl", "")),
                         "price": cents / 100 if cents else None, "cur": "EUR",

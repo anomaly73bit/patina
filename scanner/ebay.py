@@ -49,7 +49,7 @@ def fetch(models):
                 params={
                     "q": m["query"],
                     "category_ids": WRISTWATCHES,
-                    "filter": f"price:[{min_price}..],priceCurrency:{cur}",
+                    "filter": f"price:[{min_price}..],priceCurrency:{cur},buyingOptions:{{FIXED_PRICE}}",  # niente aste
                     "limit": 50,
                 },
                 timeout=30,
@@ -66,7 +66,9 @@ def fetch(models):
                 eur = to_eur(price.get("value", 0), price.get("currency", "EUR"))
                 if not eur:
                     continue
-                auction = "AUCTION" in it.get("buyingOptions", [])
+                if "FIXED_PRICE" not in it.get("buyingOptions", []):
+                    continue
+                auction = False
                 out.append({
                     "m": m["id"],
                     "src": label,

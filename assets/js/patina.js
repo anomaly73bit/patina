@@ -53,7 +53,7 @@
     const fee = (SRC[l.src] || {}).fee || 0;
     const endMs = l.endDate ? Date.parse(l.endDate) : (l.endDays != null ? now + l.endDays * 864e5 : null);
     return Object.assign({}, l, { fee, endMs, end: endMs });
-  }).filter(l => !l.sold && !(l.endMs && l.endMs <= now));
+  }).filter(l => !l.sold && l.type !== "Asta" && !(l.endMs && l.endMs <= now));
 
   const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
   const eur = n => "€ " + Math.round(n).toLocaleString("it-IT");
@@ -299,7 +299,7 @@
 
   function renderDeals() {
     renderAuctions();
-    chips("typeBar", ["Tutte", "Marketplace", "Asta", "Mercatino"], type, v => { type = v; renderDeals(); });
+    chips("typeBar", ["Tutte", "Marketplace", "Mercatino"], type, v => { type = v; renderDeals(); });
     const sort = document.getElementById("sortSel").value;
     const ls = LIST.filter(l => (type === "Tutte" || l.type === type) && !(l.endMs && l.endMs <= Date.now()))
       .sort((a, b) => sort === "price" ? a.total - b.total : sort === "end" ? (a.endMs ?? Infinity) - (b.endMs ?? Infinity) : b.disc - a.disc)

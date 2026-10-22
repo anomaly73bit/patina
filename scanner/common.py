@@ -16,7 +16,7 @@ BLOCK = re.compile(
     r"box only|nur box|solo scatola|bracelet only|nur armband|bezel insert|"
     r"case only|nur gehäuse|movement only|nur werk|for parts|ersatzteil|ricambi|pièces|"
     r"replica|homage|hommage|fake|aftermarket|"
-    r"strap only|solo cinturino)\b",
+    r"strap only|solo cinturino|watch link|links?|glied(er)?|schakels?|maglie|maglia|endlink|end link)\b",
     re.I,
 )
 
@@ -41,6 +41,9 @@ def to_eur(value, currency):
     return None if rate is None else float(value) * rate
 
 
+# aste e annunci senza prezzo fisso: un'offerta in corso non è un prezzo vero
+AUCTION = re.compile(r"\b(auktion|versteigerung|auction|asta|aste|enchères?|veiling|bieden|vanaf|aukce|dražba|licytacja|árverés|catawiki)\b", re.I)
+
 # annunci di chi cerca o compra, non di chi vende
 WANTED = re.compile(r"\b(suche|gesucht|ankauf|kaufe|uhrenankauf|cerco|compro|acquisto|recherche|recherch[ée]|ach[eè]te|wanted|hledám|koupím)\b", re.I)
 
@@ -48,7 +51,7 @@ WANTED = re.compile(r"\b(suche|gesucht|ankauf|kaufe|uhrenankauf|cerco|compro|acq
 def matches(model, title):
     """True se il titolo parla davvero di questo modello e non di un ricambio o di una ricerca."""
     t = title.lower()
-    if BLOCK.search(t) or WANTED.search(t):
+    if BLOCK.search(t) or WANTED.search(t) or AUCTION.search(t):
         return False
     brand = model["brand"].lower().split()[0]  # "audemars", "patek", "universal"...
     brand_alt = {"universal": "universal", "jaeger-lecoultre": "lecoultre"}.get(brand, brand)
