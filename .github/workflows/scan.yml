@@ -26,6 +26,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Branch con tema Minimal Mistakes
+        uses: actions/checkout@v4
+        with: {ref: minimal-mistakes, path: mm}
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install -r requirements.txt
@@ -50,8 +53,18 @@ jobs:
           git add _data
           git diff --cached --quiet || (git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')" && git push)
 
+      - name: Stessi dati anche per il sito Minimal Mistakes
+        run: cp _data/*.json mm/_data/
+
       - uses: actions/configure-pages@v5
-      - uses: actions/jekyll-build-pages@v1
+      - name: Sito originale
+        uses: actions/jekyll-build-pages@v1
+        with: {source: ./, destination: ./_site}
+      - name: Sito Minimal Mistakes
+        uses: actions/jekyll-build-pages@v1
+        with: {source: ./mm, destination: ./_site_mm}
+      - name: Unisci i due siti (/patina/ e /patina/mm/)
+        run: sudo cp -r _site_mm _site/mm
       - uses: actions/upload-pages-artifact@v3
 
   deploy:

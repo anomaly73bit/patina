@@ -12,7 +12,7 @@
 <body>
 <nav class="topnav">
   <a class="logo" href="{{ '/' | relative_url }}">Patina</a>
-  <span>{% if site.data.listings.example %}Annunci di esempio{% else %}Scanner aggiornato {{ site.data.listings.updated }}{% endif %}</span>
+  <span>{% if site.data.listings.example %}Annunci di esempio{% else %}Scanner aggiornato {{ site.data.listings.updated }}{% endif %} · <a href="{{ '/mm/' | relative_url }}">Versione Minimal Mistakes</a></span>
 </nav>
 {{ content }}
 <script>
