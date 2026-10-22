@@ -40,10 +40,14 @@ def to_eur(value, currency):
     return None if rate is None else float(value) * rate
 
 
+# annunci di chi cerca o compra, non di chi vende
+WANTED = re.compile(r"\b(suche|gesucht|ankauf|kaufe|uhrenankauf|cerco|compro|acquisto|recherche|recherch[ée]|ach[eè]te|wanted|hledám|koupím)\b", re.I)
+
+
 def matches(model, title):
-    """True se il titolo parla davvero di questo modello e non di un ricambio."""
+    """True se il titolo parla davvero di questo modello e non di un ricambio o di una ricerca."""
     t = title.lower()
-    if BLOCK.search(t):
+    if BLOCK.search(t) or WANTED.search(t):
         return False
     brand = model["brand"].lower().split()[0]  # "audemars", "patek", "universal"...
     brand_alt = {"universal": "universal", "jaeger-lecoultre": "lecoultre"}.get(brand, brand)

@@ -1,20 +1,354 @@
 [
- {"id":"rolex-5513","brand":"Rolex","name":"Submariner","ref":"5513","years":"1962–1989","lo":12000,"hi":16000,"t":4,"liq":"Alta","cal":"1520 / 1530","mm":40,"case":"Acciaio","match":["5513"],"query":"Rolex Submariner 5513","note":"Il Submariner senza data per eccellenza. Le versioni con quadrante gilt o «maxi» valgono molto di più della fascia indicata."},
- {"id":"rolex-1675","brand":"Rolex","name":"GMT-Master","ref":"1675","years":"1959–1980","lo":14500,"hi":19500,"t":5,"liq":"Alta","cal":"1565 / 1575","mm":40,"case":"Acciaio","match":["1675"],"query":"Rolex GMT-Master 1675","note":"Lunetta Pepsi e secondo fuso orario. Inserto originale sbiadito e pallettoni intatti spingono il prezzo in alto."},
- {"id":"rolex-1016","brand":"Rolex","name":"Explorer","ref":"1016","years":"1963–1989","lo":9500,"hi":13500,"t":3,"liq":"Alta","cal":"1560 / 1570","mm":36,"case":"Acciaio","match":["1016"],"query":"Rolex Explorer 1016","note":"Quadrante nero 3-6-9, misura classica da 36 mm. I primi quadranti gilt sono i più ricercati."},
- {"id":"rolex-1601","brand":"Rolex","name":"Datejust","ref":"1601","years":"1959–1977","lo":4800,"hi":6800,"t":2,"liq":"Alta","cal":"1570","mm":36,"case":"Acciaio e oro bianco","match":["1601"],"query":"Rolex Datejust 1601","note":"Lunetta zigrinata in oro bianco. Il punto d'ingresso nel Rolex vintage, molto liquido."},
- {"id":"rolex-1803","brand":"Rolex","name":"Day-Date","ref":"1803","years":"1960–1978","lo":13500,"hi":17500,"t":1,"liq":"Media","cal":"1556","mm":36,"case":"Oro giallo 18k","match":["1803"],"query":"Rolex Day-Date 1803","note":"Il «President» in oro. Il valore segue anche il prezzo dell'oro; quadranti esotici fuori fascia."},
- {"id":"omega-105012","brand":"Omega","name":"Speedmaster Professional","ref":"105.012","years":"1964–1968","lo":8500,"hi":12000,"t":6,"liq":"Alta","cal":"321","mm":42,"case":"Acciaio","match":["105.012","105012","105 012"],"query":"Omega Speedmaster 105.012","note":"Calibro 321 a ruota a colonne: lo Speedmaster delle missioni Apollo."},
- {"id":"omega-145022","brand":"Omega","name":"Speedmaster Professional","ref":"145.022","years":"1968–1988","lo":5200,"hi":7200,"t":4,"liq":"Alta","cal":"861","mm":42,"case":"Acciaio","match":["145.022","145022","145 022"],"query":"Omega Speedmaster 145.022","note":"Il Moonwatch con calibro 861. Le prime serie 145.022-69 hanno un premio."},
- {"id":"omega-165024","brand":"Omega","name":"Seamaster 300","ref":"165.024","years":"1964–1970","lo":5000,"hi":7500,"t":3,"liq":"Media","cal":"552","mm":42,"case":"Acciaio","match":["165.024","165024","165 024"],"query":"Omega Seamaster 300 165.024","note":"Subacqueo storico Omega. Molti quadranti sono stati sostituiti: verifica sempre il trizio."},
- {"id":"omega-168005","brand":"Omega","name":"Constellation pie-pan","ref":"168.005","years":"1966–1970","lo":2400,"hi":3500,"t":2,"liq":"Media","cal":"564","mm":35,"case":"Acciaio","match":["168.005","168005","168 005"],"query":"Omega Constellation 168.005","note":"Quadrante a «tortiera» e cronometro certificato. Medaglione sul fondello da controllare."},
- {"id":"heuer-2447","brand":"Heuer","name":"Carrera","ref":"2447","years":"1963–1970","lo":8000,"hi":12500,"t":7,"liq":"Media","cal":"Valjoux 72","mm":36,"case":"Acciaio","match":["2447"],"query":"Heuer Carrera 2447","note":"Il cronografo da pista disegnato da Jack Heuer. Mercato in crescita negli ultimi anni."},
- {"id":"heuer-1163","brand":"Heuer","name":"Autavia","ref":"1163","years":"1969–1978","lo":7500,"hi":11000,"t":6,"liq":"Media","cal":"11 / 12 Chronomatic","mm":42,"case":"Acciaio","match":["1163"],"query":"Heuer Autavia 1163","note":"Uno dei primi cronografi automatici (1969). Versioni «Siffert» e «Viceroy» le più cercate."},
- {"id":"patek-3919","brand":"Patek Philippe","name":"Calatrava","ref":"3919","years":"1985–2006","lo":13500,"hi":18000,"t":2,"liq":"Media","cal":"215 PS","mm":33.5,"case":"Oro 18k","match":["3919"],"query":"Patek Philippe Calatrava 3919","note":"Lunetta clous de Paris, carica manuale. Estratto dell'archivio Patek consigliato."},
- {"id":"ap-5402","brand":"Audemars Piguet","name":"Royal Oak Jumbo","ref":"5402","years":"1972–1989","lo":62000,"hi":85000,"t":-3,"liq":"Bassa","cal":"2121","mm":39,"case":"Acciaio","match":["5402"],"query":"Audemars Piguet Royal Oak 5402","note":"Il primo Royal Oak di Gérald Genta. Le serie «A» valgono di più; mercato in raffreddamento dal picco 2022."},
- {"id":"tudor-7928","brand":"Tudor","name":"Submariner","ref":"7928","years":"1959–1967","lo":9000,"hi":14000,"t":5,"liq":"Media","cal":"390 (Fleurier)","mm":39,"case":"Acciaio","match":["7928"],"query":"Tudor Submariner 7928","note":"Cassa Rolex, movimento Tudor. Corona e fondello firmati Rolex sono segni di originalità."},
- {"id":"ug-222100","brand":"Universal Genève","name":"Tri-Compax","ref":"222100","years":"1950–1965","lo":7000,"hi":11000,"t":8,"liq":"Bassa","cal":"281","mm":36,"case":"Acciaio","match":["tri-compax","tricompax","tri compax"],"query":"Universal Geneve Tri-Compax","note":"Cronografo con calendario completo e fasi lunari. Il marchio rinato ha riacceso l'interesse."},
- {"id":"zenith-a386","brand":"Zenith","name":"El Primero","ref":"A386","years":"1969–1971","lo":8000,"hi":11500,"t":4,"liq":"Bassa","cal":"3019 PHC","mm":38,"case":"Acciaio","match":["a386"],"query":"Zenith El Primero A386","note":"Il primo cronografo automatico ad alta frequenza (36.000 alternanze/ora)."},
- {"id":"breitling-806","brand":"Breitling","name":"Navitimer","ref":"806","years":"1952–1969","lo":5000,"hi":8000,"t":1,"liq":"Media","cal":"Venus 178","mm":41,"case":"Acciaio","match":["806"],"query":"Breitling Navitimer 806","note":"Regolo calcolatore da pilota. Le versioni AOPA e con calibro Venus sono le più cercate."},
- {"id":"jlc-memovox","brand":"Jaeger-LeCoultre","name":"Memovox","ref":"E855","years":"1960–1970","lo":2600,"hi":4200,"t":0,"liq":"Media","cal":"K825","mm":37,"case":"Acciaio","match":["memovox"],"query":"Jaeger LeCoultre Memovox","note":"Orologio con sveglia meccanica. Ottimo rapporto qualità/prezzo nel vintage di alta gamma."}
+ {
+  "id": "rolex-5513",
+  "brand": "Rolex",
+  "name": "Submariner",
+  "ref": "5513",
+  "years": "1962–1989",
+  "lo": 12000,
+  "hi": 16000,
+  "t": 4,
+  "liq": "Alta",
+  "cal": "1520 / 1530",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "5513"
+  ],
+  "query": "Rolex Submariner 5513",
+  "note": "Il Submariner senza data per eccellenza. Le versioni con quadrante gilt o «maxi» valgono molto di più della fascia indicata."
+ },
+ {
+  "id": "rolex-1675",
+  "brand": "Rolex",
+  "name": "GMT-Master",
+  "ref": "1675",
+  "years": "1959–1980",
+  "lo": 14500,
+  "hi": 19500,
+  "t": 5,
+  "liq": "Alta",
+  "cal": "1565 / 1575",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "1675"
+  ],
+  "query": "Rolex GMT-Master 1675",
+  "note": "Lunetta Pepsi e secondo fuso orario. Inserto originale sbiadito e pallettoni intatti spingono il prezzo in alto."
+ },
+ {
+  "id": "rolex-1016",
+  "brand": "Rolex",
+  "name": "Explorer",
+  "ref": "1016",
+  "years": "1963–1989",
+  "lo": 9500,
+  "hi": 13500,
+  "t": 3,
+  "liq": "Alta",
+  "cal": "1560 / 1570",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "1016"
+  ],
+  "query": "Rolex Explorer 1016",
+  "note": "Quadrante nero 3-6-9, misura classica da 36 mm. I primi quadranti gilt sono i più ricercati."
+ },
+ {
+  "id": "rolex-1601",
+  "brand": "Rolex",
+  "name": "Datejust",
+  "ref": "1601",
+  "years": "1959–1977",
+  "lo": 4800,
+  "hi": 6800,
+  "t": 2,
+  "liq": "Alta",
+  "cal": "1570",
+  "mm": 36,
+  "case": "Acciaio e oro bianco",
+  "match": [
+   "1601"
+  ],
+  "query": "Rolex Datejust 1601",
+  "note": "Lunetta zigrinata in oro bianco. Il punto d'ingresso nel Rolex vintage, molto liquido."
+ },
+ {
+  "id": "rolex-1803",
+  "brand": "Rolex",
+  "name": "Day-Date",
+  "ref": "1803",
+  "years": "1960–1978",
+  "lo": 13500,
+  "hi": 17500,
+  "t": 1,
+  "liq": "Media",
+  "cal": "1556",
+  "mm": 36,
+  "case": "Oro giallo 18k",
+  "match": [
+   "1803"
+  ],
+  "query": "Rolex Day-Date 1803",
+  "note": "Il «President» in oro. Il valore segue anche il prezzo dell'oro; quadranti esotici fuori fascia."
+ },
+ {
+  "id": "omega-105012",
+  "brand": "Omega",
+  "name": "Speedmaster Professional",
+  "ref": "105.012",
+  "years": "1964–1968",
+  "lo": 8500,
+  "hi": 12000,
+  "t": 6,
+  "liq": "Alta",
+  "cal": "321",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "105.012",
+   "105012",
+   "105 012"
+  ],
+  "query": "Omega Speedmaster 105.012",
+  "note": "Calibro 321 a ruota a colonne: lo Speedmaster delle missioni Apollo."
+ },
+ {
+  "id": "omega-145022",
+  "brand": "Omega",
+  "name": "Speedmaster Professional",
+  "ref": "145.022",
+  "years": "1968–1988",
+  "lo": 5200,
+  "hi": 7200,
+  "t": 4,
+  "liq": "Alta",
+  "cal": "861",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "145.022",
+   "145022",
+   "145 022"
+  ],
+  "query": "Omega Speedmaster 145.022",
+  "note": "Il Moonwatch con calibro 861. Le prime serie 145.022-69 hanno un premio."
+ },
+ {
+  "id": "omega-165024",
+  "brand": "Omega",
+  "name": "Seamaster 300",
+  "ref": "165.024",
+  "years": "1964–1970",
+  "lo": 5000,
+  "hi": 7500,
+  "t": 3,
+  "liq": "Media",
+  "cal": "552",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "165.024",
+   "165024",
+   "165 024"
+  ],
+  "query": "Omega Seamaster 300 165.024",
+  "note": "Subacqueo storico Omega. Molti quadranti sono stati sostituiti: verifica sempre il trizio."
+ },
+ {
+  "id": "omega-168005",
+  "brand": "Omega",
+  "name": "Constellation pie-pan",
+  "ref": "168.005",
+  "years": "1966–1970",
+  "lo": 2400,
+  "hi": 3500,
+  "t": 2,
+  "liq": "Media",
+  "cal": "564",
+  "mm": 35,
+  "case": "Acciaio",
+  "match": [
+   "168.005",
+   "168005",
+   "168 005"
+  ],
+  "query": "Omega Constellation 168.005",
+  "note": "Quadrante a «tortiera» e cronometro certificato. Medaglione sul fondello da controllare."
+ },
+ {
+  "id": "heuer-2447",
+  "brand": "Heuer",
+  "name": "Carrera",
+  "ref": "2447",
+  "years": "1963–1970",
+  "lo": 8000,
+  "hi": 12500,
+  "t": 7,
+  "liq": "Media",
+  "cal": "Valjoux 72",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "2447"
+  ],
+  "query": "Heuer Carrera 2447",
+  "note": "Il cronografo da pista disegnato da Jack Heuer. Mercato in crescita negli ultimi anni."
+ },
+ {
+  "id": "heuer-1163",
+  "brand": "Heuer",
+  "name": "Autavia",
+  "ref": "1163",
+  "years": "1969–1978",
+  "lo": 7500,
+  "hi": 11000,
+  "t": 6,
+  "liq": "Media",
+  "cal": "11 / 12 Chronomatic",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "1163"
+  ],
+  "query": "Heuer Autavia 1163",
+  "note": "Uno dei primi cronografi automatici (1969). Versioni «Siffert» e «Viceroy» le più cercate."
+ },
+ {
+  "id": "patek-3919",
+  "brand": "Patek Philippe",
+  "name": "Calatrava",
+  "ref": "3919",
+  "years": "1985–2006",
+  "lo": 13500,
+  "hi": 18000,
+  "t": 2,
+  "liq": "Media",
+  "cal": "215 PS",
+  "mm": 33.5,
+  "case": "Oro 18k",
+  "match": [
+   "3919"
+  ],
+  "query": "Patek Philippe Calatrava 3919",
+  "note": "Lunetta clous de Paris, carica manuale. Estratto dell'archivio Patek consigliato."
+ },
+ {
+  "id": "ap-5402",
+  "brand": "Audemars Piguet",
+  "name": "Royal Oak Jumbo",
+  "ref": "5402",
+  "years": "1972–1989",
+  "lo": 62000,
+  "hi": 85000,
+  "t": -3,
+  "liq": "Bassa",
+  "cal": "2121",
+  "mm": 39,
+  "case": "Acciaio",
+  "match": [
+   "5402"
+  ],
+  "query": "Audemars Piguet Royal Oak 5402",
+  "note": "Il primo Royal Oak di Gérald Genta. Le serie «A» valgono di più; mercato in raffreddamento dal picco 2022."
+ },
+ {
+  "id": "tudor-7928",
+  "brand": "Tudor",
+  "name": "Submariner",
+  "ref": "7928",
+  "years": "1959–1967",
+  "lo": 9000,
+  "hi": 14000,
+  "t": 5,
+  "liq": "Media",
+  "cal": "390 (Fleurier)",
+  "mm": 39,
+  "case": "Acciaio",
+  "match": [
+   "7928"
+  ],
+  "query": "Tudor Submariner 7928",
+  "note": "Cassa Rolex, movimento Tudor. Corona e fondello firmati Rolex sono segni di originalità."
+ },
+ {
+  "id": "ug-222100",
+  "brand": "Universal Genève",
+  "name": "Tri-Compax",
+  "ref": "222100",
+  "years": "1950–1965",
+  "lo": 7000,
+  "hi": 11000,
+  "t": 8,
+  "liq": "Bassa",
+  "cal": "281",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "tri-compax",
+   "tricompax",
+   "tri compax"
+  ],
+  "query": "Universal Geneve Tri-Compax",
+  "note": "Cronografo con calendario completo e fasi lunari. Il marchio rinato ha riacceso l'interesse."
+ },
+ {
+  "id": "zenith-a386",
+  "brand": "Zenith",
+  "name": "El Primero",
+  "ref": "A386",
+  "years": "1969–1971",
+  "lo": 8000,
+  "hi": 11500,
+  "t": 4,
+  "liq": "Bassa",
+  "cal": "3019 PHC",
+  "mm": 38,
+  "case": "Acciaio",
+  "match": [
+   "a386"
+  ],
+  "query": "Zenith El Primero A386",
+  "note": "Il primo cronografo automatico ad alta frequenza (36.000 alternanze/ora)."
+ },
+ {
+  "id": "breitling-806",
+  "brand": "Breitling",
+  "name": "Navitimer",
+  "ref": "806",
+  "years": "1952–1969",
+  "lo": 5000,
+  "hi": 8000,
+  "t": 1,
+  "liq": "Media",
+  "cal": "Venus 178",
+  "mm": 41,
+  "case": "Acciaio",
+  "match": [
+   "806"
+  ],
+  "query": "Breitling Navitimer 806",
+  "note": "Regolo calcolatore da pilota. Le versioni AOPA e con calibro Venus sono le più cercate."
+ },
+ {
+  "id": "jlc-memovox",
+  "brand": "Jaeger-LeCoultre",
+  "name": "Memovox",
+  "ref": "E855",
+  "years": "1960–1970",
+  "lo": 1700,
+  "hi": 3000,
+  "t": 0,
+  "liq": "Media",
+  "cal": "K825",
+  "mm": 37,
+  "case": "Acciaio",
+  "match": [
+   "memovox"
+  ],
+  "query": "Jaeger LeCoultre Memovox",
+  "note": "Orologio con sveglia meccanica. I modelli a carica manuale anni '50 costano meno degli automatici E855 e dei Deep Sea, fuori fascia."
+ }
 ]
