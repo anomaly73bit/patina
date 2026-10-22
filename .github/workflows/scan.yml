@@ -49,7 +49,7 @@ jobs:
         run: |
           git config user.name "patina-bot"
           git config user.email "patina-bot@users.noreply.github.com"
-          git add _data scanner/debug 2>/dev/null || git add _data
+          git add _data scanner/debug scanner/cache 2>/dev/null || git add _data
           git diff --cached --quiet || (git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')" && git push)
 
       - name: Stessi dati anche per il sito Minimal Mistakes

@@ -20,7 +20,7 @@
   "variants": [
    {
     "name": "quadrante gilt / meters first",
-    "kw": "gilt|meters first|metres first",
+    "kw": "\\bgilt\\b|meters first|metres first",
     "lo": 20000,
     "hi": 32000
    },
@@ -53,7 +53,7 @@
   "variants": [
    {
     "name": "quadrante gilt",
-    "kw": "gilt",
+    "kw": "\\bgilt\\b",
     "lo": 22000,
     "hi": 32000
    }
@@ -80,7 +80,7 @@
   "variants": [
    {
     "name": "quadrante gilt",
-    "kw": "gilt",
+    "kw": "\\bgilt\\b",
     "lo": 18000,
     "hi": 28000
    }

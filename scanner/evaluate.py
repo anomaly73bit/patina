@@ -67,8 +67,13 @@ def parse_date(text, today=None):
     return None
 
 
+def read_signals(desc):
+    """Segnali ricavati da una descrizione: nomi dei segnali trovati e anno. È quello che resta in memoria."""
+    return {"sig": [n for n, rx, _, _ in SIGNALS if rx.search(desc)], "year": (YEAR.search(desc) or [""])[0]}
+
+
 def variant(model, text):
-    """La serie dell'orologio, se il testo la indica; altrimenti la stima generale del modello."""
+    """La serie dell'orologio dal titolo (le descrizioni sono troppo ambigue: in tedesco "gilt" vuol dire "vale")."""
     for v in model.get("variants", []):
         if re.search(v["kw"], text, re.I):
             return v["name"], v["lo"], v["hi"]
@@ -79,17 +84,22 @@ def evaluate(listing, model, today=None):
     today = today or dt.date.today()
     title = listing.get("title", "")
     desc = listing.get("desc") or ""
-    text = f"{title} {desc}"
     reasons, conf = [], 2  # fiducia: 0 bassa … 4 alta
 
-    vname, lo, hi = variant(model, text)
+    vname, lo, hi = variant(model, title)
+    # segnali: dalla descrizione appena letta, oppure dalla memoria di una lettura precedente
+    mem = listing.pop("dmem", None)
+    if desc:
+        mem = read_signals(desc)
+        listing["_dmem"] = mem  # scan.py lo salva in memoria
+    sig_from_desc = set(mem["sig"]) if mem else set()
     if vname:
         reasons.append(f"versione: {vname}")
 
     adj = 0.0
     hits = set()
     for name, rx, a, txt in SIGNALS:
-        if rx.search(text):
+        if rx.search(title) or name in sig_from_desc:
             hits.add(name)
             adj += a
             reasons.append(txt)
@@ -100,8 +110,8 @@ def evaluate(listing, model, today=None):
     mid = (lo + hi) / 2
 
     # quante informazioni abbiamo
-    year = YEAR.search(text)
-    if desc:
+    year = YEAR.search(title) or (mem and mem["year"])
+    if mem:
         conf += 1
         if year:
             conf += 1
@@ -128,7 +138,8 @@ def evaluate(listing, model, today=None):
         verdict = "sospetto"
         reasons.insert(0, f"{round(disc * 100)}% sotto il valore: troppo basso per un pezzo originale e funzionante")
     elif disc >= 0.12:
-        verdict = "occasione" if conf >= 2 else "da verificare"
+        # occasione solo se la descrizione è stata letta e non ci sono dubbi
+        verdict = "occasione" if (mem and conf >= 2) else "da verificare"
     elif disc >= -0.05:
         verdict = "prezzo giusto"
     else:

@@ -20,6 +20,7 @@ import requests
 from bs4 import BeautifulSoup
 
 from common import matches, to_eur
+from memory import load_mem
 
 DEBUG = pathlib.Path(__file__).resolve().parent / "debug"
 PAUSE = (1.5, 3.0)  # secondi tra una richiesta e l'altra
@@ -316,13 +317,19 @@ def _api_items(cfg, r):
 # ---------- 4. pagina dell'annuncio, solo per i possibili affari ----------
 DESC_SEL = "#viewad-description-text, [itemprop=description], [data-testid*=description], .description, .ad-description, #description"
 DATE_SEL = "#viewad-extra-info, [data-testid*=date], time, .date, .ad-date"
-MAX_DETAILS = 25  # pagine di dettaglio per sito a ogni giro
+MAX_DETAILS = 120  # pagine di dettaglio per sito a ogni giro (quelle già lette negli ultimi 7 giorni non contano)
 
 
 def _read_details(session, cfg, found, models):
     """Apre la pagina degli annunci che sembrano affari per leggere descrizione e data."""
     mids = {m["id"]: (m["lo"] + m["hi"]) / 2 for m in models}
-    cands = [l for l in found if not l.get("desc") and (mids[l["m"]] - l["p"]) / mids[l["m"]] >= 0.10]
+    mem = load_mem()
+    for l in found:  # annunci già letti di recente: uso la memoria, niente nuova richiesta
+        if l["url"] in mem:
+            l["dmem"] = mem[l["url"]]
+            l["posted"] = l.get("posted") or mem[l["url"]].get("posted")
+    cands = [l for l in found if not l.get("desc") and "dmem" not in l and (mids[l["m"]] - l["p"]) / mids[l["m"]] >= 0.10]
+    cands.sort(key=lambda l: -(mids[l["m"]] - l["p"]) / mids[l["m"]])
     for l in cands[:MAX_DETAILS]:
         try:
             r, blocked = _get(session, l["url"], cfg["lang"])

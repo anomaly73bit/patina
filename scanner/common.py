@@ -16,7 +16,7 @@ BLOCK = re.compile(
     r"box only|nur box|solo scatola|bracelet only|nur armband|bezel insert|"
     r"case only|nur gehäuse|movement only|nur werk|for parts|ersatzteil|ricambi|pièces|"
     r"replica|homage|hommage|fake|aftermarket|"
-    r"strap only|solo cinturino|watch link|links?|glied(er)?|schakels?|maglie|maglia|endlink|end link)\b",
+    r"strap only|solo cinturino|gehäuse|boîtier seul|cassa sola|case only|watch link|links?|glied(er)?|schakels?|maglie|maglia|endlink|end link)\b",
     re.I,
 )
 

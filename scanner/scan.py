@@ -10,6 +10,7 @@ import ebay
 import robots
 from common import load, save, score
 from evaluate import evaluate
+from memory import save_mem
 
 SOURCES = [ebay, robots]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
 MAX_STALE = dt.timedelta(hours=24)
@@ -85,6 +86,10 @@ def main():
 
     order = {"occasione": 0, "da verificare": 1, "prezzo giusto": 2, "sospetto": 3, "caro": 4}
     listings.sort(key=lambda l: (order.get(l.get("verdict"), 5), -l["disc"]))
+    save_mem(listings)
+    for l in listings:  # testo grezzo della scheda: serviva solo per la data
+        if isinstance(l.get("posted"), str) and len(l["posted"]) > 40:
+            l.pop("posted")
     save("listings.json", {
         "updated": t.strftime("%Y-%m-%d %H:%M UTC"),
         "example": False,
