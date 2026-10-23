@@ -137,10 +137,14 @@ def evaluate(listing, model, today=None):
     if disc > 0.35:
         verdict = "sospetto"
         reasons.insert(0, f"{round(disc * 100)}% sotto il valore: troppo basso per un pezzo originale e funzionante")
-    elif disc >= 0.12:
+    elif disc >= 0.15:
         # occasione solo se la descrizione è stata letta e non ci sono dubbi
         stale = age is not None and age > 60  # dopo due mesi online non è un'occasione: qualcosa non convince
-        verdict = "occasione" if (mem and conf >= 2 and not stale) else "da verificare"
+        cheap = not model.get("p25") or listing["total"] <= model["p25"]
+        if not cheap:
+            verdict = "prezzo giusto"
+        else:
+            verdict = "occasione" if (mem and conf >= 2 and not stale) else "da verificare"
     elif disc >= -0.05:
         verdict = "prezzo giusto"
     else:

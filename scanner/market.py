@@ -26,6 +26,7 @@ def calibrate(models, listings, today=None):
             mid = (m["lo"] + m["hi"]) / 2
             factor = max(0.6, min(1.3, ((1 - WEIGHT) * mid + WEIGHT * ASK_TO_SALE * med) / mid))
             m2["lo"], m2["hi"] = round(m["lo"] * factor, -1), round(m["hi"] * factor, -1)
+            m2["p25"] = q[0]  # un'occasione deve costare meno di 3 annunci su 4 dello stesso modello
             h = history.setdefault(m["id"], {})
             h[today] = round(med)
             for d in sorted(h)[:-400]:
