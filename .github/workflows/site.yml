@@ -1,0 +1,54 @@
+name: Sito
+
+# Pubblica il sito in 1-2 minuti, senza far girare lo scanner.
+# Parte a ogni modifica su main, a mano, oppure chiamato dallo scanner dopo aver salvato i dati.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+  workflow_call:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    concurrency:
+      group: patina-sito
+      cancel-in-progress: false
+    steps:
+      - uses: actions/checkout@v4
+        with: {ref: main}            # sempre l'ultima versione, anche con i dati appena salvati dallo scanner
+      - name: Branch con tema Minimal Mistakes
+        uses: actions/checkout@v4
+        with: {ref: minimal-mistakes, path: mm}
+      - name: Stessi dati anche per il sito Minimal Mistakes
+        run: cp _data/*.json mm/_data/
+
+      - uses: actions/configure-pages@v5
+      - name: Sito originale
+        uses: actions/jekyll-build-pages@v1
+        with: {source: ./, destination: ./_site}
+      - name: Sito Minimal Mistakes
+        uses: actions/jekyll-build-pages@v1
+        with: {source: ./mm, destination: ./_site_mm}
+      - name: Unisci i due siti (/ e /mm/)
+        run: sudo cp -r _site_mm _site/mm
+      - uses: actions/upload-pages-artifact@v3
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    concurrency:
+      group: patina-deploy
+      cancel-in-progress: false
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

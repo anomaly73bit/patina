@@ -1,4 +1,7 @@
-name: Scanner e sito
+name: Scanner
+
+# Cerca gli annunci ogni 3 ore, salva i dati e poi ripubblica il sito.
+# Le modifiche al sito NON passano più da qui: le pubblica il workflow "Sito".
 
 on:
   schedule:
@@ -9,8 +12,6 @@ on:
         description: "Aggiorna anche le foto da Wikimedia Commons"
         type: boolean
         default: false
-  push:
-    branches: [main]
 
 permissions:
   contents: write
@@ -18,7 +19,7 @@ permissions:
   id-token: write
 
 concurrency:
-  group: patina
+  group: patina-scanner
   cancel-in-progress: false
 
 jobs:
@@ -26,9 +27,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Branch con tema Minimal Mistakes
-        uses: actions/checkout@v4
-        with: {ref: minimal-mistakes, path: mm}
       - uses: actions/setup-python@v5
         with: {python-version: "3.12"}
       - run: pip install -r requirements.txt
@@ -50,28 +48,12 @@ jobs:
           git config user.name "patina-bot"
           git config user.email "patina-bot@users.noreply.github.com"
           git add _data scanner/debug scanner/cache 2>/dev/null || git add _data
-          git diff --cached --quiet || (git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')" && git push)
+          if ! git diff --cached --quiet; then
+            git commit -m "Dati scanner $(date -u +'%Y-%m-%d %H:%M')"
+            git pull --rebase -q origin main
+            git push
+          fi
 
-      - name: Stessi dati anche per il sito Minimal Mistakes
-        run: cp _data/*.json mm/_data/
-
-      - uses: actions/configure-pages@v5
-      - name: Sito originale
-        uses: actions/jekyll-build-pages@v1
-        with: {source: ./, destination: ./_site}
-      - name: Sito Minimal Mistakes
-        uses: actions/jekyll-build-pages@v1
-        with: {source: ./mm, destination: ./_site_mm}
-      - name: Unisci i due siti (/patina/ e /patina/mm/)
-        run: sudo cp -r _site_mm _site/mm
-      - uses: actions/upload-pages-artifact@v3
-
-  deploy:
+  sito:
     needs: scan
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - id: deployment
-        uses: actions/deploy-pages@v4
+    uses: ./.github/workflows/site.yml
