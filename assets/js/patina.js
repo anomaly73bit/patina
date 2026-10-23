@@ -108,8 +108,10 @@
       <text x="100" y="112" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="10" fill="var(--gilt)">REF. ${esc(m.ref)}</text>
       <text x="100" y="140" text-anchor="middle" font-family="IBM Plex Sans,sans-serif" font-size="8" fill="var(--muted)">foto in arrivo dallo scanner</text></svg>`;
   }
-  function mountGallery(el, id) {
-    const m = byId[id], ph = photosFor(id);
+  function mountGallery(el, id, sel) {
+    const m = byId[id];
+    let ph = photosFor(id);
+    if (sel && sel.img) ph = [{ src: sel.img, link: sel.url, credit: `Foto dall'annuncio su ${sel.src}` }].concat(ph.filter(p => p.src !== sel.img));
     if (!ph.length) { el.innerHTML = `<div class="main">${placeholder(m)}</div>`; return; }
     el.innerHTML = `<div class="main"><img alt="${esc(m.brand + " " + m.name + " " + m.ref)}"><a class="info" href="#">i</a></div>
       ${ph.length > 1 ? `<div class="thumbs">${ph.map((p, i) => `<button type="button" data-i="${i}" aria-label="Foto ${i + 1}"><img src="${esc(p.src)}" alt="" loading="lazy"></button>`).join("")}</div>` : ""}`;
@@ -147,24 +149,35 @@
   }
 
   /* ---------- annunci ---------- */
+  const LIDX = new Map(LIST.map((l, i) => [l, i]));
+  const goBtn = l => l.url ? `<a class="go" href="${esc(l.url)}" target="_blank" rel="noopener">Vai all'annuncio su ${esc(l.src)} ↗</a>` : "";
   function dealHTML(l, hl) {
     const m = byId[l.m], [cls, word] = verdict(l);
     const title = `${esc(m.brand)} ${esc(m.name)} <span class="mono muted" style="font-weight:400">${esc(m.ref)}</span>`;
     const asta = l.type === "Asta";
-    return `<article class="deal${asta ? " is-asta" : ""}" style="${hl && !asta ? "border-color:var(--gilt)" : ""}">
+    return `<article class="deal${asta ? " is-asta" : ""}" style="${hl && !asta ? "border-color:var(--gilt)" : ""}" data-l="${LIDX.get(l)}" tabindex="0" role="button" aria-label="Apri la scheda: ${esc(m.brand + " " + m.name + " " + m.ref)}, ${eur(l.total)}">
       <div class="score ${cls}"><div>${pct(l.disc)}<small>${word}</small></div></div>
-      <div style="min-width:0"><h4>${l.url ? `<a class="title" href="${esc(l.url)}" target="_blank" rel="noopener">${title}</a>` : title}</h4>
+      <div style="min-width:0"><h4>${title}</h4>
         <div class="meta">${isNew(l) ? `<span class="tag new">nuovo</span>` : ""}<span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}</div>
         ${asta ? countdown(l) : ""}
-        ${(l.reasons || []).length ? `<ul class="why">${l.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}</div>
+        ${(l.reasons || []).length ? `<ul class="why">${l.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}
+        ${goBtn(l)}</div>
       <div class="price"><b>${eur(l.total)}</b><small>${l.fee ? `${eur(l.p)} + ${Math.round(l.fee * 100)}% comm.` : "prezzo richiesto"}</small><small>${l.fair_lo ? `valore ${eur(l.fair_lo)}–${Math.round(l.fair_hi).toLocaleString("it-IT")}` : `stima ${eur(mid(m))}`}</small></div>
     </article>`;
   }
 
   /* ---------- scheda (finestra) ---------- */
-  function schedaHTML(m) {
+  function schedaHTML(m, sel) {
     const ls = LIST.filter(l => l.m === m.id).sort((a, b) => b.disc - a.disc);
-    return `<div class="sch-head"><div><div class="eyebrow">${esc(m.brand)} · ref. ${esc(m.ref)}</div><h3 id="schTitle">${esc(m.name)}</h3></div>
+    const [scls, sword] = sel ? verdict(sel) : [];
+    const selBox = sel ? `<div class="sel-listing">
+        <div class="score ${scls}"><div>${pct(sel.disc)}<small>${sword}</small></div></div>
+        <div style="min-width:0"><div class="eyebrow">Annuncio selezionato · ${esc(sel.src)}${sel.cty ? " · " + esc(sel.cty) : ""}</div>
+          <b>${esc(sel.title || "")}</b>
+          <div class="mono">${eur(sel.total)} <span class="muted">· valore ${eur(sel.fair_lo || m.lo)}–${Math.round(sel.fair_hi || m.hi).toLocaleString("it-IT")}</span></div>
+          ${(sel.reasons || []).length ? `<ul class="why">${sel.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}</div>
+        ${goBtn(sel)}</div>` : "";
+    return selBox + `<div class="sch-head"><div><div class="eyebrow">${esc(m.brand)} · ref. ${esc(m.ref)}</div><h3 id="schTitle">${esc(m.name)}</h3></div>
         <button class="close" type="button" aria-label="Chiudi" data-close>×</button></div>
       <div class="gallery" data-gallery></div>
       <div style="display:grid;gap:14px;align-content:start;min-width:0">
@@ -186,10 +199,10 @@
         <a class="btn" href="${pageUrl(m.id)}">Apri la scheda completa</a>
       </div>`;
   }
-  function openScheda(id) {
+  function openScheda(id, sel) {
     const dlg = document.getElementById("scheda"), body = document.getElementById("schBody");
-    body.innerHTML = schedaHTML(byId[id]);
-    mountGallery(body.querySelector("[data-gallery]"), id);
+    body.innerHTML = schedaHTML(byId[id], sel);
+    mountGallery(body.querySelector("[data-gallery]"), id, sel);
     dlg.showModal();
   }
   const dlg = document.getElementById("scheda");
@@ -386,6 +399,16 @@
     document.getElementById("deals").innerHTML = ls.map(l => dealHTML(l, l.m === sel)).join("") || (LIST.length ? `<p class="muted">Nessun annuncio per questo filtro.</p>` : `<p class="empty-note">Lo scanner sta raccogliendo gli annunci attivi. Le occasioni compaiono qui al prossimo aggiornamento.</p>`);
   }
   document.getElementById("sortSel").addEventListener("change", renderDeals);
+  const dealsEl = document.getElementById("deals");
+  const openDeal = e => {
+    if (e.target.closest("a")) return;  // «Vai all'annuncio» apre il sito esterno
+    const card = e.target.closest(".deal[data-l]");
+    if (!card) return;
+    const l = LIST[+card.dataset.l];
+    openScheda(l.m, l);
+  };
+  dealsEl.addEventListener("click", openDeal);
+  dealsEl.addEventListener("keydown", e => { if (e.key === "Enter" && e.target.matches(".deal")) openDeal(e); });
 
   renderModels(); renderDetail(); renderDeals();
   setInterval(renderDeals, 60000); // aggiorna i conti alla rovescia ogni minuto

@@ -103,6 +103,12 @@ def evaluate(listing, model, today=None):
             hits.add(name)
             adj += a
             reasons.append(txt)
+    if {"senza documenti", "set completo"} <= hits:
+        # es. "ohne Box, mit Papieren": l'annuncio dice tutte e due le cose, quindi set parziale
+        for name, _, a_, txt in SIGNALS:
+            if name in ("senza documenti", "set completo"):
+                hits.discard(name); adj -= a_; reasons.remove(txt)
+        reasons.append("set parziale: solo scatola o solo documenti")
     if "difettoso" in hits or "rifatto" in hits:
         conf -= 1
     adj = max(adj, -0.55)  # anche con più difetti insieme un pezzo vintage conserva un valore
