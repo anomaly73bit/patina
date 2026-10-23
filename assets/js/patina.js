@@ -213,31 +213,89 @@
   document.getElementById("stListings").textContent = LIST.length;
   document.getElementById("stDeals").textContent = LIST.filter(isDeal).length;
 
-  (function drawDial() {
+  /* ---------- orologio vintage in apertura: segna l'ora, il contatore a ore 6 è l'indice di mercato ---------- */
+  (function drawWatch() {
     const avg = MODELS.reduce((a, m) => a + m.t, 0) / MODELS.length, T = temp(avg);
-    let h = `<circle cx="150" cy="150" r="140" fill="var(--surface)" stroke="var(--line)" stroke-width="1.5"/><circle cx="150" cy="150" r="126" fill="none" stroke="var(--line)"/>`;
-    for (let i = 0; i <= 60; i++) {
-      const a = (-135 + i * 4.5) * Math.PI / 180, major = i % 10 === 0, r1 = major ? 108 : 116;
-      h += `<line x1="${150 + r1 * Math.sin(a)}" y1="${150 - r1 * Math.cos(a)}" x2="${150 + 124 * Math.sin(a)}" y2="${150 - 124 * Math.cos(a)}" stroke="${major ? "var(--ink)" : "var(--muted)"}" stroke-width="${major ? 2 : 1}"/>`;
-    }
-    [["0", -135], ["25", -67.5], ["50", 0], ["75", 67.5], ["100", 135]].forEach(([t, d]) => {
-      const a = d * Math.PI / 180;
-      h += `<text x="${150 + 92 * Math.sin(a)}" y="${150 - 92 * Math.cos(a) + 4}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="11" fill="var(--muted)">${t}</text>`;
+    const C = 150, CY = 180, P = (r, deg) => [C + r * Math.sin(deg * Math.PI / 180), CY - r * Math.cos(deg * Math.PI / 180)];
+    const f = n => n.toFixed(1);
+    let h = `<defs>
+      <linearGradient id="wSteel" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" style="stop-color:var(--case-a)"/><stop offset=".5" style="stop-color:var(--case-b)"/><stop offset="1" style="stop-color:var(--case-a)"/></linearGradient>
+      <radialGradient id="wDial" cx=".45" cy=".4" r=".7">
+        <stop offset="0" style="stop-color:var(--dial)"/><stop offset=".75" style="stop-color:var(--dial)"/><stop offset="1" style="stop-color:var(--dial-edge)"/></radialGradient>
+      <radialGradient id="wGlass" cx=".35" cy=".25" r=".6">
+        <stop offset="0" style="stop-color:#fff;stop-opacity:.22"/><stop offset="1" style="stop-color:#fff;stop-opacity:0"/></radialGradient>
+    </defs>`;
+    // anse, corona, cassa, lunetta
+    [[-1, -1], [1, -1], [-1, 1], [1, 1]].forEach(([sx, sy]) => {
+      const x = C + sx * 62 - 13, y = sy < 0 ? CY - 150 : CY + 98;
+      h += `<rect x="${x}" y="${y}" width="26" height="52" rx="6" fill="url(#wSteel)" stroke="var(--case-line)" stroke-width="1"/>`;
     });
-    const lbl = T < 40 ? "FREDDO" : T < 60 ? "NEUTRO" : T < 75 ? "TIEPIDO" : "CALDO";
-    h += `<text x="150" y="102" text-anchor="middle" font-family="Italiana,Georgia,serif" font-size="20" fill="var(--ink)">PATINA</text>
-      <text x="150" y="118" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="2" fill="var(--gilt)">INDICE DI MERCATO</text>
-      <text x="150" y="214" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="30" font-weight="500" fill="var(--ink)">${Math.round(T)}</text>
-      <text x="150" y="232" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="9" letter-spacing="2" fill="var(--gilt)">${lbl}</text>
-      <g id="hand" style="transform-origin:150px 150px;transform:rotate(-135deg)"><line x1="150" y1="168" x2="150" y2="44" stroke="var(--gilt)" stroke-width="3" stroke-linecap="round"/></g>
-      <circle cx="150" cy="150" r="7" fill="var(--ink)"/><circle cx="150" cy="150" r="2.5" fill="var(--gilt)"/>`;
-    document.getElementById("dial").innerHTML = h;
-    requestAnimationFrame(() => requestAnimationFrame(() => { document.getElementById("hand").style.transform = `rotate(${-135 + T * 2.7}deg)`; }));
+    h += `<rect x="262" y="${CY - 14}" width="16" height="28" rx="3" fill="url(#wSteel)" stroke="var(--case-line)"/>`;
+    for (let i = 0; i < 6; i++) h += `<line x1="${264 + i * 2.4}" y1="${CY - 12}" x2="${264 + i * 2.4}" y2="${CY + 12}" stroke="var(--case-line)" stroke-width=".8"/>`;
+    h += `<circle cx="${C}" cy="${CY}" r="120" fill="url(#wSteel)" stroke="var(--case-line)" stroke-width="1.2"/>
+      <circle cx="${C}" cy="${CY}" r="110" fill="var(--case-b)" stroke="var(--case-line)"/>
+      <circle cx="${C}" cy="${CY}" r="104" fill="url(#wDial)"/>`;
+    // binario dei minuti
+    h += `<circle cx="${C}" cy="${CY}" r="99" fill="none" stroke="var(--dial-ink)" stroke-width=".6"/><circle cx="${C}" cy="${CY}" r="93" fill="none" stroke="var(--dial-ink)" stroke-width=".6"/>`;
+    for (let i = 0; i < 60; i++) {
+      const [x1, y1] = P(93, i * 6), [x2, y2] = P(99, i * 6);
+      h += `<line x1="${f(x1)}" y1="${f(y1)}" x2="${f(x2)}" y2="${f(y2)}" stroke="var(--dial-ink)" stroke-width="${i % 5 ? .6 : 1.4}"/>`;
+    }
+    // indici al trizio (a ore 6 c'è il contatore)
+    for (let i = 0; i < 12; i++) {
+      if (i === 6) continue;
+      const deg = i * 30, wide = i % 3 === 0;
+      const w = wide ? 7 : 5, len = wide ? 20 : 15;
+      const draw = dx => {
+        const [x, y] = P(84 - len / 2, deg);
+        h += `<rect x="${f(x - w / 2 + dx)}" y="${f(y - len / 2)}" width="${w}" height="${len}" rx="1" fill="var(--lume)" stroke="var(--dial-ink)" stroke-width=".8" transform="rotate(${deg} ${f(x)} ${f(y)})"/>`;
+      };
+      if (i === 0) { draw(-5); draw(5); } else draw(0);
+    }
+    // scritte
+    h += `<text x="${C}" y="${CY - 44}" text-anchor="middle" font-family="Italiana,Didot,Georgia,serif" font-size="21" letter-spacing="2" fill="var(--dial-ink)">PATINA</text>
+      <text x="${C}" y="${CY - 32}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="6" letter-spacing="2.4" fill="var(--dial-ink)">AUTOMATIC · CHRONOMETER</text>`;
+    // contatore a ore 6: indice di mercato 0–100
+    const SX = C, SY = CY + 46, SR = 25;
+    h += `<circle cx="${SX}" cy="${SY}" r="${SR}" fill="var(--dial-edge)" stroke="var(--dial-ink)" stroke-width=".8"/>`;
+    for (let i = 0; i <= 10; i++) {
+      const deg = -135 + i * 27, a = deg * Math.PI / 180, r1 = i % 5 ? SR - 4 : SR - 7;
+      h += `<line x1="${f(SX + r1 * Math.sin(a))}" y1="${f(SY - r1 * Math.cos(a))}" x2="${f(SX + (SR - 1) * Math.sin(a))}" y2="${f(SY - (SR - 1) * Math.cos(a))}" stroke="var(--dial-ink)" stroke-width="${i % 5 ? .6 : 1.1}"/>`;
+    }
+    [["0", -135], ["50", 0], ["100", 135]].forEach(([t, d]) => {
+      const a = d * Math.PI / 180;
+      h += `<text x="${f(SX + (SR - 12) * Math.sin(a))}" y="${f(SY - (SR - 12) * Math.cos(a) + 2.2)}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="5.5" fill="var(--dial-ink)">${t}</text>`;
+    });
+    h += `<text x="${SX}" y="${SY + 13}" text-anchor="middle" font-family="IBM Plex Mono,monospace" font-size="4.6" letter-spacing="1.2" fill="var(--dial-ink)">MERCATO</text>
+      <g transform="rotate(${f(-135 + T * 2.7)} ${SX} ${SY})"><line x1="${SX}" y1="${SY + 4}" x2="${SX}" y2="${SY - SR + 5}" stroke="var(--gilt)" stroke-width="1.6" stroke-linecap="round"/></g>
+      <circle cx="${SX}" cy="${SY}" r="2" fill="var(--dial-ink)"/>`;
+    // lancette (a spada, con trizio) e secondi
+    const sword = (len, w) => `M${C} ${CY + 12} L${C - w / 2} ${CY} L${C - w / 2} ${CY - len + w} L${C} ${CY - len} L${C + w / 2} ${CY - len + w} L${C + w / 2} ${CY} Z`;
+    h += `<g id="wHour"><path d="${sword(56, 8)}" fill="var(--hand)"/><path d="M${C - 2} ${CY - 14} L${C - 2} ${CY - 46} L${C} ${CY - 50} L${C + 2} ${CY - 46} L${C + 2} ${CY - 14} Z" fill="var(--lume)"/></g>
+      <g id="wMin"><path d="${sword(86, 6)}" fill="var(--hand)"/><path d="M${C - 1.4} ${CY - 16} L${C - 1.4} ${CY - 78} L${C} ${CY - 81} L${C + 1.4} ${CY - 78} L${C + 1.4} ${CY - 16} Z" fill="var(--lume)"/></g>
+      <g id="wSec"><line x1="${C}" y1="${CY + 22}" x2="${C}" y2="${CY - 94}" stroke="var(--gilt)" stroke-width="1.1"/><circle cx="${C}" cy="${CY - 70}" r="2.6" fill="none" stroke="var(--gilt)" stroke-width="1"/></g>
+      <circle cx="${C}" cy="${CY}" r="4.5" fill="var(--hand)"/><circle cx="${C}" cy="${CY}" r="1.6" fill="var(--gilt)"/>
+      <circle cx="${C}" cy="${CY}" r="104" fill="url(#wGlass)" pointer-events="none"/>`;
+    const svg = document.getElementById("dial");
+    svg.setAttribute("viewBox", "0 0 300 360");
+    svg.setAttribute("aria-label", `Orologio Patina: indice di mercato ${Math.round(T)} su 100`);
+    svg.innerHTML = h;
+    const hH = svg.querySelector("#wHour"), hM = svg.querySelector("#wMin"), hS = svg.querySelector("#wSec");
+    const tick = () => {
+      const d = new Date(), sec = d.getSeconds(), min = d.getMinutes() + sec / 60, hr = (d.getHours() % 12) + min / 60;
+      hH.setAttribute("transform", `rotate(${f(hr * 30)} ${C} ${CY})`);
+      hM.setAttribute("transform", `rotate(${f(min * 6)} ${C} ${CY})`);
+      hS.setAttribute("transform", `rotate(${sec * 6} ${C} ${CY})`);
+    };
+    tick();
+    setInterval(tick, 1000);
+    const lbl = T < 40 ? "freddo" : T < 60 ? "neutro" : T < 75 ? "tiepido" : "caldo";
     const ups = MODELS.filter(m => m.t > 0).length;
     const hot = [...MODELS].sort((a, b) => b.t - a.t).slice(0, 2).map(m => m.brand).join(" e ");
     const cold = MODELS.filter(m => m.t < 0).map(m => `${m.brand} ${m.name}`);
     document.getElementById("dialCaption").textContent =
-      `Variazione media stimata a 12 mesi: ${avg >= 0 ? "+" : ""}${avg.toFixed(1)}%. ${ups} modelli su ${MODELS.length} in crescita; più vivaci ${hot}${cold.length ? `, in calo ${cold.join(", ")}` : ""}.`;
+      `Il contatore a ore 6 segna l'indice di mercato: ${Math.round(T)} su 100, ${lbl}. Variazione media stimata a 12 mesi ${avg >= 0 ? "+" : ""}${avg.toFixed(1)}%; ${ups} modelli su ${MODELS.length} in crescita, più vivaci ${hot}${cold.length ? `, in calo ${cold.join(", ")}` : ""}.`;
   })();
 
   function chips(id, vals, cur, set) {

@@ -13,7 +13,7 @@
 <nav class="topnav" aria-label="Menu principale">
   <a class="logo" href="{{ '/' | relative_url }}">Patina</a>
   <div class="navlinks">
-    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Termometro</a>
+    <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Mercato</a>
     <a href="{{ '/orologi/' | relative_url }}"{% if page.url contains '/orologi/' %} aria-current="page"{% endif %}>Orologi</a>
     <a href="{{ '/guide/' | relative_url }}"{% if page.url contains '/guide/' or page.layout == 'post' %} aria-current="page"{% endif %}>Guide</a>
   </div>
