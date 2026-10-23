@@ -216,3 +216,8 @@ dialog#scheda::backdrop{background:rgba(10,14,20,.55)}
 /* aggiornamento e annunci nuovi */
 .updated{font:12.5px var(--f-mono);color:var(--muted);margin-top:10px}
 .tag.new{border-color:var(--good);color:var(--good);background:var(--good-bg)}
+
+/* logo */
+.topnav a.logo{display:inline-flex;align-items:center;gap:8px;line-height:1}
+.topnav a.logo .mark{width:34px;height:34px;flex:none}
+.topnav a.logo span{font:1.7rem var(--f-display);letter-spacing:.06em;text-transform:uppercase;color:var(--ink)}

@@ -4,6 +4,11 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>{% if page.title %}{{ page.title }} · {% endif %}{{ site.title }}</title>
+<link rel="icon" type="image/svg+xml" href="{{ '/assets/img/favicon.svg' | relative_url }}">
+<link rel="icon" type="image/png" sizes="32x32" href="{{ '/assets/img/favicon-32.png' | relative_url }}">
+<link rel="apple-touch-icon" href="{{ '/assets/img/apple-touch-icon.png' | relative_url }}">
+<meta name="theme-color" content="#eef0f2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0e141c" media="(prefers-color-scheme: dark)">
 <meta name="description" content="{{ page.description | default: site.description }}">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Italiana&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -11,7 +16,7 @@
 </head>
 <body>
 <nav class="topnav" aria-label="Menu principale">
-  <a class="logo" href="{{ '/' | relative_url }}">Patina</a>
+  <a class="logo" href="{{ '/' | relative_url }}" aria-label="Patina, pagina principale">{% include logo-mark.svg %}<span>Patina</span></a>
   <div class="navlinks">
     <a href="{{ '/' | relative_url }}"{% if page.url == '/' %} aria-current="page"{% endif %}>Mercato</a>
     <a href="{{ '/orologi/' | relative_url }}"{% if page.url contains '/orologi/' %} aria-current="page"{% endif %}>Orologi</a>

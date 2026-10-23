@@ -1,0 +1,10 @@
+<svg class="mark" viewBox="0 0 64 64" aria-hidden="true"><style>.mark .ink{fill:var(--ink)}.mark .dial{fill:var(--dial);stroke:var(--ink);stroke-width:4.5}.mark .gilt{fill:var(--gilt)}.mark .hand{stroke:var(--ink);stroke-linecap:round}.mark .t{stroke:var(--ink);stroke-width:1.6;stroke-linecap:round}</style>
+  <rect x="9" y="8" width="8" height="50" rx="2" class="ink"/>
+  <rect x="54" y="23" width="5" height="8" rx="1.2" class="ink"/>
+  <circle cx="36" cy="27" r="18" class="dial"/>
+  <rect x="34.4" y="10.5" width="3.2" height="6" rx=".8" class="gilt"/>
+  <line x1="49.5" y1="27.0" x2="52.0" y2="27.0" class="t"/><line x1="36.0" y1="40.5" x2="36.0" y2="43.0" class="t"/><line x1="22.5" y1="27.0" x2="20.0" y2="27.0" class="t"/>
+  <line x1="36" y1="27" x2="27.8" y2="22.2" class="hand" stroke-width="3.2"/>
+  <line x1="36" y1="27" x2="47.7" y2="20.2" class="hand" stroke-width="2.4"/>
+  <circle cx="36" cy="27" r="2.2" class="gilt"/>
+</svg>
