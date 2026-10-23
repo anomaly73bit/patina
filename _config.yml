@@ -1,8 +1,9 @@
 title: Patina
 description: Il mercato degli orologi di lusso vintage in Europa
 lang: it
-# Se il repository si chiama "patina" lascia così; se lo pubblichi su un dominio tuo metti baseurl: ""
-baseurl: /patina
+# Pubblicato su dominio proprio: baseurl vuoto
+baseurl: ""
+url: "https://patina.pacificit.solutions"
 
 collections:
   orologi:

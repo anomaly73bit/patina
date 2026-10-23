@@ -21,7 +21,7 @@ Termometro del mercato degli orologi di lusso vintage in Europa. Per ogni refere
 2. **Settings → Pages → Source: GitHub Actions.**
 3. **Settings → Secrets and variables → Actions**: aggiungi `EBAY_CLIENT_ID` e `EBAY_CLIENT_SECRET` (app gratuita su developer.ebay.com, chiavi *Production*).
 4. **Actions → Scanner e sito → Run workflow**, spunta «Aggiorna anche le foto».
-5. Il sito è su `https://<tuo-utente>.github.io/patina/`.
+5. Il sito è su `https://patina.pacificit.solutions/`.
 
 Lo scanner gira da solo ogni 3 ore. Le foto si aggiornano ogni lunedì.
 
