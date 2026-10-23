@@ -11,6 +11,7 @@ import robots
 from common import load, save, score
 from evaluate import evaluate
 from memory import save_mem
+from market import calibrate
 
 SOURCES = [ebay, robots]  # aggiungi qui i moduli di nuove fonti: fetch(models) -> list, oppure None se la fonte è disattivata
 MAX_STALE = dt.timedelta(hours=24)
@@ -72,7 +73,7 @@ def main():
             l["first"] = first_seen.get(l.get("url")) or l["seen"]
             src_info = fees.get(l["src"], {"type": "Marketplace", "fee": 0})
             l["type"] = "Asta" if l.get("auction") else src_info["type"]
-            items.append(evaluate(score(l, by_id[l["m"]], src_info["fee"]), by_id[l["m"]]))
+            items.append(score(l, by_id[l["m"]], src_info["fee"]))
         print(f"{name}: {len(found)} annunci attivi")
 
     if not any_real:
@@ -87,6 +88,12 @@ def main():
         seen |= keys
         listings.append(l)
 
+    # stime corrette con i prezzi reali di questo giro, poi valutazione di ogni annuncio
+    cal = {m["id"]: m for m in calibrate(models, listings)}
+    for l in listings:
+        score(l, cal[l["m"]], fees.get(l["src"], {"fee": 0})["fee"])
+        evaluate(l, cal[l["m"]])
+
     order = {"occasione": 0, "da verificare": 1, "prezzo giusto": 2, "sospetto": 3, "caro": 4}
     listings.sort(key=lambda l: (order.get(l.get("verdict"), 5), -l["disc"]))
     save_mem(listings)
@@ -96,7 +103,7 @@ def main():
     save("listings.json", {
         "updated": t.strftime("%Y-%m-%d %H:%M UTC"),
         "example": False,
-        "items": listings[:400],
+        "items": listings[:1500],
     })
     print(f"Salvati {len(listings)} annunci attivi")
 

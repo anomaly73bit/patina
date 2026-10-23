@@ -437,7 +437,8 @@
     "lo": 2600,
     "hi": 4200
    }
-  ]
+  ],
+  "exclude": "\\b(q)?90[0-9]{2}\\d{3}\\b|2018|2019|2020|2021|2022|2023|2024|2025|restgarantie"
  },
  {
   "id": "rolex-6263",
@@ -799,7 +800,8 @@
    "camaro"
   ],
   "query": "Heuer Camaro",
-  "note": "Cassa a cuscino, nome preso dall'auto Chevrolet. Ancora sottovalutato rispetto al Carrera."
+  "note": "Cassa a cuscino, nome preso dall'auto Chevrolet. Ancora sottovalutato rispetto al Carrera.",
+  "exclude": "\\bsinn\\b"
  },
  {
   "id": "heuer-110313",
@@ -1106,6 +1108,7 @@
    "sub300"
   ],
   "query": "Doxa Sub 300",
-  "note": "Il quadrante arancione da sub con lunetta per la decompressione."
+  "note": "Il quadrante arancione da sub con lunetta per la decompressione.",
+  "exclude": "840\\.|821\\.|803\\.|791\\.|1200t|\\b(19[89]\\d|20[0-2]\\d)\\b|\\bneu\\b|\\bnew\\b|aquamarine|caribbean|whitepearl|searambler|divingstar|sharkhunter|carbon|50th|cosc|restgarantie"
  }
 ]

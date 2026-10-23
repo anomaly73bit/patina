@@ -31,6 +31,7 @@ window.PATINA = {
   sources: {{ site.data.sources | jsonify }},
   listings: {{ site.data.listings | jsonify }},
   photos: {{ site.data.photos | jsonify }},
+  market: {{ site.data.market | jsonify }},
   posts: [{% for p in site.posts %}{"t": {{ p.title | jsonify }}, "u": {{ p.url | relative_url | jsonify }}, "e": {{ p.excerpt | strip_html | strip_newlines | jsonify }}, "c": {{ p.content | strip_html | strip_newlines | truncatewords: 400 | jsonify }}}{% unless forloop.last %},{% endunless %}{% endfor %}]
 };
 </script>

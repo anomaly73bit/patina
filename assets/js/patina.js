@@ -45,7 +45,9 @@
 
 (function () {
   const P = window.PATINA;
-  const MODELS = P.models, SRC = P.sources, PHOTOS = P.photos || {};
+  const MODELS = P.models, SRC = P.sources, PHOTOS = P.photos || {}, MKT = P.market || {};
+  // stime corrette dal robot con i prezzi reali (scanner/market.py)
+  MODELS.forEach(m => { const k = MKT[m.id]; if (k) Object.assign(m, { lo: k.lo, hi: k.hi, t: k.t, ask: k }); });
   const byId = Object.fromEntries(MODELS.map(m => [m.id, m]));
   const now = Date.now();
   // annunci venduti o aste già chiuse spariscono subito, anche tra un giro dello scanner e l'altro
@@ -174,6 +176,7 @@
           <dt>Calibro</dt><dd>${esc(m.cal)}</dd>
           <dt>Diametro · cassa</dt><dd>${m.mm} mm · ${esc(m.case)}</dd>
           <dt>Liquidità</dt><dd>${esc(m.liq)}</dd>
+          ${m.ask ? `<dt>Prezzi richiesti ora</dt><dd>mediana ${eur(m.ask.median)} · ${m.ask.n} annunci</dd>` : ""}
         </dl>
         ${spark(m)}
         <div class="mini-deals">${ls.slice(0, 4).map(l => {
@@ -351,6 +354,7 @@
         <dt>Valore centrale</dt><dd>${eur(mid(m))}</dd>
         <dt>Variazione 12 mesi</dt><dd class="${trendCls(m.t)}">${m.t > 0 ? "+" : ""}${m.t}%</dd>
         <dt>Annunci trovati</dt><dd>${n}</dd>
+        ${m.ask ? `<dt>Prezzi richiesti</dt><dd>${eur(m.ask.p25)} – ${Math.round(m.ask.p75).toLocaleString("it-IT")}</dd>` : ""}
       </dl>
       <button class="btn" type="button" id="openSel" style="border:0;cursor:pointer">Foto e scheda</button>`;
     document.getElementById("openSel").onclick = () => openScheda(sel);

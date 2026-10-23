@@ -1,7 +1,7 @@
 ---
 layout: default
 ---
-{% assign m = site.data.models | where: "id", page.model_id | first %}
+{% assign m = site.data.models | where: "id", page.model_id | first %}{% assign k = site.data.market[page.model_id] %}
 <main class="page-model">
   <div class="sch" id="modelPage" data-id="{{ m.id }}" style="padding:0">
     <div class="sch-head">
@@ -14,7 +14,8 @@ layout: default
     <div style="display:grid;gap:16px;align-content:start;min-width:0">
       <p>{{ m.note }}</p>
       <dl class="kv">
-        <dt>Stima Patina</dt><dd>€ {{ m.lo }} – € {{ m.hi }}</dd>
+        <dt>Stima Patina</dt><dd>€ {% if k %}{{ k.lo }} – € {{ k.hi }}{% else %}{{ m.lo }} – € {{ m.hi }}{% endif %}</dd>
+        {% if k %}<dt>Prezzi richiesti ora</dt><dd>mediana € {{ k.median }} · {{ k.n }} annunci</dd>{% endif %}
         <dt>Variazione 12 mesi</dt><dd>{% if m.t > 0 %}+{% endif %}{{ m.t }}%</dd>
         <dt>Produzione</dt><dd>{{ m.years }}</dd>
         <dt>Calibro</dt><dd>{{ m.cal }}</dd>

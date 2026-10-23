@@ -10,13 +10,13 @@ description: "Le referenze vintage seguite da Patina, con stima di valore e anda
   <p class="lead" style="margin-top:8px">Ogni scheda riporta la stima Patina, il calibro, le misure e gli annunci attivi trovati dallo scanner.</p>
   <div class="watch-grid">
   {% for m in site.data.models %}
-    {% assign ph = site.data.photos[m.id] | first %}
+    {% assign ph = site.data.photos[m.id] | first %}{% assign k = site.data.market[m.id] %}
     <a class="watch-card" href="{{ '/orologi/' | append: m.id | append: '/' | relative_url }}">
       <div class="ph">{% if ph %}<img src="{{ ph.src }}" alt="{{ m.brand }} {{ m.name }} {{ m.ref }}" loading="lazy">{% else %}<span class="muted mono">ref. {{ m.ref }}</span>{% endif %}</div>
       <div class="tx">
         <small>{{ m.brand }} · ref. {{ m.ref }}</small>
         <b>{{ m.name }}</b>
-        <span>€ {{ m.lo }} – {{ m.hi }} · <span class="{% if m.t > 0 %}up{% elsif m.t < 0 %}down{% else %}flat{% endif %}">{% if m.t > 0 %}+{% endif %}{{ m.t }}%</span></span>
+        <span>€ {% if k %}{{ k.lo }} – {{ k.hi }}{% else %}{{ m.lo }} – {{ m.hi }}{% endif %} · <span class="{% if m.t > 0 %}up{% elsif m.t < 0 %}down{% else %}flat{% endif %}">{% if m.t > 0 %}+{% endif %}{{ m.t }}%</span></span>
       </div>
     </a>
   {% endfor %}
