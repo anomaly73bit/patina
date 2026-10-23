@@ -8,7 +8,7 @@ title_separator: "·"
 subtitle: Il termometro del vintage
 description: Il termometro del mercato degli orologi di lusso vintage in Europa
 locale: it-IT
-baseurl: /patina/mm
+baseurl: /mm
 repository: anomaly73bit/patina
 search: true
 search_full_content: true
