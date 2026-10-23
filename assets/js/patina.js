@@ -81,6 +81,7 @@
     return { text, when, urgent: ms < 864e5 };
   }
   const countdown = l => { const e = endInfo(l); return e ? `<span class="countdown${e.urgent ? " urgent" : ""}">⏱ ${e.text}${e.when ? ` · ${e.when}` : ""}</span>` : ""; };
+  const isNew = l => l.first && Date.now() - Date.parse(l.first) < 864e5;
   const pageUrl = id => P.base + "orologi/" + id + "/";
 
   /* ---------- foto ---------- */
@@ -151,7 +152,7 @@
     return `<article class="deal${asta ? " is-asta" : ""}" style="${hl && !asta ? "border-color:var(--gilt)" : ""}">
       <div class="score ${cls}"><div>${pct(l.disc)}<small>${word}</small></div></div>
       <div style="min-width:0"><h4>${l.url ? `<a class="title" href="${esc(l.url)}" target="_blank" rel="noopener">${title}</a>` : title}</h4>
-        <div class="meta"><span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}</div>
+        <div class="meta">${isNew(l) ? `<span class="tag new">nuovo</span>` : ""}<span class="tag ${l.type === "Asta" ? "asta" : ""}">${esc(l.type)}</span><span>${esc(l.src)}</span>${l.cty ? `<span>${esc(l.cty)}</span>` : ""}${l.cond ? `<span>${esc(l.cond)}</span>` : ""}</div>
         ${asta ? countdown(l) : ""}
         ${(l.reasons || []).length ? `<ul class="why">${l.reasons.map(r => `<li>${esc(r)}</li>`).join("")}</ul>` : ""}</div>
       <div class="price"><b>${eur(l.total)}</b><small>${l.fee ? `${eur(l.p)} + ${Math.round(l.fee * 100)}% comm.` : "prezzo richiesto"}</small><small>${l.fair_lo ? `valore ${eur(l.fair_lo)}–${Math.round(l.fair_hi).toLocaleString("it-IT")}` : `stima ${eur(mid(m))}`}</small></div>
@@ -212,6 +213,15 @@
   document.getElementById("stModels").textContent = MODELS.length;
   document.getElementById("stListings").textContent = LIST.length;
   document.getElementById("stDeals").textContent = LIST.filter(isDeal).length;
+  document.getElementById("stNew").textContent = LIST.filter(isNew).length;
+  (function () {
+    const u = P.listings.updated && Date.parse(P.listings.updated.replace(" UTC", "Z").replace(" ", "T"));
+    if (!u) return;
+    const d = new Date(u), today = new Date(), yest = new Date(Date.now() - 864e5);
+    const day = d.toDateString() === today.toDateString() ? "oggi" : d.toDateString() === yest.toDateString() ? "ieri" : d.toLocaleDateString("it-IT");
+    document.getElementById("stUpd").textContent =
+      `Scanner aggiornato ${day} alle ${d.toLocaleTimeString("it-IT", { hour: "2-digit", minute: "2-digit" })} · ${new Set(LIST.map(l => l.src)).size} siti in ${new Set(LIST.map(l => (l.cty || "").slice(0, 2)).filter(Boolean)).size} paesi`;
+  })();
 
   /* ---------- orologio vintage in apertura: segna l'ora, il contatore a ore 6 è l'indice di mercato ---------- */
   (function drawWatch() {

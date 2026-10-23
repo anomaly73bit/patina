@@ -40,6 +40,8 @@ def main():
     old = load("listings.json", {"items": [], "example": True})
     old_items = [] if old.get("example") else old.get("items", [])
 
+    # quando abbiamo visto ogni annuncio per la prima volta (per «nuovi nelle ultime 24 ore»)
+    first_seen = {l.get("url"): l.get("first") or "2026-10-20T00:00:00+00:00" for l in old_items}
     items, any_real = [], False
     for src in SOURCES:
         name = src.__name__
@@ -67,6 +69,7 @@ def main():
         any_real = True
         for l in found:
             l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
+            l["first"] = first_seen.get(l.get("url")) or l["seen"]
             src_info = fees.get(l["src"], {"type": "Marketplace", "fee": 0})
             l["type"] = "Asta" if l.get("auction") else src_info["type"]
             items.append(evaluate(score(l, by_id[l["m"]], src_info["fee"]), by_id[l["m"]]))

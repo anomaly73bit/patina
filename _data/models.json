@@ -438,5 +438,674 @@
     "hi": 4200
    }
   ]
+ },
+ {
+  "id": "rolex-6263",
+  "brand": "Rolex",
+  "name": "Daytona",
+  "ref": "6263",
+  "years": "1970–1987",
+  "lo": 95000,
+  "hi": 140000,
+  "t": -2,
+  "liq": "Media",
+  "cal": "727",
+  "mm": 37,
+  "case": "Acciaio",
+  "match": [
+   "6263",
+   "6265"
+  ],
+  "query": "Rolex Daytona 6263",
+  "note": "Cronografo a carica manuale con pulsanti a vite. Il quadrante «Paul Newman» vale due o tre volte di più.",
+  "variants": [
+   {
+    "name": "quadrante Paul Newman",
+    "kw": "paul newman|\\bpn\\b|exotic",
+    "lo": 200000,
+    "hi": 350000
+   }
+  ]
+ },
+ {
+  "id": "rolex-5512",
+  "brand": "Rolex",
+  "name": "Submariner",
+  "ref": "5512",
+  "years": "1959–1978",
+  "lo": 18000,
+  "hi": 28000,
+  "t": 3,
+  "liq": "Media",
+  "cal": "1520 / 1530 / 1560",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "5512"
+  ],
+  "query": "Rolex Submariner 5512",
+  "note": "Il Submariner certificato cronometro, prodotto in numeri più bassi del 5513.",
+  "variants": [
+   {
+    "name": "quadrante gilt",
+    "kw": "\\bgilt\\b",
+    "lo": 30000,
+    "hi": 45000
+   }
+  ]
+ },
+ {
+  "id": "rolex-1655",
+  "brand": "Rolex",
+  "name": "Explorer II «Freccione»",
+  "ref": "1655",
+  "years": "1971–1985",
+  "lo": 18000,
+  "hi": 26000,
+  "t": 4,
+  "liq": "Media",
+  "cal": "1575 GMT",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "1655",
+   "freccione"
+  ],
+  "query": "Rolex Explorer II 1655",
+  "note": "La grande lancetta arancione delle 24 ore gli ha dato il soprannome. Le prime serie «Rail dial» valgono di più."
+ },
+ {
+  "id": "rolex-16610",
+  "brand": "Rolex",
+  "name": "Submariner Date",
+  "ref": "16610",
+  "years": "1988–2010",
+  "lo": 9000,
+  "hi": 12000,
+  "t": 2,
+  "liq": "Alta",
+  "cal": "3135",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "16610"
+  ],
+  "query": "Rolex Submariner 16610",
+  "note": "Il Submariner con data neo-vintage. Le ultime serie «LV» con lunetta verde sono un modello a parte (16610LV)."
+ },
+ {
+  "id": "rolex-16750",
+  "brand": "Rolex",
+  "name": "GMT-Master",
+  "ref": "16750",
+  "years": "1981–1988",
+  "lo": 12000,
+  "hi": 16000,
+  "t": 3,
+  "liq": "Alta",
+  "cal": "3075",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "16750"
+  ],
+  "query": "Rolex GMT-Master 16750",
+  "note": "Primo GMT con data a scatto rapido. Quadranti opachi «matte» valgono di più di quelli lucidi."
+ },
+ {
+  "id": "rolex-16700",
+  "brand": "Rolex",
+  "name": "GMT-Master",
+  "ref": "16700",
+  "years": "1988–1999",
+  "lo": 11000,
+  "hi": 14500,
+  "t": 2,
+  "liq": "Alta",
+  "cal": "3175",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "16700"
+  ],
+  "query": "Rolex GMT-Master 16700",
+  "note": "Ultimo GMT-Master «semplice», con trizio fino al 1998."
+ },
+ {
+  "id": "rolex-14270",
+  "brand": "Rolex",
+  "name": "Explorer",
+  "ref": "14270",
+  "years": "1989–2001",
+  "lo": 6500,
+  "hi": 8500,
+  "t": 3,
+  "liq": "Alta",
+  "cal": "3000",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "14270"
+  ],
+  "query": "Rolex Explorer 14270",
+  "note": "Explorer con vetro zaffiro e indici in oro bianco. Le serie «Blackout» dei primi anni sono più ricercate."
+ },
+ {
+  "id": "rolex-1500",
+  "brand": "Rolex",
+  "name": "Oyster Perpetual Date",
+  "ref": "1500",
+  "years": "1962–1977",
+  "lo": 4000,
+  "hi": 5800,
+  "t": 1,
+  "liq": "Alta",
+  "cal": "1570",
+  "mm": 34,
+  "case": "Acciaio",
+  "match": [
+   "1500"
+  ],
+  "query": "Rolex Oyster Perpetual Date 1500",
+  "note": "Il Rolex automatico con data più accessibile, cassa da 34 mm."
+ },
+ {
+  "id": "rolex-16014",
+  "brand": "Rolex",
+  "name": "Datejust",
+  "ref": "16014",
+  "years": "1977–1988",
+  "lo": 4800,
+  "hi": 6500,
+  "t": 1,
+  "liq": "Alta",
+  "cal": "3035",
+  "mm": 36,
+  "case": "Acciaio e oro bianco",
+  "match": [
+   "16014"
+  ],
+  "query": "Rolex Datejust 16014",
+  "note": "Primo Datejust con data a scatto rapido, vetro zaffiro."
+ },
+ {
+  "id": "omega-2998",
+  "brand": "Omega",
+  "name": "Speedmaster",
+  "ref": "2998",
+  "years": "1959–1962",
+  "lo": 25000,
+  "hi": 45000,
+  "t": 5,
+  "liq": "Bassa",
+  "cal": "321",
+  "mm": 39,
+  "case": "Acciaio",
+  "match": [
+   "2998",
+   "ck2998",
+   "ck 2998"
+  ],
+  "query": "Omega Speedmaster 2998",
+  "note": "Il secondo Speedmaster, con lancette alpha e lunetta in alluminio. Molti pezzi hanno parti di servizio."
+ },
+ {
+  "id": "omega-166024",
+  "brand": "Omega",
+  "name": "Seamaster 300",
+  "ref": "166.024",
+  "years": "1970–1972",
+  "lo": 4500,
+  "hi": 6500,
+  "t": 2,
+  "liq": "Media",
+  "cal": "565",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "166.024",
+   "166024",
+   "166 024"
+  ],
+  "query": "Omega Seamaster 300 166.024",
+  "note": "Versione con data del Seamaster 300 anni '60."
+ },
+ {
+  "id": "omega-166077",
+  "brand": "Omega",
+  "name": "Seamaster 600 «Ploprof»",
+  "ref": "166.077",
+  "years": "1970–1979",
+  "lo": 6500,
+  "hi": 9500,
+  "t": 4,
+  "liq": "Media",
+  "cal": "1002",
+  "mm": 55,
+  "case": "Acciaio",
+  "match": [
+   "166.077",
+   "166077",
+   "ploprof"
+  ],
+  "query": "Omega Ploprof 166.077",
+  "note": "Orologio da saturazione professionale, cassa monoblocco enorme e lunetta con pulsante di sblocco."
+ },
+ {
+  "id": "omega-145026",
+  "brand": "Omega",
+  "name": "Flightmaster",
+  "ref": "145.026",
+  "years": "1969–1977",
+  "lo": 3500,
+  "hi": 5500,
+  "t": 3,
+  "liq": "Media",
+  "cal": "910 / 911",
+  "mm": 43,
+  "case": "Acciaio",
+  "match": [
+   "145.026",
+   "145026",
+   "flightmaster"
+  ],
+  "query": "Omega Flightmaster 145.026",
+  "note": "Cronografo da pilota con secondo fuso e cassa asimmetrica."
+ },
+ {
+  "id": "omega-145014",
+  "brand": "Omega",
+  "name": "Speedmaster Mark II",
+  "ref": "145.014",
+  "years": "1969–1977",
+  "lo": 3000,
+  "hi": 4500,
+  "t": 4,
+  "liq": "Media",
+  "cal": "861",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "145.014",
+   "145014",
+   "mark ii",
+   "mark 2"
+  ],
+  "query": "Omega Speedmaster Mark II",
+  "note": "Cassa a botte e vetro minerale: lo Speedmaster anni '70 più facile da trovare."
+ },
+ {
+  "id": "heuer-1133",
+  "brand": "Heuer",
+  "name": "Monaco",
+  "ref": "1133",
+  "years": "1969–1975",
+  "lo": 14000,
+  "hi": 22000,
+  "t": 5,
+  "liq": "Media",
+  "cal": "11 Chronomatic",
+  "mm": 39,
+  "case": "Acciaio",
+  "match": [
+   "1133"
+  ],
+  "query": "Heuer Monaco 1133",
+  "note": "La cassa quadrata di Steve McQueen in «Le Mans». Il quadrante blu è il più cercato.",
+  "variants": [
+   {
+    "name": "quadrante grigio «Dark Lord»",
+    "kw": "dark lord|1133b|pvd",
+    "lo": 28000,
+    "hi": 45000
+   }
+  ]
+ },
+ {
+  "id": "heuer-2446",
+  "brand": "Heuer",
+  "name": "Autavia",
+  "ref": "2446",
+  "years": "1962–1972",
+  "lo": 15000,
+  "hi": 25000,
+  "t": 5,
+  "liq": "Bassa",
+  "cal": "Valjoux 72",
+  "mm": 39,
+  "case": "Acciaio",
+  "match": [
+   "2446"
+  ],
+  "query": "Heuer Autavia 2446",
+  "note": "Autavia manuale a tre contatori, prima del passaggio all'automatico."
+ },
+ {
+  "id": "heuer-7220",
+  "brand": "Heuer",
+  "name": "Camaro",
+  "ref": "7220",
+  "years": "1968–1972",
+  "lo": 6000,
+  "hi": 9500,
+  "t": 4,
+  "liq": "Bassa",
+  "cal": "Valjoux 7730 / 7736",
+  "mm": 37,
+  "case": "Acciaio",
+  "match": [
+   "7220",
+   "7228",
+   "camaro"
+  ],
+  "query": "Heuer Camaro",
+  "note": "Cassa a cuscino, nome preso dall'auto Chevrolet. Ancora sottovalutato rispetto al Carrera."
+ },
+ {
+  "id": "heuer-110313",
+  "brand": "Heuer",
+  "name": "Silverstone",
+  "ref": "110.313",
+  "years": "1974–1978",
+  "lo": 6500,
+  "hi": 9500,
+  "t": 4,
+  "liq": "Bassa",
+  "cal": "12 Chronomatic",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "110.313",
+   "110313",
+   "silverstone"
+  ],
+  "query": "Heuer Silverstone",
+  "note": "Cassa larga anni '70 e quadranti colorati (blu, rosso, marrone)."
+ },
+ {
+  "id": "longines-13zn",
+  "brand": "Longines",
+  "name": "Cronografo 13ZN",
+  "ref": "13ZN",
+  "years": "1936–1962",
+  "lo": 9000,
+  "hi": 18000,
+  "t": 4,
+  "liq": "Bassa",
+  "cal": "13ZN",
+  "mm": 37,
+  "case": "Acciaio",
+  "match": [
+   "13zn",
+   "13 zn"
+  ],
+  "query": "Longines 13ZN",
+  "note": "Uno dei calibri cronografo più belli mai prodotti. Il valore dipende molto dal quadrante e dalla configurazione."
+ },
+ {
+  "id": "longines-7042",
+  "brand": "Longines",
+  "name": "Legend Diver",
+  "ref": "7042",
+  "years": "1959–1965",
+  "lo": 8000,
+  "hi": 13000,
+  "t": 3,
+  "liq": "Bassa",
+  "cal": "290",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "7042",
+   "legend diver vintage"
+  ],
+  "query": "Longines Diver 7042",
+  "note": "Il subacqueo con lunetta interna, padre del Legend Diver moderno."
+ },
+ {
+  "id": "iwc-666",
+  "brand": "IWC",
+  "name": "Ingenieur",
+  "ref": "666",
+  "years": "1955–1966",
+  "lo": 3500,
+  "hi": 5500,
+  "t": 2,
+  "liq": "Media",
+  "cal": "852 / 8521",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "666",
+   "ingenieur 666"
+  ],
+  "query": "IWC Ingenieur 666",
+  "note": "Primo Ingenieur con gabbia antimagnetica in ferro dolce."
+ },
+ {
+  "id": "iwc-markxi",
+  "brand": "IWC",
+  "name": "Mark XI",
+  "ref": "6B/346",
+  "years": "1948–1984",
+  "lo": 7000,
+  "hi": 11000,
+  "t": 3,
+  "liq": "Bassa",
+  "cal": "89",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "mark xi",
+   "mark 11",
+   "6b/346",
+   "6b 346"
+  ],
+  "query": "IWC Mark XI",
+  "note": "L'orologio da navigazione della RAF. Gli esemplari militari con fondello inciso valgono di più."
+ },
+ {
+  "id": "iwc-811",
+  "brand": "IWC",
+  "name": "Yacht Club",
+  "ref": "811",
+  "years": "1967–1980",
+  "lo": 2500,
+  "hi": 4000,
+  "t": 2,
+  "liq": "Media",
+  "cal": "8541",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "yacht club",
+   "811a",
+   "811 a",
+   "811ad"
+  ],
+  "query": "IWC Yacht Club",
+  "note": "Automatico robusto con calibro Pellaton, ancora a buon prezzo."
+ },
+ {
+  "id": "patek-3700",
+  "brand": "Patek Philippe",
+  "name": "Nautilus",
+  "ref": "3700",
+  "years": "1976–1990",
+  "lo": 100000,
+  "hi": 150000,
+  "t": -4,
+  "liq": "Bassa",
+  "cal": "28-255 C",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "3700"
+  ],
+  "query": "Patek Philippe Nautilus 3700",
+  "note": "Il primo Nautilus disegnato da Genta. Mercato sceso dal picco del 2022."
+ },
+ {
+  "id": "ap-14790",
+  "brand": "Audemars Piguet",
+  "name": "Royal Oak",
+  "ref": "14790",
+  "years": "1992–2005",
+  "lo": 18000,
+  "hi": 26000,
+  "t": -2,
+  "liq": "Media",
+  "cal": "2225",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "14790"
+  ],
+  "query": "Audemars Piguet Royal Oak 14790",
+  "note": "Royal Oak da 36 mm con lancette centrali. Quadranti «tapisserie» e colori rari fuori fascia."
+ },
+ {
+  "id": "tudor-9401",
+  "brand": "Tudor",
+  "name": "Submariner «Snowflake»",
+  "ref": "9401",
+  "years": "1975–1983",
+  "lo": 14000,
+  "hi": 22000,
+  "t": 4,
+  "liq": "Bassa",
+  "cal": "2784",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "9401",
+   "94010",
+   "snowflake"
+  ],
+  "query": "Tudor Submariner Snowflake",
+  "note": "Le lancette quadrate «snowflake» sono la firma Tudor. Quadranti blu più rari dei neri."
+ },
+ {
+  "id": "tudor-7031",
+  "brand": "Tudor",
+  "name": "Oysterdate «Monte Carlo»",
+  "ref": "7031",
+  "years": "1970–1977",
+  "lo": 9000,
+  "hi": 15000,
+  "t": 5,
+  "liq": "Bassa",
+  "cal": "Valjoux 7734",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "7031",
+   "7032",
+   "7033",
+   "monte carlo",
+   "homeplate"
+  ],
+  "query": "Tudor Monte Carlo",
+  "note": "Cronografo con quadrante a «casa base» ispirato alla roulette."
+ },
+ {
+  "id": "zenith-a384",
+  "brand": "Zenith",
+  "name": "El Primero",
+  "ref": "A384",
+  "years": "1969–1971",
+  "lo": 9000,
+  "hi": 13000,
+  "t": 5,
+  "liq": "Bassa",
+  "cal": "3019 PHC",
+  "mm": 37,
+  "case": "Acciaio",
+  "match": [
+   "a384"
+  ],
+  "query": "Zenith El Primero A384",
+  "note": "Cassa a cuscino con bracciale «Gay Frères». Il quadrante Panda è quello ristampato nel 2019."
+ },
+ {
+  "id": "ug-polerouter",
+  "brand": "Universal Genève",
+  "name": "Polerouter",
+  "ref": "20217",
+  "years": "1954–1969",
+  "lo": 3500,
+  "hi": 6000,
+  "t": 6,
+  "liq": "Media",
+  "cal": "215 / 218 microrotore",
+  "mm": 35,
+  "case": "Acciaio",
+  "match": [
+   "polerouter",
+   "polarouter"
+  ],
+  "query": "Universal Geneve Polerouter",
+  "note": "Disegnato da Gérald Genta per i voli polari SAS. Microrotore e quadranti sottili."
+ },
+ {
+  "id": "breitling-765",
+  "brand": "Breitling",
+  "name": "Co-Pilot",
+  "ref": "765 CP",
+  "years": "1960–1970",
+  "lo": 6500,
+  "hi": 10000,
+  "t": 3,
+  "liq": "Bassa",
+  "cal": "Venus 178",
+  "mm": 40,
+  "case": "Acciaio",
+  "match": [
+   "765",
+   "co-pilot",
+   "copilot"
+  ],
+  "query": "Breitling Co-Pilot 765",
+  "note": "Cronografo con lunetta girevole, usato anche dall'aviazione militare."
+ },
+ {
+  "id": "breitling-toptime",
+  "brand": "Breitling",
+  "name": "Top Time",
+  "ref": "2002",
+  "years": "1964–1975",
+  "lo": 3500,
+  "hi": 6500,
+  "t": 3,
+  "liq": "Media",
+  "cal": "Venus 188",
+  "mm": 36,
+  "case": "Acciaio",
+  "match": [
+   "top time",
+   "toptime"
+  ],
+  "query": "Breitling Top Time",
+  "note": "Il cronografo pensato per i giovani professionisti degli anni '60. Usato da James Bond in «Thunderball» (versione modificata)."
+ },
+ {
+  "id": "doxa-sub300",
+  "brand": "Doxa",
+  "name": "Sub 300",
+  "ref": "Sub 300T",
+  "years": "1967–1978",
+  "lo": 3500,
+  "hi": 6000,
+  "t": 3,
+  "liq": "Media",
+  "cal": "ETA 2783",
+  "mm": 42,
+  "case": "Acciaio",
+  "match": [
+   "sub 300",
+   "sub300"
+  ],
+  "query": "Doxa Sub 300",
+  "note": "Il quadrante arancione da sub con lunetta per la decompressione."
  }
 ]
