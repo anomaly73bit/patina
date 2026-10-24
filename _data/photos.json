@@ -36,10 +36,10 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Rolex_Submariner_watch_16613.JPG/960px-Rolex_Submariner_watch_16613.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_watch_16613.JPG",
-   "author": "User:Eternalsleeper",
-   "license": "Public domain",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Rolex_Submariner_Professional.JPG/960px-Rolex_Submariner_Professional.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_Professional.JPG",
+   "author": "Dr.K.",
+   "license": "CC BY-SA 3.0",
    "exact": false
   }
  ],
@@ -154,17 +154,17 @@
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rolex_Datejust_Terminology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_Terminology.png",
-   "author": "StuivertjeWisselen",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Rolex_Datejust_1603.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
    "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_1603.jpg",
    "author": "hypo.physe",
    "license": "CC BY-SA 2.0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rolex_Datejust_Terminology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_Terminology.png",
+   "author": "StuivertjeWisselen",
+   "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
@@ -221,13 +221,6 @@
  ],
  "omega-105012": [
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
-   "author": "Auge=mit",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
    "author": "Torsten Bolten",
@@ -235,15 +228,22 @@
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dial_of_Omega_Speedmaster_Professional.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Dial_of_Omega_Speedmaster_Professional.jpg",
-   "author": "Torsten Bolten",
-   "license": "Public domain",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
+   "author": "Auge=mit",
+   "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/OMEGA-Speedmaster-Professional-Front_%28cropped%29.jpg/960px-OMEGA-Speedmaster-Professional-Front_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front_(cropped).jpg",
+   "author": "Torsten Bolten",
+   "license": "Public domain",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dial_of_Omega_Speedmaster_Professional.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Dial_of_Omega_Speedmaster_Professional.jpg",
    "author": "Torsten Bolten",
    "license": "Public domain",
    "exact": false
@@ -265,13 +265,6 @@
  ],
  "omega-145022": [
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
-   "author": "Auge=mit",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/db/OMEGA-Speedmaster-Professional-Front.jpg/960px-OMEGA-Speedmaster-Professional-Front.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front.jpg",
    "author": "Torsten Bolten",
@@ -279,15 +272,22 @@
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dial_of_Omega_Speedmaster_Professional.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Dial_of_Omega_Speedmaster_Professional.jpg",
-   "author": "Torsten Bolten",
-   "license": "Public domain",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
+   "author": "Auge=mit",
+   "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/27/OMEGA-Speedmaster-Professional-Front_%28cropped%29.jpg/960px-OMEGA-Speedmaster-Professional-Front_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:OMEGA-Speedmaster-Professional-Front_(cropped).jpg",
+   "author": "Torsten Bolten",
+   "license": "Public domain",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/8/8b/Dial_of_Omega_Speedmaster_Professional.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Dial_of_Omega_Speedmaster_Professional.jpg",
    "author": "Torsten Bolten",
    "license": "Public domain",
    "exact": false
@@ -344,8 +344,8 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Omega_Seamaster_chronograph_watch_%28300_meters_water_resistant%29_%28cropped%29.jpg/960px-Omega_Seamaster_chronograph_watch_%28300_meters_water_resistant%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Seamaster_chronograph_watch_(300_meters_water_resistant)_(cropped).jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Omega_Seamaster_chronograph_watch_%28300_meters_water_resist%29.jpg/960px-Omega_Seamaster_chronograph_watch_%28300_meters_water_resist%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Seamaster_chronograph_watch_(300_meters_water_resist).jpg",
    "author": "Rama",
    "license": "CC BY-SA 2.0 fr",
    "exact": false
@@ -485,16 +485,16 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Patek_Philippe_Calatrava_Travel_Time.jpg/960px-Patek_Philippe_Calatrava_Travel_Time.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_Travel_Time.jpg",
-   "author": "Clyde94",
+   "src": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Patek_Philippe_Calatrava_ref._5055.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_ref._5055.jpg",
+   "author": "EMore98",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/c/cd/Patek_Philippe_Calatrava_ref._5055.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_ref._5055.jpg",
-   "author": "EMore98",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c8/Patek_Philippe_Calatrava_Travel_Time.jpg/960px-Patek_Philippe_Calatrava_Travel_Time.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Patek_Philippe_Calatrava_Travel_Time.jpg",
+   "author": "Clyde94",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
@@ -536,16 +536,16 @@
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare%2C_ref._25721._Primi_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare,_ref._25721._Primi_anni_Novanta.jpg",
-   "author": "EMore98",
+   "src": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo%2C_met%C3%A0_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo,_met%C3%A0_anni_Novanta.jpg",
+   "author": "Clyde94",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/0/0f/Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo%2C_met%C3%A0_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_in_oro_con_calendario_perpetuo,_met%C3%A0_anni_Novanta.jpg",
-   "author": "Clyde94",
+   "src": "https://upload.wikimedia.org/wikipedia/commons/6/68/Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare%2C_ref._25721._Primi_anni_Novanta.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Audemars_Piguet_Royal_Oak_Cronograph_con_calibro_modulare,_ref._25721._Primi_anni_Novanta.jpg",
+   "author": "EMore98",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
@@ -612,17 +612,17 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Zenith_El_Primero_36000.jpg/960px-Zenith_El_Primero_36000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_36000.jpg",
-   "author": "Enerexex",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Zenith_El_Primero_Schwarzweiss.jpg/960px-Zenith_El_Primero_Schwarzweiss.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_Schwarzweiss.jpg",
    "author": "Norbert Blau (Benutzer:Luftfahrer) at de.wikipedia",
    "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Zenith_El_Primero_36000.jpg/960px-Zenith_El_Primero_36000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_36000.jpg",
+   "author": "Enerexex",
+   "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
@@ -760,17 +760,17 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Rolex_Submariner_watch_16613.JPG/960px-Rolex_Submariner_watch_16613.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_watch_16613.JPG",
-   "author": "User:Eternalsleeper",
-   "license": "Public domain",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/08/Rolex_Submariner_Professional.JPG/960px-Rolex_Submariner_Professional.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_Professional.JPG",
    "author": "Dr.K.",
    "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/75/Rolex_Submariner_watch_16613.JPG/960px-Rolex_Submariner_watch_16613.JPG?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_watch_16613.JPG",
+   "author": "User:Eternalsleeper",
+   "license": "Public domain",
    "exact": false
   },
   {
@@ -885,15 +885,15 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Rolex_Submariner_and_GMT_Master_II.jpg/960px-Rolex_Submariner_and_GMT_Master_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_and_GMT_Master_II.jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Rolex_GMT_Master_II_Pepsi.jpg/960px-Rolex_GMT_Master_II_Pepsi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_GMT_Master_II_Pepsi.jpg",
    "author": "OpaleHorse",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Rolex_GMT_Master_II_Pepsi.jpg/960px-Rolex_GMT_Master_II_Pepsi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_GMT_Master_II_Pepsi.jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Rolex_Submariner_and_GMT_Master_II.jpg/960px-Rolex_Submariner_and_GMT_Master_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_and_GMT_Master_II.jpg",
    "author": "OpaleHorse",
    "license": "CC BY-SA 4.0",
    "exact": false
@@ -936,15 +936,15 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Rolex_Submariner_and_GMT_Master_II.jpg/960px-Rolex_Submariner_and_GMT_Master_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_and_GMT_Master_II.jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Rolex_GMT_Master_II_Pepsi.jpg/960px-Rolex_GMT_Master_II_Pepsi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_GMT_Master_II_Pepsi.jpg",
    "author": "OpaleHorse",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/6c/Rolex_GMT_Master_II_Pepsi.jpg/960px-Rolex_GMT_Master_II_Pepsi.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_GMT_Master_II_Pepsi.jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/11/Rolex_Submariner_and_GMT_Master_II.jpg/960px-Rolex_Submariner_and_GMT_Master_II.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Submariner_and_GMT_Master_II.jpg",
    "author": "OpaleHorse",
    "license": "CC BY-SA 4.0",
    "exact": false
@@ -1061,13 +1061,6 @@
    "exact": false
   },
   {
-   "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rolex_Datejust_Terminology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
-   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_Terminology.png",
-   "author": "StuivertjeWisselen",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://upload.wikimedia.org/wikipedia/commons/f/f0/Rolex_Datejust_1603.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
    "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_1603.jpg",
    "author": "hypo.physe",
@@ -1079,6 +1072,13 @@
    "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_16013_close-up.webp",
    "author": "ErikaWittlieb",
    "license": "CC0",
+   "exact": false
+  },
+  {
+   "src": "https://upload.wikimedia.org/wikipedia/commons/2/2c/Rolex_Datejust_Terminology.png?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail_unscaled",
+   "page": "https://commons.wikimedia.org/wiki/File:Rolex_Datejust_Terminology.png",
+   "author": "StuivertjeWisselen",
+   "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
@@ -1105,16 +1105,16 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
-   "author": "Auge=mit",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg/960px-Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg",
+   "author": "https://commons.wikimedia.org/wiki/User:Pittigrilli (the above two source files)",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg/960px-Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg",
-   "author": "https://commons.wikimedia.org/wiki/User:Pittigrilli (the above two source files)",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
+   "author": "Auge=mit",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
@@ -1170,8 +1170,8 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Omega_Seamaster_chronograph_watch_%28300_meters_water_resistant%29_%28cropped%29.jpg/960px-Omega_Seamaster_chronograph_watch_%28300_meters_water_resistant%29_%28cropped%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Seamaster_chronograph_watch_(300_meters_water_resistant)_(cropped).jpg",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/6/65/Omega_Seamaster_chronograph_watch_%28300_meters_water_resist%29.jpg/960px-Omega_Seamaster_chronograph_watch_%28300_meters_water_resist%29.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Seamaster_chronograph_watch_(300_meters_water_resist).jpg",
    "author": "Rama",
    "license": "CC BY-SA 2.0 fr",
    "exact": false
@@ -1260,16 +1260,16 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
-   "author": "Auge=mit",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg/960px-Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg",
+   "author": "https://commons.wikimedia.org/wiki/User:Pittigrilli (the above two source files)",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c9/Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg/960px-Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_Omega_Speedmaster_Schumacher_Edition_compo.jpg",
-   "author": "https://commons.wikimedia.org/wiki/User:Pittigrilli (the above two source files)",
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/2/23/Omega_Speedmaster_compilation_pp01.jpg/960px-Omega_Speedmaster_compilation_pp01.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Omega_Speedmaster_compilation_pp01.jpg",
+   "author": "Auge=mit",
    "license": "CC BY-SA 4.0",
    "exact": false
   },
@@ -1586,17 +1586,17 @@
    "exact": false
   },
   {
-   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Zenith_El_Primero_36000.jpg/960px-Zenith_El_Primero_36000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
-   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_36000.jpg",
-   "author": "Enerexex",
-   "license": "CC BY-SA 4.0",
-   "exact": false
-  },
-  {
    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1c/Zenith_El_Primero_Schwarzweiss.jpg/960px-Zenith_El_Primero_Schwarzweiss.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
    "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_Schwarzweiss.jpg",
    "author": "Norbert Blau (Benutzer:Luftfahrer) at de.wikipedia",
    "license": "CC BY-SA 3.0",
+   "exact": false
+  },
+  {
+   "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/ab/Zenith_El_Primero_36000.jpg/960px-Zenith_El_Primero_36000.jpg?utm_source=commons.wikimedia.org&utm_campaign=imageinfo&utm_content=thumbnail",
+   "page": "https://commons.wikimedia.org/wiki/File:Zenith_El_Primero_36000.jpg",
+   "author": "Enerexex",
+   "license": "CC BY-SA 4.0",
    "exact": false
   }
  ],
