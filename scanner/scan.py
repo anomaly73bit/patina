@@ -69,7 +69,10 @@ def main():
             continue
         any_real = True
         for l in found:
-            if l.get("m") not in by_id or l.get("src") is None or not isinstance(l.get("p"), (int, float)) or l["p"] <= 0:\n                print(f"{name}: annuncio non valido, ignorato")\n                continue\n            l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
+            if l.get("m") not in by_id or l.get("src") is None or not isinstance(l.get("p"), (int, float)) or l["p"] <= 0:
+                print(f"{name}: annuncio non valido, ignorato")
+                continue
+            l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
             l["first"] = first_seen.get(l.get("url")) or l["seen"]
             src_info = fees.get(l["src"], {"type": "Marketplace", "fee": 0})
             l["type"] = "Asta" if l.get("auction") else src_info["type"]
