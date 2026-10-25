@@ -42,7 +42,7 @@ def main():
     old_items = [] if old.get("example") else old.get("items", [])
 
     # quando abbiamo visto ogni annuncio per la prima volta (per «nuovi nelle ultime 24 ore»)
-    first_seen = {l.get("url"): l.get("first") or "2026-10-20T00:00:00+00:00" for l in old_items}
+    first_seen = {l["url"]: l.get("first") or l.get("seen") for l in old_items if l.get("url") and (l.get("first") or l.get("seen"))}
     items, any_real = [], False
     for src in SOURCES:
         name = src.__name__
@@ -55,21 +55,21 @@ def main():
             continue
         if found == "keep":
             # fonte che non gira a ogni giro (Apify, una volta al giorno): tengo i suoi annunci dell'ultimo giro
-            kept = [l for l in old_items if l.get("via") == name and (parse(l.get("seen")) or t) > t - 2 * MAX_STALE]
+            kept = [l for l in old_items if l.get("via") == name and (parse(l.get("seen")) or dt.datetime.min.replace(tzinfo=dt.timezone.utc)) > t - 2 * MAX_STALE]
             items += kept
-            any_real = any_real or bool(old_items)
+            any_real = any_real or bool(kept)
             print(f"{name}: tengo {len(kept)} annunci dall'ultimo giro")
             continue
         if found == "errore":
             # fonte non raggiungibile: tengo i suoi annunci solo se visti nelle ultime 24 ore
-            kept = [l for l in old_items if l.get("via") == name and (parse(l.get("seen")) or t) > t - MAX_STALE]
+            kept = [l for l in old_items if l.get("via") == name and (parse(l.get("seen")) or dt.datetime.min.replace(tzinfo=dt.timezone.utc)) > t - MAX_STALE]
             items += kept
             any_real = any_real or bool(old_items)  # riscrivo il file anche per togliere quelli vecchi
             print(f"{name}: tengo {len(kept)} annunci recenti")
             continue
         any_real = True
         for l in found:
-            l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
+            if l.get("m") not in by_id or l.get("src") is None or not isinstance(l.get("p"), (int, float)) or l["p"] <= 0:\n                print(f"{name}: annuncio non valido, ignorato")\n                continue\n            l["via"], l["seen"] = name, t.isoformat(timespec="seconds")
             l["first"] = first_seen.get(l.get("url")) or l["seen"]
             src_info = fees.get(l["src"], {"type": "Marketplace", "fee": 0})
             l["type"] = "Asta" if l.get("auction") else src_info["type"]
