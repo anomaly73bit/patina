@@ -31,6 +31,10 @@ jobs:
         with: {python-version: "3.12"}
       - run: pip install -r requirements.txt
 
+      - name: Aggiorna cambi BCE
+        continue-on-error: true
+        run: python scanner/fx_rates.py
+
       - name: Foto (lunedì, primo avvio o su richiesta)
         run: |
           if [ "${{ inputs.photos }}" = "true" ] || [ "$(date -u +%u%H)" = "100" ] || grep -q '\[\]' _data/photos.json; then
