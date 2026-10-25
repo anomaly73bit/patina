@@ -2,6 +2,7 @@
 import json
 import pathlib
 import re
+import datetime as dt
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 DATA = ROOT / "_data"
@@ -9,6 +10,16 @@ DATA = ROOT / "_data"
 # Cambi indicativi verso EUR (aggiornali ogni tanto)
 FX = {"EUR": 1.0, "CHF": 1.06, "GBP": 1.17, "USD": 0.92, "CZK": 0.040, "PLN": 0.235, "HUF": 0.0025,
       "RON": 0.20, "BGN": 0.511, "SEK": 0.087, "DKK": 0.134, "NOK": 0.085, "UAH": 0.022}
+
+# Use ECB rates only when the cache is recent; retain fallback rates for currencies
+# not quoted by ECB or during a temporary outage.
+try:
+    fx_data = json.loads((DATA / "fx_rates.json").read_text(encoding="utf-8"))
+    age = (dt.date.today() - dt.date.fromisoformat(fx_data["date"])).days
+    if 0 <= age <= 7:
+        FX.update({k: float(v) for k, v in fx_data["rates"].items() if float(v) > 0})
+except (OSError, ValueError, KeyError, TypeError):
+    pass
 
 # Parole che indicano ricambi, repliche o annunci da scartare
 BLOCK = re.compile(

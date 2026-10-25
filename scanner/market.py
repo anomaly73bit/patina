@@ -18,7 +18,14 @@ def calibrate(models, listings, today=None):
     market, adjusted = {}, []
     for m in models:
         # solo annunci della versione "base": le versioni speciali hanno prezzi propri
-        prices = sorted(l["total"] for l in listings if l["m"] == m["id"] and not variant(m, l.get("title", ""))[0])
+        prices = sorted(
+            l["total"] for l in listings
+            if l["m"] == m["id"]
+            and not l.get("auction")
+            and not l.get("sold")
+            and not variant(m, l.get("title", ""))[0]
+            and 0.4 * ((m["lo"] + m["hi"]) / 2) <= l["total"] <= 2.0 * ((m["lo"] + m["hi"]) / 2)
+        )
         m2 = dict(m)
         if len(prices) >= MIN_N:
             med = statistics.median(prices)
